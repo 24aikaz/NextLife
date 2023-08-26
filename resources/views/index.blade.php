@@ -99,9 +99,9 @@
         <div id="footer_content">
             <h3 class="Brand">NextLife</h3>
             <h4>Continue the history</h4>
-            <a href="#" class="underline">About Us</a>
-            <a href="#" class="underline">Our Team</a>
-            <a href="#" class="underline">Contact Us</a>
+            <a href="#" class="links underline">About Us</a>
+            <a href="#" class="links underline">Our Team</a>
+            <a href="#" class="links underline">Contact Us</a>
             <p><i class="fa-regular fa-copyright"></i>2023 NextLife by Ashley & Zakiyyah</p>
         </div>
     </footer>

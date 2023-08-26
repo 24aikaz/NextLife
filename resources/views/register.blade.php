@@ -5,8 +5,8 @@
     <h2 class="register_header">Register</h2>
 
     <!--Step 1: choose registering type-->
-    <div class="card" id="Registering_Type_Content">
-        <h3>Select registering type</h3>
+    <div class="step card" id="Registering_Type_Content">
+        <h3>Step 1 out of 4: Select registering type</h3>
         <form id="registering_type_form">
         <div>
             <p>I want to bid on items!</p>
@@ -29,8 +29,8 @@
     </div>
 
     <!--Step 2: account information-->
-    <div class="card" id="Account_Information_Content">
-        <h3>Account details</h3>
+    <div class="step card" id="Account_Information_Content">
+        <h3>Step 2 out of 4: Add account details</h3>
         <form action="">
             <label>Enter a username</label>
             <input type="text">
@@ -46,8 +46,8 @@
     </div>
 
     <!--Step 3: personal information-->
-    <div class="card" id="Personal_Information_Content">
-        <h3>Personal details</h3>
+    <div class="step card" id="Personal_Information_Content">
+        <h3>Step 3 out of 4: Add personal details</h3>
         <form action="">
             <label>First name</label>
             <input type="text">
@@ -64,8 +64,8 @@
     </div>
 
     <!--Step 4: location information-->
-    <div class="card" id="Location_Information_Content">
-        <h3>Location details</h3>
+    <div class="step card" id="Location_Information_Content">
+        <h3>Step 4 out of 4: Add location details</h3>
         <form action="">
             <label>Street</label>
             <input type="text">
@@ -78,6 +78,13 @@
 
             <input class="btn btn-outline-dark" type="submit" value="Next">
         </form>
+    </div>
+
+    <!-- Confirming user registration -->
+    <div class="step card" id="Confirmation">
+        <p>Agree to terms and conditions</p>
+        <p>sucess of registration</p>
+        <p>case of auctioneer, need to wait for admin approval</p>
     </div>
 
     @vite(['resources/js/register.js'])
