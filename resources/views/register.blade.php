@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-
-    <script src="https://kit.fontawesome.com/726d0afaa7.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
+@section('content')
     <!--Registering with steps for better user experience-->
-    <h2>Register</h2>
+    <h2 class="register_header">Register</h2>
 
     <!--Step 1: choose registering type-->
-    <div id="Registering_Type_Content">
+    <div class="card" id="Registering_Type_Content">
         <h3>Select registering type</h3>
+        <form id="registering_type_form">
         <div>
             <p>I want to bid on items!</p>
             <input type="radio" class="radio_item" value="" name="usertype" id="usertype_bidder">
@@ -32,11 +24,12 @@
             <label class="label_item" for="usertype_auctioneer"> <i class="fa-solid fa-user-tie"></i> </label>
         </div>
 
-        <input type="submit" value="Next">
+        <input class="btn btn-outline-dark" type="submit" value="Next">
+    </form>
     </div>
 
     <!--Step 2: account information-->
-    <div id="Account_Information_Content">
+    <div class="card" id="Account_Information_Content">
         <h3>Account details</h3>
         <form action="">
             <label>Enter a username</label>
@@ -48,12 +41,12 @@
             <label>Confirm password</label>
             <input type="password">
 
-            <input type="submit" value="Next">
+            <input class="btn btn-outline-dark" type="submit" value="Next">
         </form>
     </div>
 
     <!--Step 3: personal information-->
-    <div id="Personal_Information_Content">
+    <div class="card" id="Personal_Information_Content">
         <h3>Personal details</h3>
         <form action="">
             <label>First name</label>
@@ -65,13 +58,13 @@
             <label>Contact number</label>
             <input type="text">
             <input type="number">
-            
-            <input type="submit" value="Next">
+
+            <input class="btn btn-outline-dark" type="submit" value="Next">
         </form>
     </div>
 
     <!--Step 4: location information-->
-    <div id="Location_Information_Content">
+    <div class="card" id="Location_Information_Content">
         <h3>Location details</h3>
         <form action="">
             <label>Street</label>
@@ -82,13 +75,10 @@
             <input type="text">
             <label>Country</label>
             <input type="text">
-            
-            <input type="submit" value="Next">
+
+            <input class="btn btn-outline-dark" type="submit" value="Next">
         </form>
     </div>
 
     @vite(['resources/js/register.js'])
-
-</body>
-
-</html>
+@endsection

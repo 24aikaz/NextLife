@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('home')
+@section('content')
     <section id="Title_Display">
         <div class="section_content text_margin">
             <h1>Bring to your home a piece of history</h1>
@@ -107,4 +107,5 @@
     </footer>
 
     @vite(['resources/js/index.js'])
+
 @endsection

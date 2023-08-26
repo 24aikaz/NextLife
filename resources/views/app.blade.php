@@ -48,7 +48,7 @@
         </nav>
     </section>
 
-    @yield('home')
+    @yield('content')
 
     @vite(['resources/js/app.js'])
 </body>

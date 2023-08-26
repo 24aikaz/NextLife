@@ -1,20 +1,4 @@
-
-/* ------- Color variables used throughout ------- */
-:root { 
-    --primary-color: #3F2305;
-    --secondary-color: #DFD7BF;
-    --tertiary-color: #F2EAD3;
-    --quarternary-color: #F5F5F5;
-    --teal-color: #00888C;
-    --most-font-color: #0a0601;
-}
-
 /* ------- Target by HTML elements / Many elements ------- */
-body {
-    background-color: var(--quarternary-color);
-    color: var(--most-font-color);
-    font-family: 'Merriweather', serif;
-}
 body::-webkit-scrollbar {
     display: none;
 }
@@ -34,15 +18,7 @@ a {
 p {
     font-size: 1rem;
 }
-.clickable_stuff:hover {
-    color: var(--teal-color);
-}
-.text_margin{
-    margin: 0rem 3rem;
-}
-.Brand {
-    font-family: 'Gilda Display', serif; 
-}
+
 
 /* ------- Main Title ------- */
 #Title_Display {
@@ -208,33 +184,6 @@ footer p {
 }
 
 /* ------- Effects ------- */
-.underline {
-    background-image: linear-gradient(var(--teal-color), var(--teal-color));
-    background-size: 0% 0.2em;
-    background-position-y: 100%;
-    background-position-x: 0%;
-    background-repeat: no-repeat;
-    transition: background-size 0.5s ease-in-out;
-}
-.underline:hover,
-.underline:focus,
-.underline:active {
-    background-size: 100% 0.2em;
-}
-.underline_middle {
-    text-decoration: none;
-    background-image: linear-gradient(var(--teal-color), var(--teal-color));
-    background-size: 0% 0.2em;
-    background-position-y: 100%;
-    background-position-x: 50%;
-    background-repeat: no-repeat;
-    transition: background-size 0.5s ease-in-out;
-}
-.underline_middle:hover,
-.underline_middle:focus,
-.underline_middle:active {
-    background-size: 100% 0.2em;
-}
 .reveal {
     position: relative;
     transform: translateY(150px);

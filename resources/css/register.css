@@ -10,6 +10,11 @@
 
 body {
     background-color: var(--quarternary-color);
+    padding: 2rem 3rem;
+}
+
+h2{
+    padding-top: 3rem;
 }
 
 .radio_item {
@@ -24,8 +29,4 @@ body {
 
 .radio_item:checked+label {
     opacity: 1;
-}
-
-usericon{
-    
 }
