@@ -1,53 +1,6 @@
-{{-- THE HOME PAGE --}}
+@extends('app')
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextLife V2</title>
-
-    <link rel="icon" href="{{ asset('favicon.ico')}}">
-
-    <script src="https://kit.fontawesome.com/726d0afaa7.js" crossorigin="anonymous"></script>
-    
-</head>
-
-<body>
-    <section id="Navigation_Bar_Section">
-        <nav id="NavBar" class="navbar navbar-expand-lg fixed-top">
-            <div class="container-fluid">
-                <a class="NavBrand active navbar-brand NextLife underline clickable_stuff" href="index.html">NextLife</a>
-                <span class="Slogan navbar-text">
-                    Continue the history
-                </span>
-                <button class="NavTogBtn navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent">
-                    <i class="HamburgerMenu fa-solid fa-bars clickable_stuff"></i>
-                </button>
-                <div class="LeftmostItems CollapseItems collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2 SearchBar underline" type="search" placeholder="Search item to bid!">
-                            <button class="btn" type="submit"><i
-                                    class="fa-solid fa-magnifying-glass clickable_stuff"></i></button>
-                        </form>
-                        <li class="nav-item">
-                            <a class="nav-link underline clickable_stuff" href="#">Auctions</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link underline clickable_stuff" href="#">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link underline clickable_stuff" href="#">Bids</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </section>
-
+@section('home')
     <section id="Title_Display">
         <div class="section_content text_margin">
             <h1>Bring to your home a piece of history</h1>
@@ -58,7 +11,8 @@
 
     <section id="Text_Section1" class="reveal">
         <h2 class="text_margin">Discover our products</h2>
-        <p class="text_margin">Discover the magic of bidding on our exceptional products - where dreams meet their perfect match!</p>
+        <p class="text_margin">Discover the magic of bidding on our exceptional products - where dreams meet their perfect
+            match!</p>
     </section>
 
     <section id="Product_Showcase" class="section_content container">
@@ -110,18 +64,26 @@
     <section id="Auctioneer_Team" class="section_content">
         <div class="reveal">
             <h2 class="text_margin">Our Auctioneers</h2>
-            <p class="text_margin">Thrilled to work with our talented auctioneers - masters of their craft, who make every bid an
+            <p class="text_margin">Thrilled to work with our talented auctioneers - masters of their craft, who make every
+                bid an
                 exhilarating experience!</p>
         </div>
         <div id="Profile_Display" class="reveal">
-            <img class="auctioneer_img p1" src="{{ asset('images/Auctioneers/AdelaideAshford.png') }}" alt="Adelaide Ashford">
-            <img class="auctioneer_img p2" src="{{ asset('images/Auctioneers/AdityaMishraChakraborty.png') }}" alt="Aditya Mishra Chakraborty">
-            <img class="auctioneer_img p3" src="{{ asset('images/Auctioneers/AnastasiaFriedaSchneider.png') }}" alt="Anastasia Frieda Schneider">
+            <img class="auctioneer_img p1" src="{{ asset('images/Auctioneers/AdelaideAshford.png') }}"
+                alt="Adelaide Ashford">
+            <img class="auctioneer_img p2" src="{{ asset('images/Auctioneers/AdityaMishraChakraborty.png') }}"
+                alt="Aditya Mishra Chakraborty">
+            <img class="auctioneer_img p3" src="{{ asset('images/Auctioneers/AnastasiaFriedaSchneider.png') }}"
+                alt="Anastasia Frieda Schneider">
             <img class="auctioneer_img p4" src="{{ asset('images/Auctioneers/NicholasForbes.png') }}" alt="Nicholas Forbes">
-            <img class="auctioneer_img p5" src="{{ asset('images/Auctioneers/OlivierSaint-Clair.png') }}" alt="Olivier Saint-Clair">
-            <img class="auctioneer_img p6" src="{{ asset('images/Auctioneers/PenelopeWellington.png') }}" alt="Penelope Wellington">
-            <img class="auctioneer_img p7" src="{{ asset('images/Auctioneers/WilliamVonFitzgerald.png') }}" alt="William Von Fitzgerald">
-            <img class="auctioneer_img p8" src="{{ asset('images/Auctioneers//YunaMeiTanaka.png') }}" alt="Yuna Mei Tanaka">
+            <img class="auctioneer_img p5" src="{{ asset('images/Auctioneers/OlivierSaint-Clair.png') }}"
+                alt="Olivier Saint-Clair">
+            <img class="auctioneer_img p6" src="{{ asset('images/Auctioneers/PenelopeWellington.png') }}"
+                alt="Penelope Wellington">
+            <img class="auctioneer_img p7" src="{{ asset('images/Auctioneers/WilliamVonFitzgerald.png') }}"
+                alt="William Von Fitzgerald">
+            <img class="auctioneer_img p8" src="{{ asset('images/Auctioneers//YunaMeiTanaka.png') }}"
+                alt="Yuna Mei Tanaka">
         </div>
     </section>
 
@@ -143,7 +105,4 @@
             <p><i class="fa-regular fa-copyright"></i>2023 NextLife by Ashley & Zakiyyah</p>
         </div>
     </footer>
-    @vite(['resources/js/app.js'])
-</body>
-
-</html>
+@endsection
