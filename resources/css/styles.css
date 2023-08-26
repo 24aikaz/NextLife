@@ -44,34 +44,6 @@ p {
     font-family: 'Gilda Display', serif; 
 }
 
-/* ------- Navigation Bar ------- */
-#NavBar {
-    top: 0;
-    width: 100%;
-    transition: top 0.3s;
-    padding: 0.5rem 2rem;
-    background-color: #dfd7bf33;
-}
-.NextLife {
-    color: var(--primary-color);
-    font-family: 'Gilda Display', serif;
-}
-.SearchBar {
-    background-color: transparent;
-    box-shadow: none;
-    border-radius: 0;
-    border-width: 0;
-}
-.SearchBar:focus {
-    border-color: none;
-    box-shadow: none;
-    border-width: 0;
-    background-color: transparent;
-}
-input[type="search"]::-webkit-search-cancel-button {
-    -webkit-appearance: none;
-}
-
 /* ------- Main Title ------- */
 #Title_Display {
     clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 0% 100%);

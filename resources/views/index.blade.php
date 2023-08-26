@@ -105,4 +105,6 @@
             <p><i class="fa-regular fa-copyright"></i>2023 NextLife by Ashley & Zakiyyah</p>
         </div>
     </footer>
+
+    @vite(['resources/js/index.js'])
 @endsection
