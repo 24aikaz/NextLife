@@ -17,6 +17,7 @@ h2{
     padding-top: 3rem;
 }
 
+/* Registering types */
 .radio_item {
     display: none !important;
 }
@@ -30,3 +31,23 @@ h2{
 .radio_item:checked+label {
     opacity: 1;
 }
+
+/* Stepwise Effect */
+.step {
+    display: none;
+}
+.step.active {
+    display: block;
+}
+
+/* Shaking effect */
+.gentle-hover-shake {
+    animation: tilt-shaking 0.25s infinite;
+}
+@keyframes tilt-shaking {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0eg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+  }

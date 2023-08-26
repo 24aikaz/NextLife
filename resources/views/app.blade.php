@@ -11,6 +11,7 @@
     <link rel="icon" href="{{ asset('favicon.ico')}}">
 
     <script src="https://kit.fontawesome.com/726d0afaa7.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     
 </head>
 

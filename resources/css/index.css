@@ -4,7 +4,7 @@ body::-webkit-scrollbar {
 }
 h1 {
     padding-top: 12rem;
-    color: var(--primary-color);
+    color: var(--most-font-color);
     font-family: 'Gilda Display', serif;
     font-size: 3rem;
 }
