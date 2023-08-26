@@ -24,4 +24,4 @@ Route::get('login', function () {
     return view('login');
 });
 
-Route::get('register', [UserController::class, 'register']);
+Route::get('register', [RegisterController::class, 'index']);

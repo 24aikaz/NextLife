@@ -31,68 +31,52 @@
     <!--Step 2: account information-->
     <div class="card" id="Account_Information_Content">
         <h3>Account details</h3>
-        <form action=" /register" method= "POST">
-            @csrf
+        <form action="">
             <label>Enter a username</label>
-            <input name=username type="text">
+            <input type="text">
             <label>Enter email</label>
-            <input name=email type="email">
+            <input type="email">
             <label>Enter password</label>
-            <input name=password type="password">
+            <input type="password">
             <label>Confirm password</label>
             <input type="password">
-            <input type="submit" value="Next">
+
+            <input class="btn btn-outline-dark" type="submit" value="Next">
         </form>
     </div>
 
     <!--Step 3: personal information-->
     <div class="card" id="Personal_Information_Content">
         <h3>Personal details</h3>
-        <form action=" /register" method= "POST">
-            @csrf
-            <label>name</label>
-            <input name=name type="text">
+        <form action="">
+            <label>First name</label>
+            <input type="text">
             <label>Last name</label>
-            <input name=last_name type="text">
+            <input type="text">
             <label>Birth date</label>
-            <input name=birth_date type="date">
+            <input type="date">
             <label>Contact number</label>
             <input type="text">
             <input type="number">
-            <label>Security question</label>
-            <select name="questions" id="security_questions">
-                <option value="">Choose</option>
-                <option value="Q1">q1</option>
-                <option value="Q2">q2</option>
-                <option value="Q3">q3</option>
-                <option value="Q4">q4</option>
-                <option value="Q5">q5</option>
-                <option value="Q6">q6</option>
-                <option value="Q7">q7</option>
-                <option value="Q8">q8</option>
-                <option value="Q9">q9</option>
-                <option value="Q10">q10</option>
-            </select>
-            <label>Security answer</label>
-            <input type="text">
-            <input type="submit" value="Next">
+
+            <input class="btn btn-outline-dark" type="submit" value="Next">
         </form>
     </div>
 
     <!--Step 4: location information-->
     <div class="card" id="Location_Information_Content">
         <h3>Location details</h3>
-        <form action=" /register" method= "POST">
-            @crsf
+        <form action="">
             <label>Street</label>
-            <input name=street type="text">
+            <input type="text">
             <label>City</label>
-            <input name=city type="text">
+            <input type="text">
             <label>Postal/Zip Code</label>
-            <input name=postal_code type="text">
+            <input type="text">
             <label>Country</label>
             <input type="text">
-            <input type="submit" value="Next">
+
+            <input class="btn btn-outline-dark" type="submit" value="Next">
         </form>
     </div>
 
