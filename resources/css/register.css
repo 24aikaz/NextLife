@@ -1,0 +1,32 @@
+/* ------- Color variables used throughout ------- */
+:root { 
+    --primary-color: #3F2305;
+    --secondary-color: #DFD7BF;
+    --tertiary-color: #F2EAD3;
+    --quarternary-color: #F5F5F5;
+    --teal-color: #00888C;
+    --most-font-color: #0a0601;
+}
+
+body {
+    background-color: var(--quarternary-color);
+    padding: 2rem 3rem;
+}
+
+h2{
+    padding-top: 3rem;
+}
+
+.radio_item {
+    display: none !important;
+}
+
+.label_item {
+    opacity: 0.5;
+    font-size: 5rem;
+    color: #00888c;
+}
+
+.radio_item:checked+label {
+    opacity: 1;
+}
