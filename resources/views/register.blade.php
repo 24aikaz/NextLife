@@ -5,10 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-
-    <link rel="stylesheet" href="../style/commonstyles.css">
-    <link rel="stylesheet" href="">
-
 </head>
 
 <body>
@@ -97,9 +93,6 @@
             <input type="submit" value="Next">
         </form>
     </div>
-
-    <script src="../controller/commonscript.js"></script>
-    <script src=""></script>
 </body>
 
 </html>
