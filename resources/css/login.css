@@ -1,0 +1,40 @@
+/* ------- Color variables used throughout ------- */
+:root { 
+    --primary-color: #3F2305;
+    --secondary-color: #DFD7BF;
+    --tertiary-color: #F2EAD3;
+    --quarternary-color: #F5F5F5;
+    --teal-color: #00888C;
+    --most-font-color: #0a0601;
+}
+body {
+    padding: 2rem 3rem;
+}
+
+#login_container{
+    padding: 6rem 5rem;
+}
+#login_container h2{
+    text-align: center;
+}
+.card{
+    width: 50%;
+    margin: auto auto;
+    padding: 3rem 7rem;
+}
+
+.errormsg{
+    color: red;
+}
+
+#login_btn:hover{
+    border-color: var(--teal-color);
+    color: var(--teal-color);
+}
+
+#login_btn{
+    border-color: var(--primary-color);
+    border-width: 2px;
+    color: var(--most-font-color);
+    margin: 2rem 0rem;
+}
