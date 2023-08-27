@@ -15,13 +15,13 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
     return view('index');
 });
 
 Route::get('login', function () {
     return view('login');
-});
+})->name('login'); // Name the login route
 
-Route::get('register', [RegisterController::class, 'index']);
+Route::get('register', [RegisterController::class, 'index'])->name('register'); // Name the register route
+
