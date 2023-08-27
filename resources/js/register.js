@@ -3,6 +3,7 @@ import '../css/register.css';
 // Get all the step cards and buttons
 const stepCards = document.querySelectorAll('.step');
 const nextButtons = document.querySelectorAll('.btn-outline-dark');
+const previousButtons = document.querySelectorAll('.btn-info');
 
 let currentStep = 0;
 
@@ -22,14 +23,14 @@ function nextStep() {
     }
 }
 
-// // Function to go to the previous step
-// function previousStep() {
-//     if (currentStep >= 0 && currentStep <= 3) {
-//         stepCards[currentStep].style.display = 'none';
-//         currentStep--;
-//         stepCards[currentStep].style.display = 'block';
-//     }
-// }
+// Function to go to the previous step
+function previousStep() {
+    if (currentStep >= 1 && currentStep <= 4) {
+        stepCards[currentStep].style.display = 'none';
+        currentStep--;
+        stepCards[currentStep].style.display = 'block';
+    }
+}
 
 // Add event listeners to all Next buttons
 nextButtons.forEach(button => {
@@ -39,10 +40,10 @@ nextButtons.forEach(button => {
     });
 });
 
-// // Add event listeners to all Previous buttons
-// nextButtons.forEach(button => {
-//     button.addEventListener('click', function (event) {
-//         event.preventDefault();
-//         previousStep();
-//     });
-// });
+// Add event listeners to all Previous buttons
+previousButtons.forEach(button => {
+    button.addEventListener('click', function (event) {
+        event.preventDefault();
+        previousStep();
+    });
+});

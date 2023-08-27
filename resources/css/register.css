@@ -41,7 +41,7 @@ h2{
 }
 
 /* Shaking effect */
-.gentle-hover-shake {
+.gentle-hover-shake:hover {
     animation: tilt-shaking 0.25s infinite;
 }
 @keyframes tilt-shaking {
