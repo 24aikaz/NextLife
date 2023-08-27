@@ -24,4 +24,7 @@ Route::get('login', function () {
     return view('login');
 });
 
-Route::get('register', [RegisterController::class, 'index']);
+//Route::get('register', [RegisterController::class, 'index']);
+Route::get('register', function () {
+    return view('livewire.multiform');
+});
