@@ -23,5 +23,9 @@ Route::get('login', function () {
     return view('login');
 })->name('login'); // Name the login route
 
-Route::get('register', [RegisterController::class, 'index'])->name('register'); // Name the register route
 
+Route::get('register', [RegisterController::class, 'index'])->name('register'); // Display the registration form
+Route::post('register', [RegisterController::class, 'insertData']); // Handle form submission
+
+//Route::get('register', [RegisterController::class, 'index'])->name('register'); // Display the registration form
+//Route::post('register/insert', [RegisterController::class, 'insertData'])->name('register.insert'); // Handle form submission

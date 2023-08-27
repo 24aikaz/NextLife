@@ -4,7 +4,7 @@
     <!-- Registering with steps for better user experience -->
     <h2 class="register_header">Register</h2>
     
-    <form id="registration_form" action="{{ route('register') }}" method="POST">
+    <form id="registration_form" action="insertData" method="POST">
         @csrf
 
         <!-- Step 1: choose registering type -->
@@ -34,8 +34,14 @@
             <h3>Step 2 out of 4: Add account details</h3>
             <label>Enter a username</label>
             <input type="text" name="username">
+            @error('username')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
             <label>Enter email</label>
             <input type="email" name="email">
+             @error('email')
+                  <div class="text-danger">{{ $message }}</div>
+    @enderror
             <label>Enter password</label>
             <input type="password" name="password">
             <label>Confirm password</label>
