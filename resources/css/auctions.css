@@ -1,0 +1,24 @@
+/* ------- Color variables used throughout ------- */
+:root { 
+    --primary-color: #3F2305;
+    --secondary-color: #DFD7BF;
+    --tertiary-color: #F2EAD3;
+    --quarternary-color: #F5F5F5;
+    --teal-color: #00888C;
+    --most-font-color: #0a0601;
+}
+.errormsg{
+    color: red;
+}
+
+body {
+    padding: 2rem 3rem;
+}
+
+h2{
+    padding-top: 3rem;
+}
+
+.col{
+    padding-bottom: 2rem !important;
+}
