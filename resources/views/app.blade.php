@@ -55,6 +55,13 @@
                             <li class="nav-item">
                                 <a class="nav-link underline clickable_stuff" href="#">Bids</a>
                             </li>
+
+                            <li class="nav-item">
+                                <form action="{{ route('logout') }}" method="POST" class="">
+                                    @csrf
+                                    <button class="nav-link underline clickable_stuff" type="submit">Log Out</button>
+                                </form>
+                            </li>
                         @endauth
 
                         @guest

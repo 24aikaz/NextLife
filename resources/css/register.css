@@ -7,6 +7,9 @@
     --teal-color: #00888C;
     --most-font-color: #0a0601;
 }
+.errormsg{
+    color: red;
+}
 
 body {
     background-color: var(--quarternary-color);

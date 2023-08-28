@@ -1,6 +1,7 @@
 
 <?php
 
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -21,17 +22,10 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::get('login', function () {
-    return view('login');
-})->name('login'); // Name the login route
-
-
-Route::get('register', [RegisterController::class, 'index'])->name('register'); // Display the registration form
-Route::post('register', [RegisterController::class, 'insertData']); // Handle form submission
-
-//Route::get('register', [RegisterController::class, 'index'])->name('register'); // Display the registration form
-//Route::post('register/insert', [RegisterController::class, 'insertData'])->name('register.insert'); // Handle form submission
 Route::get('login', [LoginController::class, 'index']) ->name('login');
 Route::post('login', [LoginController::class, 'retrieve']);
 
+Route::post('logout', [LogoutController::class, 'store'])->name('logout');
+
 Route::get('register', [RegisterController::class, 'index']) ->name('register');
+Route::post('register', [RegisterController::class, 'store']);
