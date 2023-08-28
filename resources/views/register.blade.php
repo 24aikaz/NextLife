@@ -24,7 +24,7 @@
 
         @csrf
 
-        {{-- <!-- Step 1: choose registering type -->
+         <!-- Step 1: choose registering type -->
         <div class="step card" id="Registering_Type_Content">
             <h3>Step 1 out of 4: Select registering type</h3>
 
@@ -50,7 +50,7 @@
             </div>
 
             <button class="btn btn-outline-dark">Next</button>
-        </div> --}}
+        </div> 
 
         <!-- Step 2: account information -->
         <div class="step card" id="Account_Information_Content">
@@ -68,10 +68,10 @@
         </div>
 
         <!-- Step 3: personal information -->
-        {{-- <div class="step card" id="Personal_Information_Content">
+         <div class="step card" id="Personal_Information_Content">
             <h3>Step 3 out of 4: Add personal details</h3>
             <label>First name</label>
-            <input type="text" name="first_name"> <!-- Change the name attribute to "name" -->
+            <input type="text" name="first_name"> 
             <label>Last name</label>
             <input type="text" name="last_name">
             <label>Birth date</label>
@@ -80,10 +80,10 @@
             <input type="text" name="contact_number">
             <button type="button" class="btn btn-info">Previous</button>
             <button class="btn btn-outline-dark">Next</button>
-        </div> --}}
+        </div> 
 
         <!-- Step 4: location information -->
-        {{-- <div class="step card" id="Location_Information_Content">
+         <div class="step card" id="Location_Information_Content">
             <h3>Step 4 out of 4: Add location details</h3>
             <label>Street</label>
             <input type="text" name="street">
@@ -95,7 +95,7 @@
             <input type="text" name="country">
             <button type="button" class="btn btn-info">Previous</button>
             <button class="btn btn-outline-dark">Next</button>
-        </div> --}}
+        </div> 
 
         <!-- Confirming user registration -->
         <div class="step card" id="Confirmation">

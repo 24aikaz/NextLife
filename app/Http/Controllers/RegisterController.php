@@ -17,79 +17,42 @@ class RegisterController extends Controller
         return view('register');
     }
 
-
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-    //         'username' => ['required', 'string', 'max:255', 'unique:users'],
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
-    //         'name' => ['required', 'string', 'max:255'],
-    //         'last_name' => ['required', 'string', 'max:255'],
-    //         'birth_date' => ['required', 'date'],
-    //         'contact_number' => ['required', 'string', 'max:255'],
-    //         'street' => ['required', 'string', 'max:255'],
-    //         'city' => ['required', 'string', 'max:255'],
-    //         'postal_code' => ['required', 'string', 'max:255'],
-    //         'country' => ['required', 'string', 'max:255'],
-    //         'usertype' => ['required', 'string'],
-    //         // Add other validation rules for your form fields
-    //     ]);
-    // }
-
-    // protected function create(array $data)
-    // {
-
-    //      // Use dd() to debug the incoming data
-    //      dd($data);
-
-    //     return User::create([
-    //         'username' => $data['username'],
-    //         'email' => $data['email'],
-    //         'password' => Hash::make($data['password']),
-    //         'name' => $data['name'],
-    //         'last_name' => $data['last_name'],
-    //         'birth_date' => $data['birth_date'],
-    //         'contact_number' => $data['contact_number'],
-    //         'street' => $data['street'],
-    //         'city' => $data['city'],
-    //         'postal_code' => $data['postal_code'],
-    //         'country' => $data['country'],
-    //         'usertype' => $data['usertype'], // Add the usertype field
-    //         // Add other fields from your form
-    //     ]);
-
-    //     if ($user) {
-    //         // Registration successful, you should define a 'success' route
-    //         return redirect()->route('success')->with('message', 'Registration successful!');
-    //     } else {
-    //         // Registration failed
-    //         return back()->withInput()->withErrors(['message' => 'Registration failed. Please try again.']);
-    //     }
-    // }
-
     public function store(Request $request)
     {
         $this->validate($request, [
-            // 'usertype' => 'required',
             'username' => 'required|max:255',
             'email' => 'required|email|max:255',
             'password' => 'required|confirmed',
-            // 'first_name' => 'required',
-            // 'last_name' => 'required',
-            // 'birth_date' => 'required|date',
+           // 'first_name' => 'required',
+           // 'last_name' => 'required',
+             //'birth_date' => 'required|date',
             // 'contact_number' => 'required',
             // 'street' => 'required',
             // 'city' => 'required',
             // 'postal_code' => 'required',
             // 'country' => 'required',
+            // 'usertype' => 'required',
         ]);
 
-        User::create([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+           // Debug: Display the incoming data for debugging
+           dd($request->all());
+    
+           // Create a new User instance and populate its fields
+           User::create([
+               'username' => $request->input('username'),
+               'email' => $request->input('email'),
+               'password' => Hash::make($request->input('password')),
+               'first_name' => $request->input('first_name'),
+               'last_name' => $request->input('last_name'),
+               'birth_date' => $request->input('birth_date'),
+               'contact_number' => $request->input('contact_number'),
+               'street' => $request->input('street'),
+               'city' => $request->input('city'),
+               'postal_code' => $request->input('postal_code'),
+               'country' => $request->input('country'),
+               'usertype' => $request->input('usertype'),
+               // Add other fields from your form
+           ]);
 
         // auth()->attempt($request->only('username', 'password'));
 
