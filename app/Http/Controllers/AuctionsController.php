@@ -10,4 +10,9 @@ class AuctionsController extends Controller
     {
         return view('auctions');
     }
+
+    public function display()
+    {
+        dd("path okay");
+    }
 }

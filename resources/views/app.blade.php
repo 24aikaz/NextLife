@@ -44,16 +44,16 @@
                         </form>
 
                         <li class="nav-item">
-                            <a class="nav-link underline clickable_stuff" href="#">Auctions</a>
+                            <a class="nav-link underline clickable_stuff" href="{{ route('auctions') }}">Auctions</a>
                         </li>
 
                         @auth
                             <li class="nav-item dropdown">
-                                <a class="nav-link underline clickable_stuff" href="#">Profile</a>
+                                <a class="nav-link underline clickable_stuff" href="{{ route('profile') }}">Profile</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link underline clickable_stuff" href="#">Bids</a>
+                                <a class="nav-link underline clickable_stuff" href="{{ route('bids') }}">Bids</a>
                             </li>
 
                             <li class="nav-item">
