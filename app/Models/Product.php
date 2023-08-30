@@ -10,11 +10,20 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'pname', 'pdesc','startprice', 'currentprice', 'status', 'category', 'seller'
+        'pname', 'pdesc', 'image', 'startprice', 'currentprice', 'status', 'bidcount',
+        'category', 'startdate', 'enddate',
+    ];
+
+
+    protected $primaryKey = 'Product_ID';
+
+    protected $casts = [
+        'status' => 'string', // Cast the status field as string (enum)
     ];
 
     public function user(){
-        return $this->belongsTo(User::class, 'seller', 'id');
+        return $this->belongsTo(User::class, 'seller_id', 'id');
     }
+    
 
 }

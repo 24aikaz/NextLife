@@ -23,10 +23,11 @@ return new class extends Migration
                     $table->unsignedInteger('bidcount')->default(0);
                     $table->timestamp('startdate')->nullable();
                     $table->timestamp('enddate')->nullable();
-                    $table->string('seller');
                     $table->string('winner')->nullable();
                     $table->decimal('winning_bid', 10, 2)->nullable();
                     $table->timestamps(); // Created at and Updated at timestamps
+                    $table->unsignedBigInteger('seller_id'); // Add the column after 'enddate'
+                    $table->foreign('seller_id')->references('id')->on('users'); 
                 });
     
     }

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\merchant;
 
-use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -14,23 +15,41 @@ class ProductController extends Controller
     }
 
     public function addproduct(Request $request)
-    {
-        $this->validate($request, [
-            'pname' => 'required',
-            'pdesc' => 'required',
-            'startprice' => 'required',
-            'category' => 'required',
-        ]);
-    
-        Product::create([
-            'pname' => $request->input('pname'),
-            'pdesc' => $request->input('pdesc'),
-            'startprice' => $request->input('startprice'),
-            'currentprice' => $request->input('startprice'),
-            'status' => $request->input('status'),
-            'category' => $request->input('category'),
-            'seller' => auth()->id(),
-        ]);
+    { $validatedData = $request->validate([
+        'pname' => 'required',
+        'pdesc' => 'required',
+        'startprice' => 'required|numeric',
+        'category' => 'required',
+        'mobile' => 'required',
+        'image' => 'required|image',
+        'status' => 'nullable|in:active,inactive',
+    ]);
+
+    // Handle image upload
+    $imageName = $request->file('image')->getClientOriginalName();
+    $imageData = $request->file('image')->store('images', 'public');
+
+    // Create and save the product using create method
+    $product = Product::create([
+        'pname' => $validatedData['pname'],
+        'pdesc' => $validatedData['pdesc'],
+        'name' => $imageName,
+        'image' => $imageData,
+        'startprice' => $validatedData['startprice'],
+        'currentprice' => $validatedData['startprice'], // Assuming current price is the same as starting price initially
+        'status' => 'active', // Set it to "active" by default
+        'bidcount' => 0,
+        'category' => $validatedData['category'],
+        'startdate' => now(),
+        'enddate' => now()->addDays(7),
+        'seller_id' => auth()->user()->id, // Associate the product with the logged-in user
+    ]);
+          
+   // dd($validatedData); // Validate data
+   // dd($imageName, $imageData); // Image handling
+    dd($product); // Product creation
+            // Associate the product with the user
+            auth()->user()->products()->save($product);
 
         return redirect()->route('bids');
     }
