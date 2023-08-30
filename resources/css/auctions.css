@@ -22,3 +22,7 @@ body {
 .col{
     padding-bottom: 2rem !important;
 }
+
+.card-link{
+    text-decoration: none;
+}

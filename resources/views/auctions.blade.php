@@ -6,27 +6,37 @@
 
         <div class="container">
 
-            {{-- formatting 2 columns per row automatically --}}
-            <div class="row row-cols-2">
+            @if ($products->count())
+                {{-- formatting 2 columns per row automatically --}}
+                <div class="row row-cols-2">
 
-                <div class="col">
-                    <div class="card">Item1</div>
+                    @foreach ($products as $product)
+                   
+                    <div class="col">
+                        
+                        <a href="{{ route('viewproduct') }}" class='card-link'>
+
+                            <div class="card">
+                                <h3>{{ $product->pname }}</h3>
+                                <p>{{ $product->pdesc }}</p>
+                                <h4>{{ $product->user->first_name }}</h4>
+                                <h5>$ {{ $product->currentprice }}</h5>
+                            </div>
+
+                        </a> 
+
+                    </div>
+                    
+                    @endforeach
+
                 </div>
-
-                <div class="col">
-                    <div class="card">Item2</div>
-                </div>
-
-                <div class="col">
-                    <div class="card">Item3</div>
-                </div>
-
-            </div>
+            @else
+                <p>There are currently no active auctions.</p>
+            @endif
 
         </div>
 
-        @vite(['resources/js/register.js'])
-        
-    </div>
+        @vite(['resources/js/auctions.js'])
 
+    </div>
 @endsection

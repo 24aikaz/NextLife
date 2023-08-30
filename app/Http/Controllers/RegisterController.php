@@ -51,8 +51,6 @@ class RegisterController extends Controller
             'usertype' => $request->input('usertype'),
         ]);
 
-        // auth()->attempt($request->only('username', 'password'));
-
         auth()->attempt($request->only('username', 'password'));
 
         return redirect()->route('home');
