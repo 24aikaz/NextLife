@@ -16,7 +16,6 @@ return new class extends Migration
                     $table->string('image')->nullable();
                     $table->string('pname');
                     $table->text('pdesc');
-                    $table->string('name');
                     $table->decimal('startprice', 10, 2);
                     $table->decimal('currentprice', 10, 2);
                     $table->enum('status', ['Active', 'Inactive']);

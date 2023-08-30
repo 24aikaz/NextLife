@@ -27,8 +27,7 @@
 
         <form action="{{ route('product') }}" method="POST">
             @csrf
-
-            <label for="product_name">Product Name</label>
+            <p> <label for="product_name">Product Name</label>
             <input type="text" name="pname" id="product_name">
 
             <label for="product_description">Product Description</label>
@@ -39,9 +38,6 @@
 
             <label for="starting_price">Starting Price</label>
             <input type="number" name="startprice" id="starting_price">
-
-            <label for="nameforidkwhat">Name for idk what</label>
-            <input type="text" name="name" id="nameforidkwhat">
 
             <label for="product_category">Category</label>
             <select name="category" id="product_category">
@@ -55,9 +51,23 @@
                 <option value="Wearables">Wearables</option>
             </select>
 
+            <p>
+                <label for="mobile">Mobile Number</label>
+                <input type="text" name="mobile" id="mobile" placeholder="Mobile no." required>
+            </p>
+
+            <p>
+                <label for="image">Select image to upload:</label><br>
+                <input type="file" name="image" accept="image/*" id="image" required>
+            </p>
+
             <button type="submit">Submit</button>
 
         </form>
 
+         
     </div>
-@endsection
+    @endsection
+    
+
+    

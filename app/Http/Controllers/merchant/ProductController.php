@@ -25,7 +25,6 @@ class ProductController extends Controller
         Product::create([
             'pname' => $request->input('pname'),
             'pdesc' => $request->input('pdesc'),
-            'name' => $request->input('name'),
             'startprice' => $request->input('startprice'),
             'currentprice' => $request->input('startprice'),
             'status' => $request->input('status'),
