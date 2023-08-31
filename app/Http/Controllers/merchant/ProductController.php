@@ -15,41 +15,44 @@ class ProductController extends Controller
     }
 
     public function addproduct(Request $request)
-    { $validatedData = $request->validate([
-        'pname' => 'required',
-        'pdesc' => 'required',
-        'startprice' => 'required|numeric',
-        'category' => 'required',
-        'mobile' => 'required',
-        'image' => 'required|image',
-        'status' => 'nullable|in:active,inactive',
-    ]);
+    {
+        $validatedData = $request->validate([
+            'pname' => 'required',
+            'pdesc' => 'required',
+            'startprice' => 'required|numeric',
+            'category' => 'required',
+            'mobile' => 'required',
+            'image' => 'required|image',
+            'status' => 'nullable|in:active,inactive',
+        ]);
 
-    // Handle image upload
-    $imageName = $request->file('image')->getClientOriginalName();
-    $imageData = $request->file('image')->store('images', 'public');
+        // Handle image upload
+        $imageName = $request->file('image')->getClientOriginalName();
+        $imageData = $request->file('image')->store('images', 'public');
 
-    // Create and save the product using create method
-    $product = Product::create([
-        'pname' => $validatedData['pname'],
-        'pdesc' => $validatedData['pdesc'],
-        'name' => $imageName,
-        'image' => $imageData,
-        'startprice' => $validatedData['startprice'],
-        'currentprice' => $validatedData['startprice'], // Assuming current price is the same as starting price initially
-        'status' => 'active', // Set it to "active" by default
-        'bidcount' => 0,
-        'category' => $validatedData['category'],
-        'startdate' => now(),
-        'enddate' => now()->addDays(7),
-        'seller_id' => auth()->user()->id, // Associate the product with the logged-in user
-    ]);
-          
-   // dd($validatedData); // Validate data
-   // dd($imageName, $imageData); // Image handling
-    dd($product); // Product creation
-            // Associate the product with the user
-            auth()->user()->products()->save($product);
+        // Create and save the product using create method
+        $product = Product::create([
+            'pname' => $validatedData['pname'],
+            'pdesc' => $validatedData['pdesc'],
+            'name' => $imageName,
+            'image' => $imageData,
+            'startprice' => $validatedData['startprice'],
+            'currentprice' => $validatedData['startprice'],
+            // Assuming current price is the same as starting price initially
+            'status' => 'active',
+            // Set it to "active" by default
+            'bidcount' => 0,
+            'category' => $request->input('category'),
+            'startdate' => now(),
+            'enddate' => now()->addDays(7),
+            'seller_id' => auth()->id(), // Associate the product with the logged-in user
+        ]);
+
+        // dd($validatedData); // Validate data
+        // dd($imageName, $imageData); // Image handling
+        // dd($product); // Product creation
+        // // Associate the product with the user
+        // auth()->user()->products->save($product);
 
         return redirect()->route('bids');
     }

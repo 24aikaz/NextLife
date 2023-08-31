@@ -40,14 +40,14 @@
             <p>
                 <label for="product_category">Category</label>
                 <select name="category" id="product_category">
-                    <option selected="" value="0">Mobiles</option>
-                    <option value="2">Wearables</option>
-                    <option value="4">Computers and Accessories</option>
-                    <option value="5">Cameras</option>
-                    <option value="6">Phones</option>
-                    <option value="7">Kitchen</option>
-                    <option value="8">Home Decor</option>
-                    <option value="9">Miscellaneous</option>
+                    <option selected="" value="Mobiles">Mobiles</option>
+                    <option value="Wearables">Wearables</option>
+                    <option value="Computers and Accessories">Computers and Accessories</option>
+                    <option value="Cameras">Cameras</option>
+                    <option value="Phones">Phones</option>
+                    <option value="Kitchen">Kitchen</option>
+                    <option value="Home Decor">Home Decor</option>
+                    <option value="Miscellaneous">Miscellaneous</option>
                 </select>
                 @error('category')
                     <div style="color: red">

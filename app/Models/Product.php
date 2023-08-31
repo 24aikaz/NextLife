@@ -11,7 +11,7 @@ class Product extends Model
 
     protected $fillable = [
         'pname', 'pdesc', 'image', 'startprice', 'currentprice', 'status', 'bidcount',
-        'category', 'startdate', 'enddate',
+        'category', 'startdate', 'enddate', 'seller_id',
     ];
 
 
