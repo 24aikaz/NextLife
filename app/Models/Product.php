@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Product extends Model
 {
@@ -13,6 +14,7 @@ class Product extends Model
         'pname', 'pdesc', 'image', 'startprice', 'currentprice', 'status', 'bidcount',
         'category', 'startdate', 'enddate', 'seller_id',
     ];
+    protected $dates = ['startdate', 'enddate'];
 
 
     protected $primaryKey = 'Product_ID';

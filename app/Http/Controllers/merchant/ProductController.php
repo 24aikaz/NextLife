@@ -48,12 +48,6 @@ class ProductController extends Controller
             'seller_id' => auth()->id(), // Associate the product with the logged-in user
         ]);
 
-        // dd($validatedData); // Validate data
-        // dd($imageName, $imageData); // Image handling
-        // dd($product); // Product creation
-        // // Associate the product with the user
-        // auth()->user()->products->save($product);
-
         return redirect()->route('bids');
     }
 }

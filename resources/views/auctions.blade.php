@@ -15,13 +15,14 @@
                     <div class="col">
                         
                         <a href="{{ route('viewproduct') }}" class='card-link'>
-
-                            <div class="card">
-                                <h3>{{ $product->pname }}</h3>
-                                <p>{{ $product->pdesc }}</p>
-                                <h4>{{ $product->user->first_name }}</h4>
-                                <h5>$ {{ $product->currentprice }}</h5>
-                            </div>
+                            <h3>{{ $product->pname }}</h3>
+                            <p>{{ $product->pdesc }}</p>
+                            <h4>{{ $product->user->name }}</h4>
+                            <h5>Start Price: $ {{ $product->startprice }}</h5>
+                            <h5>Current Price: $ {{ $product->currentprice }}</h5>
+                            <p>Countdown: {{ now()->diff($product->enddate)->format('%dd') }}</p>
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->pname }}" class="product-image">
+                        </div>
 
                         </a> 
 
