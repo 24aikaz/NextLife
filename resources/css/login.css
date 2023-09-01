@@ -1,3 +1,6 @@
+/* References: https://alvarotrigo.com/blog/animated-backgrounds-css/ 
+(basic landscape background animation)  */
+
 /* ------- Color variables used throughout ------- */
 :root { 
     --primary-color: #3F2305;
@@ -8,7 +11,56 @@
     --most-font-color: #0a0601;
 }
 body {
-    padding: 2rem 3rem;
+
+    /* background-image: url(images/loginbackground.jpg); */
+    background-size: cover;
+    -webkit-animation: slidein 120s;
+    animation: slidein 120s;
+
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+
+    background-image: linear-gradient(#dfd7bf42, #dfd7bf42),
+                  url(images/loginbackground.jpg);
+}
+
+@-webkit-keyframes slidein {
+    from {
+        background-position: center;
+        background-size: 3000px;
+    }
+
+    to {
+        background-position: -100px 0px;
+        background-size: 2750px;
+    }
+}
+
+@keyframes slidein {
+    from {
+        background-position: center;
+        background-size: 3000px;
+    }
+
+    to {
+        background-position: -100px 0px;
+        background-size: 2750px;
+    }
+
+}
+
+.toppad{
+    padding-top: 1rem;
+}
+
+.title{
+    font-family: 'Cantata One', serif;
 }
 
 #login_container{
@@ -18,13 +70,23 @@ body {
     text-align: center;
 }
 .card{
-    width: 50%;
+    width: 30rem;
     margin: auto auto;
-    padding: 3rem 7rem;
+    padding: 1rem 7rem;
+    backdrop-filter: blur(69px) !important;
+}
+
+.loginfail {
+    text-align: center;
+    color: red;
+    opacity: 0.9;
+    font-size: medium;
 }
 
 .errormsg{
     color: red;
+    font-size: small;
+    opacity: 0.7;
 }
 
 #login_btn:hover{
@@ -37,4 +99,24 @@ body {
     border-width: 2px;
     color: var(--most-font-color);
     margin: 2rem 0rem;
+    font-size: large;
+}
+
+#LogIn_Form_Content.card {
+    background-color: #dfd7bf77;
+}
+
+.registernow{
+    font-family: 'Dancing Script', cursive;
+    font-size: x-large;
+}
+
+.form-check-input:checked{
+    background-color: var(--teal-color) !important;
+}
+.form-check-input:focus{
+    box-shadow: 0 0 0 0px #fff, 0 0 0 0.2rem #00878c3a;
+}
+.form-check-input:checked:focus{
+    box-shadow: 0 0 0 0px #fff, 0 0 0 0.2rem #00878c3a;
 }
