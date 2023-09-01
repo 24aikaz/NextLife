@@ -13,6 +13,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+        //check for winner daily
+        $schedule->call('App\Http\Controllers\AuctionsController@selectWinner')->daily(); // Adjust the frequency as needed
     }
 
     /**
@@ -24,4 +26,6 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+  
 }

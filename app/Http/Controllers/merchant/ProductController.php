@@ -44,7 +44,7 @@ class ProductController extends Controller
             'bidcount' => 0,
             'category' => $request->input('category'),
             'startdate' => now(),
-            'enddate' => now()->addDays(7),
+            'enddate' => now()->addDays(2),
             'seller_id' => auth()->id(), // Associate the product with the logged-in user
         ]);
 

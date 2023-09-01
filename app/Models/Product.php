@@ -26,6 +26,10 @@ class Product extends Model
     public function user(){
         return $this->belongsTo(User::class, 'seller_id', 'id');
     }
-    
+
+public function bids()
+{
+    return $this->hasMany(Bid::class, 'product_id');
+}
 
 }

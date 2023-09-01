@@ -48,3 +48,5 @@ Route::get('merchant/product', [ProductController::class, 'index']) ->name('prod
 Route::post('merchant/product', [ProductController::class, 'addproduct']);
 
 Route::get('viewproduct', [ViewproductController::class, 'index']) ->name('viewproduct');
+
+Route::get('/select-winner', [AuctionsController::class, 'selectWinner'])->name('select-winner')->middleware('auth');
