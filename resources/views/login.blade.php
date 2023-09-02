@@ -18,8 +18,8 @@
                 @endif
 
                 <Label class="toppad" for="login_username">Username:</Label>
-                <input name="username" id="login_username" type="text" value="{{ old('username') }}"
-                    placeholder="Enter your username">
+                <input class="login_input underline" name="username" id="login_username" type="text"
+                    value="{{ old('username') }}" placeholder="Enter your username" autocomplete="off">
                 @error('username')
                     <div class="errormsg">
                         {{ $message }}
@@ -27,8 +27,8 @@
                 @enderror
 
                 <Label class="toppad" for="login_pwd">Password:</Label>
-                <input name="password" id="login_pwd" type="password" value="{{ old('password') }}"
-                    placeholder="Enter your password">
+                <input class="login_input underline" name="password" id="login_pwd" type="password"
+                    value="{{ old('password') }}" placeholder="Enter your password">
                 @error('password')
                     <div class="errormsg">
                         {{ $message }}
@@ -36,13 +36,15 @@
                 @enderror
 
                 <div class="form-check toppad">
-                    <input class="form-check-input" type="checkbox" name="remember" id="remember" unchecked title="We will remember you next time you come!">
+                    <input class="form-check-input" type="checkbox" name="remember" id="remember" checked
+                        title="We will remember you next time you come!">
                     <label for="remember">Remember me</label>
                 </div>
 
                 <button id="login_btn" class="btn" type="submit">Log In</button>
 
-                <p class="text-center">No account yet? <a class="clickable_stuff registernow" href="{{ route('register') }}">Register Now</a></p>
+                <p class="text-center">No account yet? <a class="clickable_stuff registernow"
+                        href="{{ route('register') }}">Register Now</a></p>
 
             </div>
 

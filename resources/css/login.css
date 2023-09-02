@@ -2,7 +2,7 @@
 (basic landscape background animation)  */
 
 /* ------- Color variables used throughout ------- */
-:root { 
+:root {
     --primary-color: #3F2305;
     --secondary-color: #DFD7BF;
     --tertiary-color: #F2EAD3;
@@ -10,6 +10,7 @@
     --teal-color: #00888C;
     --most-font-color: #0a0601;
 }
+
 body {
 
     /* background-image: url(images/loginbackground.jpg); */
@@ -27,7 +28,7 @@ body {
     animation-direction: alternate;
 
     background-image: linear-gradient(#dfd7bf42, #dfd7bf42),
-                  url(images/loginbackground.jpg);
+        url(images/loginbackground.jpg);
 }
 
 @-webkit-keyframes slidein {
@@ -55,25 +56,32 @@ body {
 
 }
 
-.toppad{
-    padding-top: 1rem;
-}
-
-.title{
-    font-family: 'Cantata One', serif;
-}
-
-#login_container{
-    padding: 6rem 5rem;
-}
-#login_container h2{
-    text-align: center;
-}
-.card{
+.card {
     width: 30rem;
     margin: auto auto;
     padding: 1rem 7rem;
     backdrop-filter: blur(69px) !important;
+}
+
+
+#LogIn_Form_Content.card {
+    background-color: #dfd7bf77;
+}
+
+.title {
+    font-family: 'Cantata One', serif;
+}
+
+.toppad {
+    padding-top: 1rem;
+}
+
+#login_container {
+    padding: 6rem 5rem;
+}
+
+#login_container h2 {
+    text-align: center;
 }
 
 .loginfail {
@@ -83,40 +91,53 @@ body {
     font-size: medium;
 }
 
-.errormsg{
+.errormsg {
     color: red;
     font-size: small;
     opacity: 0.7;
 }
 
-#login_btn:hover{
+.login_input {
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    border-width: 0;
+}
+
+.login_input:focus {
+    border-color: none;
+    box-shadow: none;
+    border-width: 0;
+    background-color: transparent;
+    outline: none;
+}
+
+.form-check-input:checked {
+    background-color: var(--teal-color) !important;
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0px #fff, 0 0 0 0.2rem #00878c3a;
+}
+
+.form-check-input:checked:focus {
+    box-shadow: 0 0 0 0px #fff, 0 0 0 0.2rem #00878c3a;
+}
+
+#login_btn:hover {
     border-color: var(--teal-color);
     color: var(--teal-color);
 }
 
-#login_btn{
+#login_btn {
     border-color: var(--primary-color);
     border-width: 2px;
-    color: var(--most-font-color);
+    color: var(--primary-color);
     margin: 2rem 0rem;
     font-size: large;
 }
 
-#LogIn_Form_Content.card {
-    background-color: #dfd7bf77;
-}
-
-.registernow{
+.registernow {
     font-family: 'Dancing Script', cursive;
     font-size: x-large;
-}
-
-.form-check-input:checked{
-    background-color: var(--teal-color) !important;
-}
-.form-check-input:focus{
-    box-shadow: 0 0 0 0px #fff, 0 0 0 0.2rem #00878c3a;
-}
-.form-check-input:checked:focus{
-    box-shadow: 0 0 0 0px #fff, 0 0 0 0.2rem #00878c3a;
 }
