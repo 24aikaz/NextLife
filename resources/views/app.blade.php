@@ -21,8 +21,7 @@
         <nav id="NavBar" class="navbar navbar-expand-lg fixed-top">
             <div class="container-fluid">
 
-                <a class="NavBrand active navbar-brand NextLife underline clickable_stuff"
-                    href="/">NextLife</a>
+                <a class="NavBrand active navbar-brand NextLife underline clickable_stuff" href="/">NextLife</a>
 
                 <span class="Slogan navbar-text">
                     Continue the history
@@ -52,14 +51,16 @@
                                 <a class="nav-link underline clickable_stuff" href="{{ route('profile') }}">Profile</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link underline clickable_stuff" href="{{ route('bids') }}">Bids</a>
-                            </li>
+                            @if (auth()->user()->usertype != 'auctioneer')
+                                <li class="nav-item">
+                                    <a class="nav-link underline clickable_stuff" href="{{ route('bids') }}">Bids</a>
+                                </li>
+                            @endif
 
                             <li class="nav-item">
                                 <form action="{{ route('logout') }}" method="POST" class="">
                                     @csrf
-                                    <button class="nav-link underline clickable_stuff" type="submit">Log Out</button>
+                                    <button class="nav-link underline clickable_stuff" type="submit" title="Log out"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                                 </form>
                             </li>
                         @endauth

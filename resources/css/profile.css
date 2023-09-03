@@ -1,7 +1,45 @@
+/* ------- Color variables used throughout ------- */
+:root {
+    --primary-color: #3F2305;
+    --secondary-color: #DFD7BF;
+    --tertiary-color: #F2EAD3;
+    --quarternary-color: #F5F5F5;
+    --teal-color: #00888C;
+    --most-font-color: #0a0601;
+}
+
 #profile_content {
-    padding-top: 3rem;
+    padding-top: 2rem;
 }
 
 body {
+    padding: 2rem 3rem;
+}
+
+#usertype_span {
+    font-size: medium;
+    opacity: 0.7;
+}
+
+#profile_content label {
+    opacity: 0.7;
+}
+
+.card {
+    margin: 2rem;
+}
+
+.profiledetails_card {
+    width: 30rem;
+    padding: 2rem 3rem;
+}
+
+.profile_registered_card {
+    width: 30rem;
+    padding: 2rem 3rem;
+}
+
+.temp {
+    width: 30rem;
     padding: 2rem 3rem;
 }
