@@ -14,6 +14,12 @@ class ProductController extends Controller
         return view('merchant.product');
     }
 
+    public function search(Request $req)
+    {
+        $data= Product::where('pname', 'like', '%'.$req->input('query').'%')->get();
+        return view('search',['products'=>$data]);
+    }
+
     public function addproduct(Request $request)
     {
         $validatedData = $request->validate([
@@ -43,7 +49,7 @@ class ProductController extends Controller
             'bidcount' => 0,
             'category' => $request->input('category'),
             'startdate' => now(),
-            'enddate' => now()->addDays(2),
+            'enddate' => now()->addDays(1),
             'seller_id' => auth()->id(), // Associate the product with the logged-in user
         ]);
 

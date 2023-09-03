@@ -36,8 +36,8 @@
                 <div class="LeftmostItems CollapseItems collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2 SearchBar underline" type="search"
+                        <form action="/search" class="d-flex" role="search">
+                            <input class="form-control me-2 SearchBar underline"  name="query" type="search"
                                 placeholder="Search item to bid!">
                             <button class="btn" type="submit"><i
                                     class="fa-solid fa-magnifying-glass clickable_stuff"></i></button>

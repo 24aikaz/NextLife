@@ -56,3 +56,6 @@ Route::post('/select-winner', [AuctionsController::class, 'selectWinner'])->name
 //Route::get('/select-winner', [AuctionsController::class, 'selectWinner'])->name('select-winner')->middleware('auth');
 
 Route::post('/checkout', [AuctionsController::class, 'checkout'])->name('checkout');
+
+//search bar
+Route::get('search', [ProductController::class, 'search']);
