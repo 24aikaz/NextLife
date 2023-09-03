@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Bid;
 use App\Models\Product;
+use App\Models\Transaction;
+use Illuminate\Http\Request;
 
 class BidsController extends Controller
 {
@@ -40,4 +41,6 @@ class BidsController extends Controller
     
         return back()->with('error', 'Bid must be higher than the current price.');
     }
+
+    
 }    

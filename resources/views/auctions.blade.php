@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+
     <div id="auctions_content">
         <h2>Auctions</h2>
 
@@ -34,7 +35,10 @@
         
 
                 </div>
-        
+                <form method="POST" action="{{ route('select-winner') }}">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Select Winner</button>
+                </form>
         @vite(['resources/js/auctions.js'])
 
     </div>

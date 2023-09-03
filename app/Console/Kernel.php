@@ -5,6 +5,7 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
+
 class Kernel extends ConsoleKernel
 {
     /**
@@ -12,9 +13,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
-        //check for winner daily
-        $schedule->call('App\Http\Controllers\AuctionsController@selectWinner')->daily(); // Adjust the frequency as needed
+        // Schedule the 'app:select-winner' Artisan command
+       // $schedule->command('app:select-winner')->daily(); // Adjust the frequency as needed
     }
 
     /**
@@ -23,9 +23,7 @@ class Kernel extends ConsoleKernel
     protected function commands(): void
     {
         $this->load(__DIR__.'/Commands');
-
+        $this->load(__DIR__.'/Commands'); // Add this line to load your custom commands
         require base_path('routes/console.php');
     }
-
-  
 }

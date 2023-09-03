@@ -32,4 +32,9 @@ public function bids()
     return $this->hasMany(Bid::class, 'product_id');
 }
 
+public function seller()
+{
+    return $this->belongsTo(User::class, 'Seller_ID');
+}
+
 }
