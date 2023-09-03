@@ -57,16 +57,6 @@
             </p>
         
             <p>
-                <label for="mobile">Mobile Number</label>
-                <input type="text" name="mobile" id="mobile" placeholder="Mobile no." required>
-                @error('mobile')
-                    <div style="color: red">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </p>
-        
-            <p>
                 <label for="image">Select image to upload:</label><br>
                 <input type="file" name="image" accept="image/*" id="image" required>
                 @error('image')

@@ -72,3 +72,19 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
         navigateToFormStep(stepNumber);
     });
 });
+
+
+// For enabling confirm after agreeing to terms and conditions
+$(document).ready(function() {
+    // Listen for change event on the checkbox
+    $("#terms_conds").change(function() {
+        // Check if the checkbox is checked
+        if ($(this).is(":checked")) {
+            // If checked, enable the "Confirm" button
+            $("#register_btn").prop("disabled", false);
+        } else {
+            // If unchecked, disable the "Confirm" button
+            $("#register_btn").prop("disabled", true);
+        }
+    });
+});

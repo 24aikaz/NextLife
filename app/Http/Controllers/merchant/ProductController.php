@@ -21,7 +21,6 @@ class ProductController extends Controller
             'pdesc' => 'required',
             'startprice' => 'required|numeric',
             'category' => 'required',
-            'mobile' => 'required',
             'image' => 'required|image',
             'status' => 'nullable|in:active,inactive',
         ]);
@@ -48,6 +47,6 @@ class ProductController extends Controller
             'seller_id' => auth()->id(), // Associate the product with the logged-in user
         ]);
 
-        return redirect()->route('bids');
+        return redirect()->back();
     }
 }

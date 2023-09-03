@@ -14,7 +14,7 @@
 /* animation for body background gradient */
 body {
     padding: 2rem 3rem;
-    background: linear-gradient(270deg, #dfd7bf, #f3e9df, #b7cfcfde);
+    background: linear-gradient(270deg, #dfd7bf, #f3e9df, #a88e71);
     background-size: 400% 400%;
 
     -webkit-animation: BackgroundAnimation 30s ease infinite;
@@ -50,7 +50,8 @@ body {
     border-color: var(--primary-color) !important;
     border-width: 2px !important;
     color: var(--primary-color) !important;
-    margin: 2rem 0rem !important;
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
     font-size: large !important;
     padding-top: 2rem;
 }
@@ -65,7 +66,11 @@ body {
     border-width: 2px !important;
     margin: 2rem 0rem !important;
     font-size: large !important;
-    padding-top: 2rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* Registering types */
@@ -95,9 +100,60 @@ body {
     100% { transform: rotate(0deg); }
   }
 
+/* Input area */
+.step-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register_input{
+    background-color: #DFD7BF !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border-width: 0 !important;
+    width: 30rem !important;
+}
+
+.register_input:focus{
+    border-color: none;
+    box-shadow: none;
+    border-width: 0;
+    background-color: transparent;
+    outline: none;
+}
+
+.form-group{
+    margin-bottom: 1rem;
+}
+
 /* Others */
 .col {
     text-align: center;
+}
+
+.agreement {
+    font-size: larger;
+}
+
+.form-check-input{
+    background-color: #3f230570 !important;
+    border-color: #3f230570 !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--teal-color) !important;
+    border-color: #00878c3a !important;
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0px #fff, 0 0 0 0.2rem #3f23054f !important;
+    border-color: #3f230570 !important;
+}
+
+.form-check-input:checked:focus {
+    box-shadow: 0 0 0 0px #fff, 0 0 0 0.2rem #00878c3a !important;
+    border-color: #00878c3a !important;
 }
 
 /* ------- For the step-wise registering ------- */

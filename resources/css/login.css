@@ -112,16 +112,24 @@ body {
     outline: none;
 }
 
+.form-check-input{
+    background-color: #3f230570 !important;
+    border-color: #3f230570 !important;
+}
+
 .form-check-input:checked {
     background-color: var(--teal-color) !important;
+    border-color: #00878c3a !important;
 }
 
 .form-check-input:focus {
-    box-shadow: 0 0 0 0px #fff, 0 0 0 0.2rem #00878c3a;
+    box-shadow: 0 0 0 0px #fff, 0 0 0 0.2rem #3f23054f !important;
+    border-color: #3f230570 !important;
 }
 
 .form-check-input:checked:focus {
-    box-shadow: 0 0 0 0px #fff, 0 0 0 0.2rem #00878c3a;
+    box-shadow: 0 0 0 0px #fff, 0 0 0 0.2rem #00878c3a !important;
+    border-color: #00878c3a !important;
 }
 
 #login_btn:hover {
