@@ -1,14 +1,11 @@
 @extends('app')
 
 @section('content')
-<section>
-    <h1>Congratulations, {{ $bidder_username }}!</h1>
-    <p>You have won the bid for the product with ID {{ $product_id }}.</p>
-    <p>Price: ${{ $price }}</p>
+<section>  
 
     <h2>Select Payment Method:</h2>
     <form method="post" action="{{ route('checkout') }}">
-        @csrf <!-- Add CSRF token for security -->
+        @csrf 
         <label for="paymentMethodVisa">Visa Card</label>
         <input type="radio" id="paymentMethodVisa" name="payment_method" value="Visa Card" required>
         <br>

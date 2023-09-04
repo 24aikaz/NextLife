@@ -49,7 +49,7 @@ Route::get('merchant/product', [ProductController::class, 'index']) ->name('prod
 Route::post('merchant/product', [ProductController::class, 'addproduct']);
 
 Route::get('viewproduct', [ViewproductController::class, 'index']) ->name('viewproduct');
-Route::get('/paymentmethod', [AuctionsController::class, 'paymentMethodView'])->name('payment-method');
+Route::get('/paymentmethod', [AuctionsController::class, 'paymentMethodView'])->name('paymentmethod');
 
 
 // Define a custom route that triggers selectWinner
@@ -59,7 +59,7 @@ Route::post('/select-winner', [AuctionsController::class, 'selectWinner'])->name
 Route::post('/checkout', [AuctionsController::class, 'checkout'])->name('checkout');
 
 //search bar
-Route::get('search', [ProductController::class, 'search']);
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 Route::get('merchant/house', [HouseController::class, 'index']) ->name('auctionhouse');
 // Route::post('merchant/house', [HouseController::class, '']);

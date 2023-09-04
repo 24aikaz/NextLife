@@ -7,6 +7,16 @@
 
     <div class="container">
 
+        <!-- Add a search form -->
+        <form method="GET" action="{{ route('search') }}">
+            @csrf
+            <div class="mb-3">
+                <label for="query" class="form-label">Search</label>
+                <input type="text" class="form-control" id="query" name="query" placeholder="Search for products">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
         @if ($products->count())
         <div class="row row-cols-2">
             @foreach ($products as $product)
@@ -28,5 +38,6 @@
         @endif
         @vite(['resources/js/auctions.js'])
     </div>
+</div>
 
-    @endsection 
+@endsection

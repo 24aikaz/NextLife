@@ -15,10 +15,18 @@ class ProductController extends Controller
         return view('merchant.product');
     }
 
-    public function search(Request $req)
+    public function search(Request $request)
     {
-        $data= Product::where('pname', 'like', '%'.$req->input('query').'%')->get();
-        return view('search',['products'=>$data]);
+        $query = $request->input('query');
+
+        // Perform a search query on the products
+        $products = Product::where('pname', 'like', '%' . $query . '%')
+            ->orWhere('pdesc', 'like', '%' . $query . '%')
+            ->get();
+
+        return view('search', [
+            'products' => $products
+        ]);
     }
 
     public function addproduct(Request $request)
