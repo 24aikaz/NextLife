@@ -43,8 +43,8 @@ a {
 .SearchBar {
     background-color: transparent;
     box-shadow: none;
-    border-radius: 2px;
-    border-width: 10px !important;
+    border-radius: 0px;
+    border-width: 0px !important;
 }
 .SearchBar:focus {
     border-color: none;

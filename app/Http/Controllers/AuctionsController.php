@@ -7,6 +7,7 @@ use App\Models\Auction;
 use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AuctionsController extends Controller
 {
@@ -67,7 +68,7 @@ class AuctionsController extends Controller
             return 'paymentmethod';
         } catch (\Exception $e) {
             // Log the exception
-            \Log::error($e);
+            Log::error($e);
             
             // Handle the exception or return an error response
             return 'An error occurred. Please try again later.';

@@ -14,6 +14,7 @@
 
 body {
     padding: 2rem 3rem;
+    background-color: var(--tertiary-color) !important;
 }
 
 #usertype_span {
@@ -27,14 +28,11 @@ body {
 
 .card {
     margin: 2rem;
+    background-color: var(--quarternary-color) !important;
+    border: none !important;
 }
 
 .profiledetails_card {
-    width: 30rem;
-    padding: 2rem 3rem;
-}
-
-.profile_registered_card {
     width: 30rem;
     padding: 2rem 3rem;
 }

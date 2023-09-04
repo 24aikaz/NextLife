@@ -1,5 +1,10 @@
 @extends('app')
 
+@php
+    $carbonDate = \Carbon\Carbon::parse(auth()->user()->created_at);
+    $formattedDate = $carbonDate->format('F Y');
+@endphp
+
 @section('content')
     <div id="profile_content">
 
@@ -18,18 +23,9 @@
                 <br>
                 {{ auth()->user()->country }} {{ auth()->user()->postal_code }}
             </p>
+            <label>Member Since</label>
+            <p>{{ $formattedDate }}</p>
         </div>
-
-        <div class="card profile_registered_card mx-auto">
-            <p>Registered on: </p>
-        </div>
-
-        @if (auth()->user()->usertype == 'merchant')
-                <form class="d-flex justify-content-center" action="{{ route('product') }}" method="GET">
-                    <Button class="btn btn-outline-dark" title="Add product for sale!"><i
-                            class="fa-solid fa-plus"></i></Button>
-                </form>
-        @endif
 
         @if (auth()->user()->usertype == 'bidder')
             <div class="card temp mx-auto">

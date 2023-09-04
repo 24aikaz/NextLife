@@ -36,8 +36,8 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
                         <form action="/search" class="d-flex" role="search">
-                            <input class="form-control me-2 SearchBar underline"  name="query" type="search"
-                                placeholder="Search item to bid!">
+                            <input class="form-control me-2 SearchBar underline" name="query" type="search"
+                                placeholder="Search item to bid!" autocomplete="off">
                             <button class="btn" type="submit"><i
                                     class="fa-solid fa-magnifying-glass clickable_stuff"></i></button>
                         </form>
@@ -47,22 +47,32 @@
                         </li>
 
                         @auth
-                            <li class="nav-item dropdown">
-                                <a class="nav-link underline clickable_stuff" href="{{ route('profile') }}">Profile</a>
-                            </li>
 
-                            @if (auth()->user()->usertype != 'auctioneer')
+                            @if (auth()->user()->usertype == 'bidder')
                                 <li class="nav-item">
                                     <a class="nav-link underline clickable_stuff" href="{{ route('bids') }}">Bids</a>
                                 </li>
                             @endif
 
+                            @if (auth()->user()->usertype == 'merchant')
+                                <li class="nav-item">
+                                    <a class="nav-link underline clickable_stuff"
+                                        href="{{ route('auctionhouse') }}">House</a>
+                                </li>
+                            @endif
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link underline clickable_stuff" href="{{ route('profile') }}">Profile</a>
+                            </li>
+
                             <li class="nav-item">
                                 <form action="{{ route('logout') }}" method="POST" class="">
                                     @csrf
-                                    <button class="nav-link underline clickable_stuff" type="submit" title="Log out"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                                    <button class="nav-link clickable_stuff" type="submit" title="Log out"><i
+                                            class="fa-solid fa-arrow-right-from-bracket"></i></button>
                                 </form>
                             </li>
+
                         @endauth
 
                         @guest

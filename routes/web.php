@@ -5,6 +5,7 @@ use App\Http\Controllers\AuctionsController;
 use App\Http\Controllers\BidsController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\merchant\HouseController;
 use App\Http\Controllers\merchant\ItemController;
 use App\Http\Controllers\merchant\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -59,3 +60,6 @@ Route::post('/checkout', [AuctionsController::class, 'checkout'])->name('checkou
 
 //search bar
 Route::get('search', [ProductController::class, 'search']);
+
+Route::get('merchant/house', [HouseController::class, 'index']) ->name('auctionhouse');
+// Route::post('merchant/house', [HouseController::class, '']);

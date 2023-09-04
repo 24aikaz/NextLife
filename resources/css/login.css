@@ -61,6 +61,7 @@ body {
     margin: auto auto;
     padding: 1rem 7rem;
     backdrop-filter: blur(69px) !important;
+    border: none;
 }
 
 
