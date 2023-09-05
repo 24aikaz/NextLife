@@ -29,7 +29,7 @@ class Product extends Model
 
 public function bids()
 {
-    return $this->hasMany(Bid::class, 'product_id');
+    return $this->hasMany(Bid::class, 'Product_id', 'product_id' );
 }
 
 public function seller()

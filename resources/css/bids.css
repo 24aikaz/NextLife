@@ -5,3 +5,7 @@
 body {
     padding: 2rem 3rem;
 }
+
+.card-link{
+    text-decoration: none !important;
+}

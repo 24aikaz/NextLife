@@ -13,16 +13,37 @@
 
 body {
     padding: 2rem 3rem;
+    background-color: var(--tertiary-color) !important;
 }
 
 #auctions_content{
     padding-top: 3rem;
 }
 
+.product_title {
+    padding: 1rem 0rem;
+    font-family: 'Cantata One', serif;
+}
+
+.product-image {
+    object-fit: none; 
+    object-position: center; 
+    width: 26rem;
+    height: 26rem;
+  }
+
 .col{
     padding-bottom: 2rem !important;
 }
 
 .card-link{
-    text-decoration: none;
+    text-decoration: none !important;
+}
+
+.card {
+    padding: 2rem;
+    border: none !important;
+    width: 30rem;
+    height: 40rem !important;
+    background-color: var(--quarternary-color) !important;
 }

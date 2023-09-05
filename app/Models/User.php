@@ -44,4 +44,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Product::class, 'seller_id', 'id');
     }
+
+    // Define a relationship to retrieve the user's bids
+    public function bids()
+    {
+        return $this->hasMany(Bid::class, 'bidder_id', 'id');
+    }
 }
