@@ -1,7 +1,16 @@
+@php
+    $enddate = $product->enddate;
+    
+    $Date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $enddate)->format('d M Y');
+    $Time = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $enddate)->format('H:i');
+    
+@endphp
+
 @extends('app')
 
 @section('content')
     <div id="viewproduct_content">
+
 
         <div class="row row-cols-2">
 
@@ -10,24 +19,75 @@
             </div>
 
             <div class="col">
-                <h4>{{ $product->pname }}</h4>
-                <p>Description: {{ $product->pdesc }}</p>
-                <p>Starting bid: ${{ $product->startprice }}</p>
-                <p>Current bid: ${{ $product->currentprice }}</p>
-                <p>Bids placed: {{ $product->bidcount }}</p>
-                <p>Category: {{ $product->category }}</p>
-                <p>End date: {{ $product->enddate }}</p>
 
-                <form action="{{ route('place-bid', ['id' => $product->Product_ID]) }}" method="POST">
-                    @csrf
-                    <input type="number" name="bid_price" class="form-control" placeholder="Enter bid price">
-                    <button type="submit" class="btn btn-outline-dark">Place Bid</button>
-                </form>
+                <div class="card">
+                    <h4>{{ $product->pname }}</h4>
+                    <p><span class="text-muted">By</span> {{ $product->seller->username }}</p>
+
+                    <label class="text-muted">Category</label>
+                    <p>{{ $product->category }}</p>
+
+                    <label class="text-muted">Description</label>
+                    <p>{{ $product->pdesc }}</p>
+
+                    <label class="text-muted">Current bid</label>
+                    <p>${{ $product->currentprice }}</p>
+
+                    <p><span class="text-muted">Ends on</span> {{ $Date }} <span class="text-muted">at</span> {{ $Time }}</p>
+
+                    <div class="button-container mx-auto">
+                        <button class="btn btn-outline-dark" title="Current bid count">{{ $product->bidcount }} <i
+                                class="fa-solid fa-gavel"></i></button>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-outline-dark" data-toggle="modal"
+                            data-target="#place_bid_modal">
+                            Bid Now!
+                        </button>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="place_bid_modal" tabindex="-1" role="dialog">
+
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="place_bid_title">Place bid on product</h5>
+                                    <button type="button" class="btn close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="d-flex justify-content-center">
+                                        <form action="{{ route('place-bid', ['id' => $product->Product_ID]) }}"
+                                            method="POST">
+                                            @csrf
+                                            <h4>{{ $product->pname }}</h4>
+                                            <p>Originally set at ${{ $product->startprice }} while the current bid is at
+                                                ${{ $product->currentprice }}.</p>
+                                            <label for="bid_now">Bid: </label>
+                                            <input type="number" name="bid_price" class="bid_input" placeholder="$"
+                                                id="bid_now">
+                                            <button type="submit" class="btn btn-outline-dark">Bid</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
 
     </div>
+
+
 
     @vite(['resources/js/viewproduct.js'])
 @endsection
