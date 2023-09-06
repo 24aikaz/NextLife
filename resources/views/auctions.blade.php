@@ -3,7 +3,10 @@
 @section('content')
 
     <div id="auctions_content">
-        <h2>Auctions</h2>
+
+        <div class="auction_title_card card mx-auto">
+            <h2 class="title text-center">Auctions</h2>
+        </div>
 
         <div class="container">
 

@@ -8,6 +8,10 @@
 @section('content')
     <div id="profile_content">
 
+        <div class="profile_title_card card mx-auto">
+            <h2 class="title text-center">Profile</h2>
+        </div>
+
         <div class="card profiledetails_card mx-auto">
             <h3>{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}
                 <span id="usertype_span">({{ auth()->user()->usertype }})</span>

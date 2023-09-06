@@ -2,7 +2,11 @@
 
 @section('content')
     <div id="bids_content">
-        <h3>Bids placed:</h3>
+        
+        <div class="bids_title_card card mx-auto">
+            <h2 class="title text-center">Bids Placed</h2>
+        </div>
+
         @if ($bids->count())
             <div class="row row-cols-1">
                 @foreach ($bids as $bid)

@@ -1,11 +1,49 @@
-#bids_content {
-    padding-top: 3rem;
+/* ------- Color variables used throughout ------- */
+:root { 
+    --primary-color: #3F2305;
+    --secondary-color: #DFD7BF;
+    --tertiary-color: #F2EAD3;
+    --quarternary-color: #F5F5F5;
+    --teal-color: #00888C;
+    --most-font-color: #0a0601;
+}
+.errormsg{
+    color: red;
 }
 
 body {
     padding: 2rem 3rem;
+    background-color: var(--tertiary-color) !important;
+}
+
+#bids_content {
+    padding-top: 3rem;
+}
+
+.title {
+    font-family: 'Cantata One', serif;
+    margin-bottom: 0;
+    font-size: larger;
+}
+
+.bids_title_card {
+    width: 50rem;
+    padding: 1rem;
+    margin: 1.5rem;
+    border: none !important;
+    background-color: var(--quarternary-color) !important;
+}
+
+.col{
+    padding-bottom: 2rem !important;
 }
 
 .card-link{
     text-decoration: none !important;
+}
+
+.row .card {
+    padding: 2rem;
+    border: none !important;
+    background-color: var(--quarternary-color) !important;
 }

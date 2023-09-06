@@ -20,6 +20,20 @@ body {
     padding-top: 3rem;
 }
 
+.title {
+    font-family: 'Cantata One', serif;
+    margin-bottom: 0;
+    font-size: larger;
+}
+
+.auction_title_card {
+    width: 50rem;
+    padding: 1rem;
+    margin: 1.5rem;
+    border: none !important;
+    background-color: var(--quarternary-color) !important;
+}
+
 .product_title {
     padding: 1rem 0rem;
     font-family: 'Cantata One', serif;
@@ -40,7 +54,7 @@ body {
     text-decoration: none !important;
 }
 
-.card {
+.row .card {
     padding: 2rem;
     border: none !important;
     width: 30rem;

@@ -1,3 +1,5 @@
+import '../css/house.css';
+
 //Not working yet
 
 function updateProductStatus() {

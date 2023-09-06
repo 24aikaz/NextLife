@@ -2,9 +2,11 @@
 
 @section('content')
 
-    <div style="padding: 4rem 7rem">
+    <div id="house_content">
 
-        <p>This will show the products that only the current merchant has put on sale.</p>
+        <div class="house_title_card card mx-auto">
+            <h2 class="title text-center">Your Auction House</h2>
+        </div>
 
         @if (auth()->user()->usertype == 'merchant')
 
@@ -35,6 +37,10 @@
             @else
                 <p>You have no items on sale.</p>
             @endif
+        @else
+            <div class="card mx-auto errormsg">
+                <h2 class="title text-center">Access Denied!</h2>
+            </div>
         @endif
     </div>
 
@@ -67,5 +73,5 @@
         setInterval(updateProductStatus, 1000);
     </script>
 
-    {{-- @vite(['resources/js/house.js']) --}}
+    @vite(['resources/js/house.js'])
 @endsection

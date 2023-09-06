@@ -1,5 +1,5 @@
 /* ------- Color variables used throughout ------- */
-:root {
+:root { 
     --primary-color: #3F2305;
     --secondary-color: #DFD7BF;
     --tertiary-color: #F2EAD3;
@@ -8,12 +8,16 @@
     --most-font-color: #0a0601;
 }
 
+.errormsg {
+    color: red;
+}
+
 body {
     padding: 2rem 3rem;
     background-color: var(--tertiary-color) !important;
 }
 
-#profile_content {
+#house_content {
     padding-top: 2rem;
 }
 
@@ -23,33 +27,17 @@ body {
     font-size: larger;
 }
 
-.profile_title_card {
-    width: 30rem;
-    padding: 1.5rem;
-    margin: 1rem;
-}
-
-#usertype_span {
-    font-size: medium;
-    opacity: 0.7;
-}
-
-#profile_content label {
-    opacity: 0.7;
+.house_title_card {
+    width: 50rem;
 }
 
 .card {
-    margin: 2rem;
-    background-color: var(--quarternary-color) !important;
+    padding: 1.5rem;
+    margin: 1rem;
     border: none !important;
+    background-color: var(--quarternary-color) !important;
 }
 
-.profiledetails_card {
-    width: 30rem;
-    padding: 2rem 3rem;
-}
-
-.temp {
-    width: 30rem;
-    padding: 2rem 3rem;
+.card-link{
+    text-decoration: none !important;
 }
