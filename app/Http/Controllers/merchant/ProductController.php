@@ -66,4 +66,11 @@ class ProductController extends Controller
 
         return redirect()->back();
     }
+
+    public function getProducts(Request $request)
+    {
+        $products = Product::all();
+
+        return response()->json($products);
+    }
 }
