@@ -1,14 +1,16 @@
 @extends('app')
 
 @section('content')
-    <div id="additem_content" style="padding-top: 5rem">
+    <div id="additem_content">
+
+        <div class="card mx-auto">
+            <h2 class="title text-center">Sell Product</h2>
+        </div>
 
         <div class="card mx-auto">
 
             <form action="{{ route('product') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-
-                <h2 class="title text-center">Sell item</h2>
 
                 <div class="form-group">
                     <label for="product_name">Product Name</label>
@@ -21,7 +23,8 @@
                 </div>
 
                 <div class="form-group"><label for="product_description">Product Description</label>
-                    <input class="form-control additem_input underline" type="textarea" name="pdesc" id="product_description">
+                    <textarea class="form-control additem_input underline" name="pdesc" id="product_description" rows="3"></textarea>
+                    {{-- <input class="form-control additem_input underline" type="textarea" name="pdesc" id="product_description"> --}}
                     @error('pdesc')
                         <div class="errormsg">
                             {{ $message }}
@@ -33,6 +36,26 @@
                     <label for="starting_price">Starting Price</label>
                     <input class="form-control additem_input underline" type="number" name="startprice" id="starting_price" placeholder="$">
                     @error('startprice')
+                        <div class="errormsg">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="start_date">Auction starts on:</label>
+                    <input class="form-control additem_input underline" type="datetime-local" name="startdate" id="start_date">
+                    @error('startdate')
+                        <div class="errormsg">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="end_date">Auction ends on:</label>
+                    <input class="form-control additem_input underline" type="datetime-local" name="enddate" id="end_date">
+                    @error('enddate')
                         <div class="errormsg">
                             {{ $message }}
                         </div>
@@ -59,9 +82,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="image">Select image to upload:</label><br>
-                    <input class="form-control additem_input" type="file" name="image" accept="image/*" id="image"
-                        required>
+                    <label for="image">Select image to upload:</label>
+                        <input class="form-control additem_input" type="file" name="image" accept="image/*" id="image">
                     @error('image')
                         <div class="errormsg">
                             {{ $message }}
@@ -69,7 +91,10 @@
                     @enderror
                 </div>
 
-                <button class="sell_btn btn btn-outline-dark" type="submit">Place for bidding</button>
+                <div class="d-flex justify-content-end">
+                    <button class="sell_btn btn btn-outline-dark d-flex" type="submit">Place for bidding</button>
+                </div>
+                
             </form>
 
         </div>

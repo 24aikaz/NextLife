@@ -31,6 +31,8 @@ class ProductController extends Controller
 
     public function addproduct(Request $request)
     {
+        // dd($request);
+
         $validatedData = $request->validate([
             'pname' => 'required',
             'pdesc' => 'required',
@@ -38,6 +40,8 @@ class ProductController extends Controller
             'category' => 'required',
             'image' => 'required|image',
             'status' => 'nullable|in:active,inactive',
+            'startdate' => 'required',
+            'enddate' => 'required',
         ]);
 
         // Handle image upload
@@ -52,13 +56,11 @@ class ProductController extends Controller
             'image' => $imageData,
             'startprice' => $validatedData['startprice'],
             'currentprice' => $validatedData['startprice'],
-            // Assuming current price is the same as starting price initially
-            'status' => 'active',
-            // Set it to "active" by default
+            // 'status' => 'Inactive', // Set it to "Inactive" by default
             'bidcount' => 0,
             'category' => $request->input('category'),
-            'startdate' => now(),
-            'enddate' => now()->addDays(1),
+            'startdate' => $request->input('startdate'),
+            'enddate' => $request->input('enddate'),
             'seller_id' => auth()->id(), // Associate the product with the logged-in user
         ]);
 

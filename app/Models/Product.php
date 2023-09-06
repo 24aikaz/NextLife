@@ -11,8 +11,16 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'pname', 'pdesc', 'image', 'startprice', 'currentprice', 'status', 'bidcount',
-        'category', 'startdate', 'enddate', 'seller_id',
+        'pname',
+        'pdesc',
+        'image',
+        'startprice',
+        'currentprice',
+        'bidcount',
+        'category',
+        'startdate',
+        'enddate',
+        'seller_id',
     ];
     protected $dates = ['startdate', 'enddate'];
 
@@ -23,18 +31,19 @@ class Product extends Model
         'status' => 'string', // Cast the status field as string (enum)
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class, 'seller_id', 'id');
     }
 
-public function bids()
-{
-    return $this->hasMany(Bid::class, 'Product_id', 'product_id' );
-}
+    public function bids()
+    {
+        return $this->hasMany(Bid::class, 'Product_id', 'product_id');
+    }
 
-public function seller()
-{
-    return $this->belongsTo(User::class, 'Seller_ID');
-}
+    public function seller()
+    {
+        return $this->belongsTo(User::class, 'Seller_ID');
+    }
 
 }

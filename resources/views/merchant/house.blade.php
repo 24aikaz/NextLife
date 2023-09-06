@@ -23,6 +23,10 @@
                                         class="product-image">
                                     <h3 class="product_title">{{ $product->pname }}</h3>
                                     <h5>Current bid: $ {{ $product->currentprice }}</h5>
+                                    <div class="form-group">
+                                        <label>Status:</label>
+                                        <span class="product_status"></span>
+                                    </div>
                                     <p>Countdown: {{ now()->diff($product->enddate)->format('%dd') }}</p>
                                 </div>
                             </a>
@@ -35,4 +39,5 @@
         @endif
     </div>
 
+    @vite(['resources/js/house.js'])
 @endsection

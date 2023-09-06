@@ -13,8 +13,13 @@ body {
     background-color: var(--tertiary-color) !important;
 }
 
+#additem_content {
+    padding-top: 2rem;
+}
+
 .title {
     font-family: 'Cantata One', serif;
+    margin-bottom: 0;
 }
 
 .errormsg {
@@ -22,8 +27,9 @@ body {
 }
 
 .card {
-    width: 40rem;
+    width: 50rem;
     padding: 2rem;
+    margin: 1rem;
     border: none !important;
     background-color: var(--quarternary-color) !important;
 }
