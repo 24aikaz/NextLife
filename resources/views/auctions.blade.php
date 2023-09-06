@@ -17,7 +17,14 @@
                                         class="product-image">
                                     <h3 class="product_title">{{ $product->pname }}</h3>
                                     <h5>Current Price: $ {{ $product->currentprice }}</h5>
-                                    <p>Countdown: {{ now()->diff($product->enddate)->format('%dd') }}</p>
+                                    <p>Countdown: 
+                                        @if (now() > $product->enddate)
+                                            0 days
+                                        @else
+                                            {{ now()->diff($product->enddate)->format('%dd') }}
+                                        @endif
+                                    </p>
+                                    
                                 </div>
                             </a>
                         </div>
