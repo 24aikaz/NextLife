@@ -13,8 +13,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // Schedule the 'app:select-winner' Artisan command
-       // $schedule->command('app:select-winner')->daily(); // Adjust the frequency as needed
+         // Schedule the 'app:select-winner' Artisan command to run hourly
+         $schedule->command('process-winners')->everyMinute();
     }
 
     /**
@@ -24,5 +24,7 @@ class Kernel extends ConsoleKernel
     {
         $this->load(__DIR__.'/Commands');
         require base_path('routes/console.php');
+    
     }
+    
 }

@@ -39,10 +39,6 @@
 
 
         </div>
-        <form method="POST" action="{{ route('select-winner') }}">
-            @csrf
-            <button type="submit" class="btn btn-primary">Select Winner</button>
-        </form>
 
         @vite(['resources/js/auctions.js'])
 

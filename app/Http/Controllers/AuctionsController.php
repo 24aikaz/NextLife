@@ -24,66 +24,6 @@ class AuctionsController extends Controller
 
     }
 
-public function selectWinner()
-{
-    //dd('selectWinner is called');
-    $products = Product::where('status', 'active')
-        ->where('enddate', '<=', now())
-        ->whereNull('winner')
-        ->get();
-
-    if ($products->isEmpty()) {
-        // If there are no products to be won, return to the auctions page
-        return redirect()->route('profile')->with('info', 'No products available for selection.');
-    }
-
-    // Get the currently logged-in user's username
-    $bidder_username = Auth::user()->username;
-
-    foreach ($products as $product) {
-        // Implement the logic to select a winner for each product
-        dd($products); // To check the products fetched
-        $this->selectWinnerForProduct($product, $bidder_username);
-    }
-}
-
-public function selectWinnerForProduct(Product $product, $bidder_username)
-{      //dd('selectWinnerfoproduct is called');
-    try {
-        $winnerBid = $product->bids->sortByDesc('bid_price')->first();
-
-        if ($winnerBid) {
-            // Update product details
-            $product->winner = $winnerBid->bidder_id;
-            $product->winning_bid = $winnerBid->bid_price;
-            $product->bidcount = $product->bids->count();
-            $product->save();
-
-            // Insert data into the auctions table
-            Auction::create([
-                'sellername' => $product->user->username,
-                'Winner_ID' => $winnerBid->bidder_id,
-                'Product_ID' => $product->Product_ID,
-                'Win_Price' => $winnerBid->bid_price,
-                'Start_Date' => $product->startdate,
-                'End_Date' => $product->enddate,
-            ]);
- 
-            // Redirect to the payment method selection view
-            return view('paymentmethod');
-        }
-
-        return redirect()->route('auctions');
-
-    } catch (\Exception $e) {
-        // Log the exception
-        Log::error($e);
-
-        // Handle the exception or return an error response
-        return 'An error occurred. Please try again later.';
-    }
-}
-
     public function checkout(Request $request)
     {
         // Get the logged-in user

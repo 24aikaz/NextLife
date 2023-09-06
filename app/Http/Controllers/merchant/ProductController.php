@@ -56,7 +56,7 @@ class ProductController extends Controller
             'image' => $imageData,
             'startprice' => $validatedData['startprice'],
             'currentprice' => $validatedData['startprice'],
-            // 'status' => 'Inactive', // Set it to "Inactive" by default
+             'status' => 'Active', // Set it to "active" by default
             'bidcount' => 0,
             'category' => $request->input('category'),
             'startdate' => $request->input('startdate'),

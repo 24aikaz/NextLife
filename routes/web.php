@@ -55,11 +55,6 @@ Route::get('viewproduct/{Product_ID}', [ViewproductController::class, 'display']
 
 Route::get('/paymentmethod', [AuctionsController::class, 'paymentMethodView'])->name('paymentmethod');
 
-
-// Define a custom route that triggers selectWinner
-Route::post('/select-winner', [AuctionsController::class, 'selectWinner'])->name('select-winner');
-//Route::get('/select-winner', [AuctionsController::class, 'selectWinner'])->name('select-winner')->middleware('auth');
-
 Route::post('/checkout', [AuctionsController::class, 'checkout'])->name('checkout');
 
 //search bar
