@@ -34,7 +34,7 @@ public function selectWinner()
 
     if ($products->isEmpty()) {
         // If there are no products to be won, return to the auctions page
-        return redirect()->route('auctions')->with('info', 'No products available for selection.');
+        return redirect()->route('profile')->with('info', 'No products available for selection.');
     }
 
     // Get the currently logged-in user's username
@@ -42,6 +42,7 @@ public function selectWinner()
 
     foreach ($products as $product) {
         // Implement the logic to select a winner for each product
+        dd($products); // To check the products fetched
         $this->selectWinnerForProduct($product, $bidder_username);
     }
 }
