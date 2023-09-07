@@ -26,8 +26,16 @@
                                     <h3 class="product_title">{{ $product->pname }}</h3>
                                     <h5>Current bid: $ {{ $product->currentprice }}</h5>
                                     <p>Status: <span id="product_status_{{ $product->Product_ID }}"></span></p>
-                                    <p>Countdown:
-                                        {{ now()->diff($product->enddate)->format('%d days, %h hours, and %i minutes') }}
+                                    <p>
+                                        @if (now(4) > $product->enddate)
+                                            Ended {{ now(4)->diff($product->startdate)->format('%d d, %h h ago') }}
+                                        @else
+                                            @if (now(4) < $product->startdate)
+                                                Starting in {{ now(4)->diff($product->startdate)->format('%d d, %h h, and %i min') }}
+                                            @else
+                                            Countdown: {{ now(4)->diff($product->enddate)->format('%d d, %h h, and %i min') }}
+                                            @endif
+                                        @endif
                                     </p>
                                 </div>
                             </a>

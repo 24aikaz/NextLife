@@ -14,7 +14,7 @@
 
                 <div class="form-group">
                     <label for="product_name">Product Name</label>
-                    <input class="form-control additem_input underline" type="text" name="pname" id="product_name">
+                    <input class="form-control additem_input underline" type="text" name="pname" id="product_name" autocomplete="off">
                     @error('pname')
                         <div class="errormsg">
                             {{ $message }}

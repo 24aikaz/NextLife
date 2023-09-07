@@ -47,7 +47,7 @@ Route::post('/place-bid/{id}', [BidsController::class, 'store'])->name('place-bi
 
 Route::get('merchant/product', [ProductController::class, 'index']) ->name('product');
 Route::post('merchant/product', [ProductController::class, 'addproduct']);
-Route::get('/get-products', 'ProductController@getProducts'); //Testing
+Route::get('/get-products', [ProductController::class, 'getProducts']); //Testing
 
 // Route::get('viewproduct', [ViewproductController::class, 'index']) ->name('viewproduct');
 Route::get('viewproduct/{Product_ID}', [ViewproductController::class, 'display']) ->name('viewproduct');
