@@ -14,7 +14,7 @@ class ViewproductController extends Controller
 
     public function display($Product_ID)
     {
-        // dd($Product_ID);
+        // dd($Product_ID); 
         // Fetch the item data from the database based on the $id
         $product = Product::find($Product_ID);
 

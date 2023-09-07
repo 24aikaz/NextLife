@@ -7,57 +7,60 @@ use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class BidsController extends Controller
 {
     public function index()
-    { {
-            // $bids = Bid::get();
-            // // dd($bids);
-
-            // return view('bids', [
-            //     'bids' => $bids // Passing the bids collection along for the view
-            // ]);
-
-            // Get the currently authenticated user
-            $user = Auth::user();
-
-            // Retrieve the bids associated with the user
-            $userBids = $user->bids; // Assuming you have defined a relationship in your User model
-
-            return view('bids', ['bids' => $userBids]);
-
-        }
+    {
+        // This function returns the bids view to display the the current 
+        // bids placed by the currently authenticated user 
+        $user = Auth::user();
+        $userBids = $user->bids;
+        return view('bids', ['bids' => $userBids]);
     }
 
-    public function placeBid(Request $request, $id)
+    public function store(Request $request, $id)
     {
-        $validatedData = $request->validate([
+
+        // return dd($request);
+
+        $validator = Validator::make($request->all(), [
             'bid_price' => 'required|numeric|min:0',
         ]);
 
-        $product = Product::findOrFail($id);
-        $newBidPrice = $validatedData['bid_price'];
+        if($validator->fails())
+        {
+            return response()->json([
+                'status'=>400,
+                'errors'=>$validator->messages()
+            ]);
+        }
+        else
+        {
+            $product = Product::findOrFail($id);
+            
+            $newBidPrice = $request->input('bid_price');
 
-        if ($newBidPrice > $product->currentprice) {
-            // Update the current price
+            // Update the current price and bid count
             $product->currentprice = $newBidPrice;
             $product->bidcount += 1;
             $product->save();
 
             // Create a new bid entry using the Bid model
             $bid = new Bid();
-            $bid->product_id = $product->Product_ID; // Correct this based on your database schema
+            $bid->product_id = $product->Product_ID;
             $bid->bidder_id = auth()->user()->id;
             $bid->bid_price = $newBidPrice;
             $bid->bid_time = now();
             $bid->save();
 
-            return back()->with('success', 'Bid placed successfully!');
+            return response()->json([
+                'status'=>200,
+                'message'=>'Bid Added Successfully.'
+            ]);
         }
 
-        return back()->with('error', 'Bid must be higher than the current price.');
     }
-
 
 }

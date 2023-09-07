@@ -21,7 +21,8 @@
             <div class="col">
 
                 <div class="card">
-                    <h4>{{ $product->pname }}</h4>
+                    <h4>{{ $product->pname }} <span class="text-muted">(ID: <span
+                                id="productID">{{ $product->Product_ID }}</span>)</span></h4>
                     <p><span class="text-muted">By</span> {{ $product->seller->username }}</p>
 
                     <label class="text-muted">Category</label>
@@ -31,12 +32,13 @@
                     <p>{{ $product->pdesc }}</p>
 
                     <label class="text-muted">Current bid</label>
-                    <p>${{ $product->currentprice }}</p>
+                    <p id="current_bid">${{ $product->currentprice }}</p>
 
-                    <p><span class="text-muted">Ends on</span> {{ $Date }} <span class="text-muted">at</span> {{ $Time }}</p>
+                    <p><span class="text-muted">Ends on</span> {{ $Date }} <span class="text-muted">at</span>
+                        {{ $Time }}</p>
 
                     <div class="button-container mx-auto">
-                        <button class="btn btn-outline-dark" title="Current bid count">{{ $product->bidcount }} <i
+                        <button class="btn btn-outline-dark" title="Current bid count" id="bid_count_btn"><span id="count_btn">{{ $product->bidcount }}</span> <i
                                 class="fa-solid fa-gavel"></i></button>
 
                         <!-- Button trigger modal -->
@@ -62,7 +64,7 @@
                                 <div class="modal-body">
                                     <div class="d-flex justify-content-center">
                                         <form action="{{ route('place-bid', ['id' => $product->Product_ID]) }}"
-                                            method="POST">
+                                            method="POST" id="add_bid">
                                             @csrf
                                             <h4>{{ $product->pname }}</h4>
                                             <p>Originally set at ${{ $product->startprice }} while the current bid is at
@@ -70,7 +72,8 @@
                                             <label for="bid_now">Bid: </label>
                                             <input type="number" name="bid_price" class="bid_input" placeholder="$"
                                                 id="bid_now">
-                                            <button type="submit" class="btn btn-outline-dark">Bid</button>
+                                            <button id="place_bid_btn" type="submit"
+                                                class="btn btn-outline-dark">Bid</button>
                                         </form>
                                     </div>
                                 </div>

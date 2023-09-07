@@ -43,7 +43,7 @@ Route::get('auctions', [AuctionsController::class, 'index']) ->name('auctions');
 Route::get('profile', [ProfileController::class, 'index']) ->name('profile');
 
 Route::get('bids', [BidsController::class, 'index']) ->name('bids');
-Route::post('/place-bid/{id}', [BidsController::class, 'placeBid'])->name('place-bid');
+Route::post('/place-bid/{id}', [BidsController::class, 'store'])->name('place-bid');
 
 Route::get('merchant/product', [ProductController::class, 'index']) ->name('product');
 Route::post('merchant/product', [ProductController::class, 'addproduct']);
