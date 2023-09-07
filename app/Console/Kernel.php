@@ -13,8 +13,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-         // Schedule the 'app:select-winner' Artisan command to run hourly
-         $schedule->command('process-winners')->everyMinute();
+        
     }
 
     /**

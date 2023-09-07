@@ -39,6 +39,36 @@
 
 
         </div>
+@auth
+        <!-- Assuming you have a Blade template for displaying the product details -->
+        <form id="checkWinnerForm" method="post" action="{{ route('check-winners') }}">
+            @csrf
+            <button type="submit" id="checkWinnerBtn">Check Winner</button>
+        </form>
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#checkWinnerBtn").click(function (e) {
+                    e.preventDefault(); // Prevent the form submission
+        
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ route('check-winners') }}",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                        },
+                        success: function (response) {
+                            alert(response.message);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(error);
+                        },
+                    });
+                });
+            });
+        </script>
+  @endauth      
 
         @vite(['resources/js/auctions.js'])
 

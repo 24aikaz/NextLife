@@ -57,6 +57,7 @@ Route::get('/paymentmethod', [AuctionsController::class, 'paymentMethodView'])->
 
 Route::post('/checkout', [AuctionsController::class, 'checkout'])->name('checkout');
 
+Route::post('/check-winners', [AuctionsController::class, 'checkWinners'])->name('check-winners');
 //search bar
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 

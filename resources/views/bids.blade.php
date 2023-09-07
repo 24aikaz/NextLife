@@ -26,6 +26,7 @@
             <p>You have not placed any bids yet.</p>
         @endif
     </div>
+    
 
     @vite(['resources/js/bids.js'])
 @endsection
