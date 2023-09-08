@@ -17,7 +17,8 @@ class BidsController extends Controller
         // bids placed by the currently authenticated user 
         $user = Auth::user();
         $userBids = $user->bids;
-        return view('bids', ['bids' => $userBids]);
+        $userProducts = Product::get();
+        return view('bids', ['bids' => $userBids, 'products' => $userProducts]);
     }
 
     public function store(Request $request, $id)
@@ -29,17 +30,14 @@ class BidsController extends Controller
             'bid_price' => 'required|numeric|min:0',
         ]);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             return response()->json([
-                'status'=>400,
-                'errors'=>$validator->messages()
+                'status' => 400,
+                'errors' => $validator->messages()
             ]);
-        }
-        else
-        {
+        } else {
             $product = Product::findOrFail($id);
-            
+
             $newBidPrice = $request->input('bid_price');
 
             // Update the current price and bid count
@@ -56,8 +54,8 @@ class BidsController extends Controller
             $bid->save();
 
             return response()->json([
-                'status'=>200,
-                'message'=>'Bid Added Successfully.'
+                'status' => 200,
+                'message' => 'Bid Added Successfully.'
             ]);
         }
 

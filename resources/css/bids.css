@@ -31,8 +31,6 @@ body {
     width: 50rem;
     padding: 1rem;
     margin: 1.5rem;
-    border: none !important;
-    background-color: var(--quarternary-color) !important;
 }
 
 .col {
@@ -43,8 +41,51 @@ body {
     text-decoration: none !important;
 }
 
-.row .card {
-    padding: 2rem;
+.bid_row .card {
+    padding: 2rem !important;
+    margin-bottom: 1rem;
+}
+
+.card {
     border: none !important;
     background-color: var(--quarternary-color) !important;
+}
+
+.product-image {
+    /* object-fit: none; 
+    object-position: center;  */
+    width: 8rem;
+    height: 8rem;
+    border-radius: 0.375rem !important;
+}
+
+#bid_filter {
+    padding: 1rem;
+    margin-bottom: 2rem !important;
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    justify-content: space-between;
+}
+
+.filter_element {
+    width: 5rem;
+    height: 2.5rem;
+}
+
+.filter_btn {
+    border-color: var(--primary-color) !important;
+    border-width: 2px !important;
+    color: var(--primary-color) !important;
+    border-radius: 2rem !important;
+}
+
+.active {
+    border-color: var(--teal-color) !important;
+    color: var(--teal-color) !important;
+}
+
+.filter_btn:hover {
+    border-color: var(--teal-color) !important;
+    color: var(--teal-color) !important;
 }
