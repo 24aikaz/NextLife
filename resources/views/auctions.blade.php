@@ -59,10 +59,17 @@
                             _token: "{{ csrf_token() }}",
                         },
                         success: function (response) {
-                            alert(response.message);
-                        },
-                        error: function (xhr, status, error) {
-                            console.error(error);
+                alert(response.message);
+                if (response.redirect) {
+                    // Redirect to the payment method page
+                    window.location.href = response.redirect;
+                } else {
+                    // Display an error message if no redirect is provided
+                    alert('Error: Could not redirect to payment method page.');
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
                         },
                     });
                 });
