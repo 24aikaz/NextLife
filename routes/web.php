@@ -62,4 +62,7 @@ Route::post('/check-winners', [AuctionsController::class, 'checkWinners'])->name
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 Route::get('merchant/house', [HouseController::class, 'index']) ->name('auctionhouse');
+
+Route::delete('/product/{Product_ID}', [ProductController::class, 'destroy'])->name('product.delete');
+
 // Route::post('merchant/house', [HouseController::class, '']);

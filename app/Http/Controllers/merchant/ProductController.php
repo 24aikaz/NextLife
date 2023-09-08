@@ -73,4 +73,30 @@ class ProductController extends Controller
 
         return response()->json($products);
     }
+    public function destroy(Request $request, $Product_ID)
+{
+    // Find the product by ID
+    $product = Product::find($Product_ID);
+
+    if (!$product) {
+        // Product not found, return an error message or redirect as needed
+        return response()->json(['message' => 'Product not found.'], 404);
+    }
+
+    // Check if the logged-in user is the owner of the product
+    if ($product->seller_id != auth()->user()->id) {
+        // Unauthorized access, return an error message or redirect as needed
+        return response()->json(['message' => 'Unauthorized access.'], 403);
+    }
+
+    // Delete the associated auctions first
+    $product->auctions()->delete();
+
+    // Then delete the product
+    $product->delete();
+
+    // Return a success message or redirect as needed
+    return response()->json(['message' => 'Product deleted successfully.']);
+}
+
 }

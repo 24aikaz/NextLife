@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'pname',
@@ -22,7 +24,7 @@ class Product extends Model
         'enddate',
         'seller_id',
     ];
-    protected $dates = ['startdate', 'enddate'];
+    protected $dates = ['startdate', 'enddate','deleted_at'];
 
 
     protected $primaryKey = 'Product_ID';
@@ -46,4 +48,8 @@ class Product extends Model
         return $this->belongsTo(User::class, 'seller_id', 'id');
     }
 
+    public function auctions()
+    {
+        return $this->hasMany(Auction::class, 'Product_ID', 'Product_ID');
+    }
 }

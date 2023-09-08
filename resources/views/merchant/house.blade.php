@@ -11,7 +11,7 @@
         @if (auth()->user()->usertype == 'merchant')
 
             <form class="d-flex justify-content-end" action="{{ route('product') }}" method="GET">
-                <Button class="btn btn-outline-dark" title="Add product for sale!"><i class="fa-solid fa-plus"></i></Button>
+                <button class="btn btn-outline-dark" title="Add product for sale!"><i class="fa-solid fa-plus"></i></button>
             </form>
 
             <h3>Items on sale:</h3>
@@ -33,10 +33,16 @@
                                             @if (now(4) < $product->startdate)
                                                 Starting in {{ now(4)->diff($product->startdate)->format('%d d, %h h, and %i min') }}
                                             @else
-                                            Countdown: {{ now(4)->diff($product->enddate)->format('%d d, %h h, and %i min') }}
+                                                Countdown: {{ now(4)->diff($product->enddate)->format('%d d, %h h, and %i min') }}
                                             @endif
                                         @endif
                                     </p>
+                                    <!-- Delete form -->
+                                    <form method="POST" action="{{ route('product.delete', ['Product_ID' => $product->Product_ID]) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
                                 </div>
                             </a>
                         </div>
