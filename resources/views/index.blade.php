@@ -4,7 +4,7 @@
     <section id="Title_Display">
         <div class="section_content text_margin">
             <h1>Bring to your home a piece of history</h1>
-            <p style="width: 50%;">Bid on our exquisite and verified auctioned products to create your own legacy
+            <p class="para-content" style="width: 50%;">Bid on our exquisite and verified auctioned products to create your own legacy
                 today.</p>
         </div>
     </section>
