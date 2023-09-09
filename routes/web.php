@@ -10,6 +10,7 @@ use App\Http\Controllers\merchant\ItemController;
 use App\Http\Controllers\merchant\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\StripePaymentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewproductController;
@@ -66,3 +67,9 @@ Route::get('merchant/house', [HouseController::class, 'index']) ->name('auctionh
 Route::delete('/product/{Product_ID}', [ProductController::class, 'destroy'])->name('product.delete');
 
 // Route::post('merchant/house', [HouseController::class, '']);
+
+
+Route::controller(StripePaymentController::class)->group(function(){
+    Route::get('stripe', 'stripe');
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});
