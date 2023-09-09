@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\merchant;
 
+use App\Models\Bid;
+use App\Models\Auction;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -75,28 +77,40 @@ class ProductController extends Controller
     }
     public function destroy(Request $request, $Product_ID)
 {
-    // Find the product by ID
-    $product = Product::find($Product_ID);
+    try {
+        // Find the product by ID
+        $product = Product::find($Product_ID);
 
-    if (!$product) {
-        // Product not found, return an error message or redirect as needed
-        return response()->json(['message' => 'Product not found.'], 404);
+        if (!$product) {
+            // Product not found, return an error message or redirect as needed
+            return response()->json(['message' => 'Product not found.'], 404);
+        }
+
+        // Check if the logged-in user is the owner of the product
+        if ($product->seller_id != auth()->user()->id) {
+            // Unauthorized access, return an error message or redirect as needed
+            return response()->json(['message' => 'Unauthorized access.'], 403);
+        }
+
+        // Find and delete the associated auctions by Product_ID
+        Auction::where('Product_ID', $Product_ID)->delete();
+        
+        // Find and delete the associated bids by product_id
+        Bid::where('product_id', $Product_ID)->delete();
+
+        // Delete the product
+        $product->delete();
+
+        // Return a success message
+        return response()->json(['message' => 'Product and associated auctions/bids deleted successfully.']);
+    } catch (\Exception $e) {
+        // Use dd() to dump information about the exception for debugging
+        dd($e);
+        // Handle the exception and return an error response
+        return response()->json(['message' => 'An error occurred while deleting the product.'], 500);
     }
-
-    // Check if the logged-in user is the owner of the product
-    if ($product->seller_id != auth()->user()->id) {
-        // Unauthorized access, return an error message or redirect as needed
-        return response()->json(['message' => 'Unauthorized access.'], 403);
-    }
-
-    // Delete the associated auctions first
-    $product->auctions()->delete();
-
-    // Then delete the product
-    $product->delete();
-
-    // Return a success message or redirect as needed
-    return response()->json(['message' => 'Product deleted successfully.']);
 }
+
+
 
 }
