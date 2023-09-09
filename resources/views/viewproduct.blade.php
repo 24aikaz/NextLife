@@ -38,14 +38,30 @@
                         {{ $Time }}</p>
 
                     <div class="button-container mx-auto">
-                        <button class="btn btn-outline-dark" title="Current bid count" id="bid_count_btn"><span id="count_btn">{{ $product->bidcount }}</span> <i
-                                class="fa-solid fa-gavel"></i></button>
+                        <button class="btn btn-outline-dark" title="Current bid count" id="bid_count_btn"><span
+                                id="count_btn">{{ $product->bidcount }}</span> <i class="fa-solid fa-gavel"></i></button>
 
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-outline-dark" data-toggle="modal"
-                            data-target="#place_bid_modal">
-                            Bid Now!
-                        </button>
+                        @auth
+                            @if (auth()->user()->usertype == 'bidder')
+                                <button type="button" class="btn btn-outline-dark" data-toggle="modal"
+                                    data-target="#place_bid_modal">
+                                    Bid Now!
+                                </button>
+                            @else
+                                <button type="button" class="btn btn-outline-dark" title="You cannot bid">
+                                    Ineligible
+                                </button>
+                            @endif
+                        @endauth
+                        @guest
+                            <form action="{{ route('login') }}" method="get">
+                                <button type="submit" class="btn btn-outline-dark" title="Log in to bid">
+                                    Bid Now!
+                                </button>
+                            </form>
+                        @endguest
+
                     </div>
 
                     <!-- Modal -->

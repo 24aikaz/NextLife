@@ -44,9 +44,9 @@
                 <div class="LeftmostItems CollapseItems collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-                        <form action="/search" class="d-flex" role="search">
+                        <form action="{{ route('search') }}" class="d-flex" role="search" id="navsearch_form">
                             <input class="form-control me-2 SearchBar underline" name="query" type="search"
-                                placeholder="Search item to bid!" autocomplete="off">
+                                placeholder="Search item to bid!" autocomplete="off" id="search_input">
                             <button class="btn" type="submit"><i
                                     class="fa-solid fa-magnifying-glass clickable_stuff"></i></button>
                         </form>

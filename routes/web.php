@@ -14,6 +14,7 @@ use App\Http\Controllers\StripePaymentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewproductController;
+use Illuminate\Auth\Middleware\Authenticate;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,8 +60,10 @@ Route::get('/paymentmethod', [AuctionsController::class, 'paymentMethodView'])->
 Route::post('/checkout', [AuctionsController::class, 'checkout'])->name('checkout');
 
 Route::post('/check-winners', [AuctionsController::class, 'checkWinners'])->name('check-winners');
+
 //search bar
-Route::get('/search', [ProductController::class, 'search'])->name('search');
+// Route::get('/search', [ProductController::class, 'search'])->name('search');
+Route::get('/search', [AuctionsController::class, 'search'])->name('search');
 
 Route::get('merchant/house', [HouseController::class, 'index']) ->name('auctionhouse');
 

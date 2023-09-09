@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class BidsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
+
     public function index()
     {
         // This function returns the bids view to display the the current 

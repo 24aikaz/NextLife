@@ -10,6 +10,11 @@ use Stripe;
      
 class StripePaymentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
+    
     /**
      * success response method.
      *

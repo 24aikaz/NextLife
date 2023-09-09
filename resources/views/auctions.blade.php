@@ -8,26 +8,26 @@
             <h2 class="title text-center">Auctions</h2>
         </div>
 
-        <div class="container">
+        <div class="container" id="all_products">
 
             @if ($products->count())
-                <div class="row row-cols-2">
+                <div class="row row-cols-2" id="each_product">
                     @foreach ($products as $product)
-                        <div class="col">
+                        <div class="col" >
                             <a class="card-link" href="{{ route('viewproduct', ['Product_ID' => $product->Product_ID]) }}">
                                 <div class="card">
                                     <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->pname }}"
                                         class="product-image">
                                     <h3 class="product_title">{{ $product->pname }}</h3>
                                     <h5>Current Price: $ {{ $product->currentprice }}</h5>
-                                    <p>Countdown: 
+                                    <p>Countdown:
                                         @if (now() > $product->enddate)
-                                            0 days
+                                            Ended
                                         @else
-                                            {{ now()->diff($product->enddate)->format('%dd') }}
+                                            {{ now()->diff($product->enddate)->format('%d d') }}
                                         @endif
                                     </p>
-                                    
+
                                 </div>
                             </a>
                         </div>
@@ -39,43 +39,43 @@
 
 
         </div>
-@auth
-        <!-- Assuming you have a Blade template for displaying the product details -->
-        <form id="checkWinnerForm" method="post" action="{{ route('check-winners') }}">
-            @csrf
-            <button type="submit" id="checkWinnerBtn">Check Winner</button>
-        </form>
-        
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#checkWinnerBtn").click(function (e) {
-                    e.preventDefault(); // Prevent the form submission
-        
-                    $.ajax({
-                        type: "POST",
-                        url: "{{ route('check-winners') }}",
-                        data: {
-                            _token: "{{ csrf_token() }}",
-                        },
-                        success: function (response) {
-                alert(response.message);
-                if (response.redirect) {
-                    // Redirect to the payment method page
-                    window.location.href = response.redirect;
-                } else {
-                    // Display an error message if no redirect is provided
-                    alert('Error: Could not redirect to payment method page.');
-                }
-            },
-            error: function (xhr, status, error) {
-                console.error(error);
-                        },
+        {{-- @auth
+            <!-- Assuming you have a Blade template for displaying the product details -->
+            <form id="checkWinnerForm" method="post" action="{{ route('check-winners') }}">
+                @csrf
+                <button type="submit" id="checkWinnerBtn">Check Winner</button>
+            </form>
+
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $("#checkWinnerBtn").click(function(e) {
+                        e.preventDefault(); // Prevent the form submission
+
+                        $.ajax({
+                            type: "POST",
+                            url: "{{ route('check-winners') }}",
+                            data: {
+                                _token: "{{ csrf_token() }}",
+                            },
+                            success: function(response) {
+                                alert(response.message);
+                                if (response.redirect) {
+                                    // Redirect to the payment method page
+                                    window.location.href = response.redirect;
+                                } else {
+                                    // Display an error message if no redirect is provided
+                                    alert('Error: Could not redirect to payment method page.');
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error(error);
+                            },
+                        });
                     });
                 });
-            });
-        </script>
-  @endauth      
+            </script>
+        @endauth --}}
 
         @vite(['resources/js/auctions.js'])
 
