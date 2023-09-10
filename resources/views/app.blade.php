@@ -61,6 +61,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link underline clickable_stuff" href="{{ route('bids') }}">Bids</a>
                                 </li>
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('my-won-products') }}">Wins</a>
+                                    </li>
+                                </ul>
                             @endif
 
                             @if (auth()->user()->usertype == 'merchant')

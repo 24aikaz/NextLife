@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\merchant;
 
 use App\Models\Bid;
+use App\Models\Order;
 use App\Models\Auction;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 
 class ProductController extends Controller
 {
@@ -114,6 +117,84 @@ class ProductController extends Controller
         // Handle the exception and return an error response
         return response()->json(['message' => 'An error occurred while deleting the product.'], 500);
     }
+}
+
+public function getWonProducts()
+{
+    // Get the logged-in user's ID
+    $userId = Auth::id();
+
+    // Retrieve won products using the auctions table
+    $wonProducts = Auction::where('winner_id', $userId)
+        ->join('products', 'auctions.Product_ID', '=', 'products.Product_ID')
+        ->select('products.*')
+        ->get();
+
+    return view('won-products', ['wonProducts' => $wonProducts]);
+}
+public function checkout()
+{
+    \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+    $products = Product::all();
+    $lineItems = [];
+    $totalPrice = 0;
+    foreach ($products as $product) {
+        $totalPrice += $product->winning_bid;
+        $lineItems[] = [
+            'price_data' => [
+                'currency' => 'usd',
+                'product_data' => [
+                    'name' => $product->pname,
+                    'images' => [$product->image]
+                ],
+                'unit_amount' => $product->winning_bid * 100,
+            ],
+            'quantity' => 1,
+        ];
+    }
+    $session = \Stripe\Checkout\Session::create([
+        'line_items' => $lineItems,
+        'mode' => 'payment',
+        'success_url' => route('checkout.success', [], true) . "?session_id={CHECKOUT_SESSION_ID}",
+        'cancel_url' => route('checkout.cancel', [], true),
+    ]);
+
+    $order = new Order();
+    $order->status = 'unpaid';
+    $order->total_price = $totalPrice;
+    $order->session_id = $session->id;
+    $order->save();
+
+    return redirect($session->url);
+}
+
+public function success(Request $request)
+{
+    \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+    $sessionId = $request->get('session_id');
+
+    try {
+        $session = \Stripe\Checkout\Session::retrieve($sessionId);
+        if (!$session) {
+            throw new NotFoundHttpException;
+        }
+        $customer = \Stripe\Customer::retrieve($session->customer);
+
+        $order = Order::where('session_id', $session->id)->first();
+        if (!$order) {
+            throw new NotFoundHttpException();
+        }
+        if ($order->status === 'unpaid') {
+            $order->status = 'paid';
+            $order->save();
+        }
+
+        return view('product.checkout-success', compact('customer'));
+    } catch (\Exception $e) {
+        throw new NotFoundHttpException();
+    }
+
 }
 
 

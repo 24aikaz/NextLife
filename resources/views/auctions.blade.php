@@ -39,7 +39,7 @@
 
 
         </div>
-        {{-- @auth
+         @auth
             <!-- Assuming you have a Blade template for displaying the product details -->
             <form id="checkWinnerForm" method="post" action="{{ route('check-winners') }}">
                 @csrf
@@ -75,7 +75,7 @@
                     });
                 });
             </script>
-        @endauth --}}
+        @endauth 
 
         @vite(['resources/js/auctions.js'])
 

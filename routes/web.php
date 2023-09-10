@@ -54,10 +54,7 @@ Route::get('/get-products', [ProductController::class, 'getProducts']); //Testin
 // Route::get('viewproduct', [ViewproductController::class, 'index']) ->name('viewproduct');
 Route::get('viewproduct/{Product_ID}', [ViewproductController::class, 'display']) ->name('viewproduct');
 
-
-Route::get('/paymentmethod', [AuctionsController::class, 'paymentMethodView'])->name('paymentmethod');
-
-Route::post('/checkout', [AuctionsController::class, 'checkout'])->name('checkout');
+Route::post('/checkout', [ProductController::class, 'checkout'])->name('checkout');
 
 Route::post('/check-winners', [AuctionsController::class, 'checkWinners'])->name('check-winners');
 
@@ -70,9 +67,11 @@ Route::get('merchant/house', [HouseController::class, 'index']) ->name('auctionh
 Route::delete('/product/{Product_ID}', [ProductController::class, 'destroy'])->name('product.delete');
 
 // Route::post('merchant/house', [HouseController::class, '']);
-
+Route::get('won-products', [ProductController:: class, 'getWonProducts'])->name('my-won-products');
 
 Route::controller(StripePaymentController::class)->group(function(){
     Route::get('stripe', 'stripe');
     Route::post('stripe', 'stripePost')->name('stripe.post');
 });
+Route::get('/success', [ProductController::class, 'success'])->name('checkout.success');
+Route::get('/cancel', [ProductController::class, 'cancel'])->name('checkout.cancel');
