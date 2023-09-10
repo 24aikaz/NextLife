@@ -73,5 +73,5 @@ Route::controller(StripePaymentController::class)->group(function(){
     Route::get('stripe', 'stripe');
     Route::post('stripe', 'stripePost')->name('stripe.post');
 });
-Route::get('/success', [ProductController::class, 'success'])->name('checkout.success');
+Route::get('/checkout-success', [ProductController::class, 'success'])->name('checkout.success');
 Route::get('/cancel', [ProductController::class, 'cancel'])->name('checkout.cancel');

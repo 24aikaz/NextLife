@@ -9,12 +9,12 @@
                     <div class="card">
                         <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $product->name }}</h5>
-                            <p class="card-text">{{ $product->description }}</p>
-                            <p class="card-text">Price: ${{ $product->price }}</p>
+                            <h5 class="card-title">{{ $product->pname }}</h5>
+                            <p class="card-text">{{ $product->pdesc}}</p>
+                            <p class="card-text">Price: ${{ $product->winning_bid }}</p>
                              <form method="POST" action="{{ route('checkout') }}">
                                 @csrf
-                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <input type="hidden" name="Product_ID" value="{{ $product->Product_ID }}">
                                 <button type="submit" class="btn btn-primary">Checkout</button>
                             </form>
                             

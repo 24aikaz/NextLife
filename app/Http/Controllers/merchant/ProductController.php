@@ -132,29 +132,37 @@ public function getWonProducts()
 
     return view('won-products', ['wonProducts' => $wonProducts]);
 }
-public function checkout()
+public function checkout(Request $request)
 {
     \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
-    $products = Product::all();
-    $lineItems = [];
-    $totalPrice = 0;
-    foreach ($products as $product) {
-        $totalPrice += $product->winning_bid;
-        $lineItems[] = [
-            'price_data' => [
-                'currency' => 'usd',
-                'product_data' => [
-                    'name' => $product->pname,
-                    'images' => [$product->image]
-                ],
-                'unit_amount' => $product->winning_bid * 100,
-            ],
-            'quantity' => 1,
-        ];
+    // Get the product ID from the request
+    $productId = $request->input('Product_ID');
+
+    // Find the product by ID
+    $product = Product::find($productId);
+
+    if (!$product) {
+        // Handle the case where the product is not found (e.g., return an error message)
+        return response()->json(['message' => 'Product not found.'], 404);
     }
+
+    // Create a line item for the selected product
+    $lineItem = [
+        'price_data' => [
+            'currency' => 'usd',
+            'product_data' => [
+                'name' => $product->pname,
+                'images' => [asset('storage/' . $product->image)],
+            ],
+            'unit_amount' => $product->winning_bid * 100,
+        ],
+        'quantity' => 1,
+    ];
+
+    // Create a checkout session for the single product
     $session = \Stripe\Checkout\Session::create([
-        'line_items' => $lineItems,
+        'line_items' => [$lineItem],
         'mode' => 'payment',
         'success_url' => route('checkout.success', [], true) . "?session_id={CHECKOUT_SESSION_ID}",
         'cancel_url' => route('checkout.cancel', [], true),
@@ -162,12 +170,13 @@ public function checkout()
 
     $order = new Order();
     $order->status = 'unpaid';
-    $order->total_price = $totalPrice;
+    $order->total_price = $product->winning_bid;
     $order->session_id = $session->id;
     $order->save();
 
     return redirect($session->url);
 }
+
 
 public function success(Request $request)
 {
@@ -190,7 +199,7 @@ public function success(Request $request)
             $order->save();
         }
 
-        return view('product.checkout-success', compact('customer'));
+        return view('checkout-success', compact('customer'));
     } catch (\Exception $e) {
         throw new NotFoundHttpException();
     }
