@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Auction;
 use App\Models\Bid;
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Auction;
 use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
