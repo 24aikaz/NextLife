@@ -16,11 +16,14 @@ function updateProductStatus() {
 
                 if (now < startdate) {
                     statusElement.textContent = 'Scheduled';
-                } else if (now >= startdate && now <= enddate) {
+                    statusElement.classList.add('scheduled_class');
+                  } else if (now >= startdate && now <= enddate) {
                     statusElement.textContent = 'Active';
-                } else {
+                    statusElement.classList.add('active_class');
+                  } else {
                     statusElement.textContent = 'Ended';
-                }
+                    statusElement.classList.add('ended_class');
+                  }
             });
         })
         .catch(error => console.error(error));

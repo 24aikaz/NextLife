@@ -1,5 +1,5 @@
 /* ------- Color variables used throughout ------- */
-:root { 
+:root {
     --primary-color: #3F2305;
     --secondary-color: #DFD7BF;
     --tertiary-color: #F2EAD3;
@@ -17,14 +17,43 @@ body {
     background-color: var(--tertiary-color) !important;
 }
 
+.checkoutlist_btn {
+    border-color: var(--primary-color) !important;
+    border-width: 2px !important;
+    color: var(--primary-color) !important;
+    margin: 0.5rem !important;
+    font-size: large !important;
+}
+
+.checkoutlist_btn:hover {
+    border-color: var(--teal-color) !important;
+    color: var(--teal-color) !important;
+}
+
+
+#add_product_btn {
+    border-color: none !important;
+    border-width: 2px !important;
+    color: var(--teal-color) !important;
+    font-size: xx-large !important;
+    width: 5rem;
+}
+
+#add_product_btn:hover {
+    border-color: var(--teal-color) !important;
+    color: var(--teal-color) !important;
+}
+
 #house_content {
     padding-top: 1rem;
 }
 
-.title {
+.page_title {
     font-family: 'Cantata One', serif;
     margin-bottom: 0;
-    font-size: larger;
+    font-size: x-large;
+    opacity: 0.7;
+    padding: 1.5rem 0rem;
 }
 
 .house_title_card {
@@ -38,6 +67,58 @@ body {
     background-color: var(--quarternary-color) !important;
 }
 
-.card-link{
+.product_title {
+    font-size: large;
+    font-weight: 600 !important;
+}
+
+.prod_id,
+.prod_time {
+    font-size: small;
+}
+
+.card-link {
     text-decoration: none !important;
+}
+
+/* Source for scrollable div: https://www.w3docs.com/snippets/css/how-to-make-a-div-vertically-scrollable.html */
+
+.scroll {
+    width: 100%;
+    height: 30rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.scroll_active {
+    width: 100%;
+    height: 15rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.scroll_inactive {
+    width: 100%;
+    height: 15rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.scroll::-webkit-scrollbar,
+.scroll_active::-webkit-scrollbar,
+.scroll_inactive::-webkit-scrollbar {
+    display: none;
+}
+
+/* For JS */
+.scheduled_class {
+    color: yellow;
+}
+
+.active_class {
+    color: green;
+}
+
+.ended_class {
+    color: red;
 }
