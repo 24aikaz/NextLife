@@ -21,42 +21,38 @@
             <div class="col">
 
                 <div class="card">
-                    <h4>{{ $product->pname }} <span class="text-muted">(ID: <span
+                    <h4 class="pname_title">{{ $product->pname }} <span class="text-muted productid_label">(ID: <span
                                 id="productID">{{ $product->Product_ID }}</span>)</span></h4>
-                    <p><span class="text-muted">By</span> {{ $product->seller->username }}</p>
+                    <p class="title"><span class="text-muted">By</span> <a class="merchant_username"
+                            href="#">{{ $product->seller->username }}</a></p>
 
-                    <label class="text-muted">Category</label>
+                    <label class="smol_label text-muted">Category</label>
                     <p>{{ $product->category }}</p>
 
-                    <label class="text-muted">Description</label>
+                    <label class="smol_label text-muted">Description</label>
                     <p>{{ $product->pdesc }}</p>
 
-                    <label class="text-muted">Current bid</label>
+                    <label class="smol_label text-muted">Current bid</label>
                     <p id="current_bid">${{ $product->currentprice }}</p>
 
                     <p><span class="text-muted">Ends on</span> {{ $Date }} <span class="text-muted">at</span>
                         {{ $Time }}</p>
 
                     <div class="button-container mx-auto">
-                        <button class="btn btn-outline-dark" title="Current bid count" id="bid_count_btn"><span
+                        <button class="btn" title="Current bid count" id="bid_count_btn"><span
                                 id="count_btn">{{ $product->bidcount }}</span> <i class="fa-solid fa-gavel"></i></button>
 
                         <!-- Button trigger modal -->
                         @auth
-                            @if (auth()->user()->usertype == 'bidder')
-                                <button type="button" class="btn btn-outline-dark" data-toggle="modal"
-                                    data-target="#place_bid_modal">
+                            @if (auth()->user()->usertype == 'bidder' && now(4) < $product->enddate)
+                                <button type="button" class="btn button" data-toggle="modal" data-target="#place_bid_modal">
                                     Bid Now!
-                                </button>
-                            @else
-                                <button type="button" class="btn btn-outline-dark" title="You cannot bid">
-                                    Ineligible
                                 </button>
                             @endif
                         @endauth
                         @guest
                             <form action="{{ route('login') }}" method="get">
-                                <button type="submit" class="btn btn-outline-dark" title="Log in to bid">
+                                <button type="submit" class="btn button" title="Log in to bid">
                                     Bid Now!
                                 </button>
                             </form>
@@ -70,26 +66,22 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
 
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="place_bid_title">Place bid on product</h5>
-                                    <button type="button" class="btn close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-
                                 <div class="modal-body">
+                                    <h5 class="modal_title">Place your bid on item: </h5>
                                     <div class="d-flex justify-content-center">
                                         <form action="{{ route('place-bid', ['id' => $product->Product_ID]) }}"
                                             method="POST" id="add_bid">
                                             @csrf
                                             <h4>{{ $product->pname }}</h4>
-                                            <p>Originally set at ${{ $product->startprice }} while the current bid is at
-                                                ${{ $product->currentprice }}.</p>
-                                            <label for="bid_now">Bid: </label>
-                                            <input type="number" name="bid_price" class="bid_input" placeholder="$"
-                                                id="bid_now">
-                                            <button id="place_bid_btn" type="submit"
-                                                class="btn btn-outline-dark">Bid</button>
+                                            <p>Current Highest Bid: ${{ $product->currentprice }}</p>
+                                            <label for="bid_now">Your Bid: </label>
+                                            <input type="number" name="bid_price" class="bid_input form-control underline"
+                                                placeholder="$" id="bid_now">
+                                            <p id="display_error" class="errormsg"></p>
+                                            <div class="d-flex justify-content-end">
+                                                <button id="place_bid_btn" type="submit" class="btn button"
+                                                    title="Place bid"><i class="fa-solid fa-gavel"></i></button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

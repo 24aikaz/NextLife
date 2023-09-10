@@ -128,6 +128,7 @@ public function getWonProducts()
     $wonProducts = Auction::where('winner_id', $userId)
         ->join('products', 'auctions.Product_ID', '=', 'products.Product_ID')
         ->select('products.*')
+        ->orderBy('created_at', 'desc')
         ->get();
 
     return view('won-products', ['wonProducts' => $wonProducts]);

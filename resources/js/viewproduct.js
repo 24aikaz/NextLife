@@ -38,6 +38,10 @@ $(document).ready(function () {
                 console.log(response);
                 if (response.status == 400) {
                     console.log("AJAX fail with error 400");
+                    $('#display_error').text(response.errors.bid_price);
+                } else if (response.status == 401) {
+                    $('#display_error').text(response.message);
+                    console.log("AJAX fail with error 401");
                 } else {
                     console.log("AJAX success");
                     $('#current_bid').text('$' + data.bid_price);

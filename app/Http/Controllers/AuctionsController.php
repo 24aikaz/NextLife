@@ -16,16 +16,14 @@ class AuctionsController extends Controller
 {
     public function index()
     {
-
         // For pagination
-        // $products = Product::orderBy('created_at', 'desc')->paginate(12);
+        $products = Product::latest()->paginate(12);
 
-        $products = Product::orderBy('created_at', 'desc')->get();
-        // dd($products);
+        return view('auctions', compact('products'));
 
-        return view('auctions', [
-            'products' => $products // Passing the products collection along for the view
-        ]);
+        // return view('auctions', [
+        //     'products' => $products // Passing the products collection along for the view
+        // ]);
 
     }
 

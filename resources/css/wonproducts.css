@@ -1,0 +1,68 @@
+/* ------- Color variables used throughout ------- */
+:root {
+    --primary-color: #3F2305;
+    --secondary-color: #DFD7BF;
+    --tertiary-color: #F2EAD3;
+    --quarternary-color: #F5F5F5;
+    --teal-color: #00888C;
+    --most-font-color: #0a0601;
+}
+
+.errormsg {
+    color: red;
+}
+
+body {
+    padding: 2rem 3rem;
+    background-color: var(--tertiary-color) !important;
+}
+
+#bids_content {
+    padding-top: 1rem;
+}
+
+.page_title {
+    font-family: 'Cantata One', serif;
+    margin-bottom: 0;
+    font-size: x-large;
+    opacity: 0.7;
+    padding: 1.5rem 0rem;
+}
+
+.col {
+    padding-bottom: 2rem !important;
+}
+
+.card-link {
+    text-decoration: none !important;
+}
+
+.row .card {
+    padding: 2rem !important;
+    margin-bottom: 1rem;
+}
+
+.card {
+    border: none !important;
+    background-color: var(--quarternary-color) !important;
+}
+
+
+/* Card Content */
+
+.product_title {
+    padding: 1rem 0rem;
+    font-size: large;
+    font-weight: 600 !important;
+}
+
+.product_para {
+    font-size: medium;
+}
+
+.product-image {
+    object-position: center;
+    width: 100%;
+    height: 20rem;
+    border-radius: 0.375rem !important;
+}

@@ -30,7 +30,7 @@
         <nav id="NavBar" class="navbar navbar-expand-lg fixed-top">
             <div class="container-fluid">
 
-                <a class="NavBrand active navbar-brand NextLife underline clickable_stuff" href="/">NextLife</a>
+                <a class="NavBrand navbar-brand NextLife underline clickable_stuff" href="/">NextLife</a>
 
                 <span class="Slogan navbar-text">
                     Continue the history
@@ -59,26 +59,35 @@
 
                         @auth
 
-                            @if (auth()->user()->usertype == 'bidder')
-                                <li class="nav-item">
-                                    <a class="nav-link underline clickable_stuff" href="{{ route('bids') }}">Bids</a>
-                                </li>
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('my-won-products') }}">Wins</a>
-                                    </li>
-                                </ul>
-                            @endif
-
-                            @if (auth()->user()->usertype == 'merchant')
-                                <li class="nav-item">
-                                    <a class="nav-link underline clickable_stuff"
-                                        href="{{ route('auctionhouse') }}">House</a>
-                                </li>
-                            @endif
-
                             <li class="nav-item dropdown">
-                                <a class="nav-link underline clickable_stuff" href="{{ route('profile') }}">Profile</a>
+                                {{-- <a class="nav-link underline clickable_stuff" href="{{ route('profile') }}">Profile</a> --}}
+
+                                <a class="NavDropdown NavItem nav-link dropdown-toggle underline clickable_stuff"
+                                    href="#" role="button" data-bs-toggle="dropdown">
+                                    <span>@</span>{{ auth()->user()->username }}
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="NavItem dropdown-item nav-link underline_middle clickable_stuff"
+                                        href="{{ route('profile') }}">Profile</a>
+                                    </li>
+                                    @if (auth()->user()->usertype == 'bidder')
+                                        <li>
+                                            <a class="NavItem dropdown-item nav-link underline_middle clickable_stuff"
+                                                href="{{ route('my-won-products') }}">Wins</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link underline_middle clickable_stuff"
+                                                href="{{ route('bids') }}">Bids</a>
+                                        </li>
+                                    @endif
+                                    @if (auth()->user()->usertype == 'merchant')
+                                        <li class="nav-item">
+                                            <a class="nav-link underline_middle clickable_stuff"
+                                                href="{{ route('auctionhouse') }}">House</a>
+                                        </li>
+                                    @endif
+                                </ul>
                             </li>
 
                             <li class="nav-item">
