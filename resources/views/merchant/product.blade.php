@@ -104,6 +104,10 @@
                 </form>
 
             </div>
+
+            {{-- For pagination --}}
+            {{-- {{ $products->links() }} --}}
+
         @else
             <div class="mx-auto errormsg">
                 <h1 class="text-center">ACCESS DENIED!</h1>

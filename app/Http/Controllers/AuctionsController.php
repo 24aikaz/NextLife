@@ -16,7 +16,11 @@ class AuctionsController extends Controller
 {
     public function index()
     {
-        $products = Product::get();
+
+        // For pagination
+        // $products = Product::orderBy('created_at', 'desc')->paginate(12);
+
+        $products = Product::orderBy('created_at', 'desc')->get();
         // dd($products);
 
         return view('auctions', [

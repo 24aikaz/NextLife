@@ -15,7 +15,7 @@
 
     {{-- CDN for fontawesome icons --}}
     <script src="https://kit.fontawesome.com/726d0afaa7.js" crossorigin="anonymous"></script>
-    
+
     {{-- CDN for AJAX --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
@@ -44,12 +44,14 @@
                 <div class="LeftmostItems CollapseItems collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-                        <form action="{{ route('search') }}" class="d-flex" role="search" id="navsearch_form">
-                            <input class="form-control me-2 SearchBar underline" name="query" type="search"
-                                placeholder="Search item to bid!" autocomplete="off" id="search_input">
-                            <button class="btn" type="submit"><i
-                                    class="fa-solid fa-magnifying-glass clickable_stuff"></i></button>
-                        </form>
+                        @if (\Illuminate\Support\Str::contains(request()->url(), '/auctions'))
+                            <form action="{{ route('search') }}" class="d-flex" role="search" id="navsearch_form">
+                                <input class="form-control me-2 SearchBar underline" name="query" type="search"
+                                    placeholder="Search item to bid!" autocomplete="off" id="search_input">
+                                <button class="btn" type="submit"><i
+                                        class="fa-solid fa-magnifying-glass clickable_stuff"></i></button>
+                            </form>
+                        @endif
 
                         <li class="nav-item">
                             <a class="nav-link underline clickable_stuff" href="{{ route('auctions') }}">Auctions</a>

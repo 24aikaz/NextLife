@@ -21,7 +21,7 @@ class BidsController extends Controller
         // This function returns the bids view to display the the current 
         // bids placed by the currently authenticated user 
         $user = Auth::user();
-        $userBids = $user->bids;
+        $userBids = $user->bids()->orderBy('created_at', 'desc')->get(); //error isn't error
         $userProducts = Product::get();
         return view('bids', ['bids' => $userBids, 'products' => $userProducts]);
     }

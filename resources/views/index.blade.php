@@ -27,7 +27,7 @@
                             to the craftsmanship of the past. This vintage TV carries with it a rich history,
                             representing an era when television sets were not just devices but pieces of art, lovingly
                             created with attention to detail and style.</p>
-                        <a href="#"><i class="fa-solid fa-arrow-right clickable_stuff"></i></a>
+                        <a href="{{ route('auctions') }}"><i class="fa-solid fa-arrow-right clickable_stuff"></i></a>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                         <p>Are you a collector seeking to add a rare gem to your curated assortment of photographic
                             memorabilia? Look no further, as we present to you an extraordinary vintage camera that will
                             transport you to a bygone era of artistic exploration and timeless elegance!</p>
-                        <a href="#"><i class="fa-solid fa-arrow-right clickable_stuff"></i></a>
+                        <a href="{{ route('auctions') }}"><i class="fa-solid fa-arrow-right clickable_stuff"></i></a>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                             grandeur to your surroundings, this sculpture is a true collector's dream. Its age and
                             history add a layer of intrigue and uniqueness, making it stand out among contemporary
                             pieces.</p>
-                        <a href="#"><i class="fa-solid fa-arrow-right clickable_stuff"></i></a>
+                        <a href="{{ route('auctions') }}"><i class="fa-solid fa-arrow-right clickable_stuff"></i></a>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
     <section id="Text_Section2" class="">
         <p>Unforgettable treasures find new homes through our auctioned products - where each bid opens a world of
             possibilities!</p>
-        <a href="#" class="underline_middle">Start bidding now!</a>
+        <a href="{{ route('auctions') }}" class="underline_middle">Start bidding now!</a>
     </section>
 
     <div id="Fixed_Background" class="parallax-container"></div>

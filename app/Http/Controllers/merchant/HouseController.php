@@ -17,7 +17,8 @@ class HouseController extends Controller
         $user = Auth::user();
 
         // Retrieve the bids associated with the user
-        $userProducts = $user->products; // Assuming you have defined a relationship in your User model
+        //Shows error here but isn't an error
+        $userProducts = $user->products()->orderBy('created_at', 'desc')->get();
 
         return view('merchant.house', ['products' => $userProducts]);
     }
