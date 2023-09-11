@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -11,7 +12,7 @@ class ProfileController extends Controller
     {
         $this->middleware(['auth']);
     }
-    public function index(User $user)
+    public function index()
     {
         return view('profile');
     }

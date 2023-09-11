@@ -23,8 +23,11 @@
                 <div class="card">
                     <h4 class="pname_title">{{ $product->pname }} <span class="text-muted productid_label">(ID: <span
                                 id="productID">{{ $product->Product_ID }}</span>)</span></h4>
-                    <p class="title"><span class="text-muted">By</span> <a class="merchant_username"
-                            href="#">{{ $product->seller->username }}</a></p>
+                    <p class="title"><span class="text-muted">By</span> 
+                        <a class="merchant_username"
+                            href="{{ route('viewuser', ['username' => $product->seller->username]) }}">{{ $product->seller->username }}
+                        </a>
+                    </p>
 
                     <label class="smol_label text-muted">Category</label>
                     <p>{{ $product->category }}</p>

@@ -76,3 +76,7 @@ Route::controller(StripePaymentController::class)->group(function(){
 Route::get('/checkout-success', [ProductController::class, 'success'])->name('checkout.success');
 Route::get('/cancel', [ProductController::class, 'cancel'])->name('checkout.cancel');
 Route::post('/webhook', [ProductController::class, 'webhook'])->name('checkout.webhook');
+
+
+
+Route::get('viewuser/{username}', [UserController::class, 'index'])->name('viewuser');

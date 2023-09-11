@@ -10,17 +10,14 @@
 
 body {
     padding: 2rem 3rem;
-    background-size: cover;
-    background-attachment: fixed;
-    background-image: linear-gradient(#dfd7bf42, #dfd7bf42),
-        url(images/profilebackground.jpg);
+    background-color: var(--tertiary-color) !important;
 }
 
-#profile_content {
-    padding-top: 1rem;
+#userprofile_content {
+    padding-top: 2rem;
 }
 
-.page_title {
+.user_page_title {
     font-family: 'Cantata One', serif;
     margin-bottom: 0;
     font-size: x-large;
@@ -46,11 +43,6 @@ body {
 }
 
 .profiledetails_card {
-    width: 30rem;
-    padding: 2rem 3rem;
-}
-
-.temp {
     width: 30rem;
     padding: 2rem 3rem;
 }
