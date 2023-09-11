@@ -206,9 +206,11 @@ public function success(Request $request)
             $order->status = 'paid';
             $order->save();
         }
+        return view('checkout-success', compact('username'));
+        
     } catch (\Exception $e) {
         $error = 'An error occurred: ' . $e->getMessage();
-        return view('checkout-success', compact('username'));
+      
     }
     
     }
