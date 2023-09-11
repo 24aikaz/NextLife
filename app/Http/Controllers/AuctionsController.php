@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Bid;
 use App\Models\User;
 use App\Models\Order;
@@ -11,21 +12,28 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class AuctionsController extends Controller
 {
     public function index()
-    {
+{
+    //$currentDateTime = Carbon::now();
+
+    // Check if the current route is the auctions page
+   /* if (Route::currentRouteName() === 'auctions') {
+        // Filter out products with enddate in the future
+        $products = Product::where('status', 'Inactive')
+            ->where('enddate', '>', $currentDateTime)
+            ->get();
+    } else {*/
         // For pagination
         $products = Product::latest()->paginate(12);
+    
 
-        return view('auctions', compact('products'));
+    return view('auctions', compact('products'));
+}
 
-        // return view('auctions', [
-        //     'products' => $products // Passing the products collection along for the view
-        // ]);
-
-    }
 
     public function checkWinners(Request $request)
     {
