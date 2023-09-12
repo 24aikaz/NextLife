@@ -4,7 +4,8 @@
     <section id="Title_Display">
         <div class="section_content text_margin">
             <h1>Bring to your home a piece of history</h1>
-            <p class="para-content" style="width: 50%;">Bid on our exquisite and verified auctioned products to create your own legacy
+            <p class="para-content" style="width: 50%;">Bid on our exquisite and verified auctioned products to create your
+                own legacy
                 today.</p>
         </div>
     </section>
@@ -102,10 +103,12 @@
             <a href="#" class="links underline">About Us</a>
             <a href="#" class="links underline">Our Team</a>
             <a href="#" class="links underline">Contact Us</a>
+            @auth
+                <a href="{{ route('feedback') }}" class="links underline">Feedback</a>
+            @endauth
             <p><i class="fa-regular fa-copyright"></i>2023 NextLife by Ashley & Zakiyyah</p>
         </div>
     </footer>
 
     @vite(['resources/js/index.js'])
-
 @endsection

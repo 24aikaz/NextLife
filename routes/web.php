@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\AuctionsController;
 use App\Http\Controllers\BidsController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\merchant\HouseController;
@@ -80,3 +81,7 @@ Route::post('/webhook', [ProductController::class, 'webhook'])->name('checkout.w
 
 
 Route::get('viewuser/{username}', [UserController::class, 'index'])->name('viewuser');
+
+
+
+Route::get('feedback', [FeedbackController::class, 'index'])->name('feedback');

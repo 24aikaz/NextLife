@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OpinionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,11 +27,6 @@ Route::put('user/{username}', [UserController::class, 'update']);
 //Route::delete('user/{username}', [UserController::class, 'destroy']);
 Route::delete('/user/{username}', [UserController::class,'destroy']);
 
-
-
-
-
-
-
-
-
+//Defining an API to work with the feedback processes
+Route::get('leavefeedback', [OpinionController::class, 'show']);
+Route::post('leavefeedback/', [OpinionController::class, 'store']);

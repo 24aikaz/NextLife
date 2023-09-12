@@ -14,6 +14,8 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.4.2",
         "@popperjs/core": "^2.11.8",
-        "bootstrap": "^5.3.1"
+        "ajv": "^8.12.0",
+        "bootstrap": "^5.3.1",
+        "json-schema-validator": "^1.1.0"
     }
 }

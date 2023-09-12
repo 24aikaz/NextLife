@@ -1,0 +1,38 @@
+/* ------- Color variables used throughout ------- */
+:root {
+    --primary-color: #3F2305;
+    --secondary-color: #DFD7BF;
+    --tertiary-color: #F2EAD3;
+    --quarternary-color: #F5F5F5;
+    --teal-color: #00888C;
+    --most-font-color: #0a0601;
+}
+
+.errormsg {
+    color: red;
+}
+
+body {
+    padding: 2rem 3rem;
+    background-color: var(--tertiary-color) !important;
+}
+
+#feedback_content {
+    padding-top: 1rem;
+}
+
+
+#button_containers {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+ 
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}

@@ -10,6 +10,7 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
+        "opis/json-schema": "^2.3",
         "stripe/stripe-php": "^12.2"
     },
     "require-dev": {
