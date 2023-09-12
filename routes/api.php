@@ -25,3 +25,12 @@ Route::get('user/{username}', [UserController::class, 'show']);
 Route::put('user/{username}', [UserController::class, 'update']);
 //Route::delete('user/{username}', [UserController::class, 'destroy']);
 Route::delete('/user/{username}', [UserController::class,'destroy']);
+
+
+
+
+
+
+
+
+
