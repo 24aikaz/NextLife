@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Opinion;
 use Illuminate\Http\Request;
+use Opis\JsonSchema\{Validator, ValidationResult, Helper};
 
 class OpinionController extends Controller
 {
@@ -30,6 +31,59 @@ class OpinionController extends Controller
             ]);
         }
 
+    }
+
+    public function makevalidate()
+    {
+        // Create a new validator
+        $validator = new Validator();
+        
+        // Register our schema
+        $schema = <<<'JSON'
+        {
+            "type": "object",
+            "properties": {
+                "feedback_type": {
+                    "type": "string"
+                },
+                "categories": {
+                    "type": "string"
+                },
+                "comment": {
+                    "type": "string"
+                }
+            },
+            "required": ["feedback_type", "categories", "comment"]
+        }
+        JSON;
+        
+        // $data = <<<'JSON'
+        // {
+        //     "feedback_type": "testing",
+        //     "categories":  "test",
+        //     "comment": "test"
+        // }
+        // JSON;
+        
+        // // Decode $data
+        // $data = json_decode($data);
+        
+        // /** @var ValidationResult $result */
+        // $result = $validator->validate($data, $schema);
+        
+        // Get the raw JSON data from the request body
+        $inputJSON = file_get_contents('php://input');
+        $data = json_decode($inputJSON);
+        
+        // Validate the data against the schema
+        $result = $validator->validate($data, json_decode($schema));
+        
+        if ($result->isValid()) {
+            echo 'Valid', PHP_EOL;
+        } else {
+            // Print errors
+            echo 'Invalid', PHP_EOL;
+        }
     }
 
     public function show()

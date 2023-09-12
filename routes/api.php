@@ -29,4 +29,6 @@ Route::delete('/user/{username}', [UserController::class,'destroy']);
 
 //Defining an API to work with the feedback processes
 Route::get('leavefeedback', [OpinionController::class, 'show']);
-Route::post('leavefeedback/', [OpinionController::class, 'store']);
+Route::post('leavefeedback', [OpinionController::class, 'store']);
+
+Route::post('validate', [OpinionController::class, 'makevalidate'])->name('validate');

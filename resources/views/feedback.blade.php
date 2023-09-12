@@ -95,7 +95,39 @@
 
     @vite(['resources/js/feedback.js'])
 
-    @php
+    {{-- <script>
+        $(document).on('click', '#submit_suggestion', function(event) {
+            event.preventDefault();
+            var data = {
+                'feedback_type': $('#type1').text(),
+                'categories': $('#category').val(),
+                'comment': $('#suggestion_comment').val()
+            }
+            console.log(data);
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            // Send the data to the PHP script for validation
+            $.ajax({
+                url: '{{ route('validate') }}', //api route
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+    </script> --}}
+
+    {{-- @php
         // Create a new validator
         $validator = new Validator();
         
@@ -118,19 +150,26 @@
         }
         JSON;
         
-        $data = <<<'JSON'
-        {
-            "feedback_type": "testing",
-            "categories":  "test",
-            "comment": "aaaa"
-        }
-        JSON;
+        // $data = <<<'JSON'
+        // {
+        //     "feedback_type": "testing",
+        //     "categories":  "test",
+        //     "comment": "test"
+        // }
+        // JSON;
         
-        // Decode $data
-        $data = json_decode($data);
+        // // Decode $data
+        // $data = json_decode($data);
         
-        /** @var ValidationResult $result */
-        $result = $validator->validate($data, $schema);
+        // /** @var ValidationResult $result */
+        // $result = $validator->validate($data, $schema);
+        
+        // Get the raw JSON data from the request body
+        $inputJSON = file_get_contents('php://input');
+        $data = json_decode($inputJSON);
+        
+        // Validate the data against the schema
+        $result = $validator->validate($data, json_decode($schema));
         
         if ($result->isValid()) {
             echo 'Valid', PHP_EOL;
@@ -138,6 +177,5 @@
             // Print errors
             echo 'Invalid', PHP_EOL;
         }
-    @endphp
-    
+    @endphp --}}
 @endsection

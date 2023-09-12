@@ -10,9 +10,8 @@ $(document).ready(function () {
         $("#button_containers").hide();
         $("#suggestion").show();
     });
-    $(document).on('click', '#submit_suggestion', function (event) {
+    $(document).on('click', '#submit_suggestion', function(event) {
         event.preventDefault();
-
         var data = {
             'feedback_type': $('#type1').text(),
             'categories': $('#category').val(),
@@ -20,25 +19,28 @@ $(document).ready(function () {
         }
         console.log(data);
 
-        const schema = 
-        {
-            "type": "object",
-            "properties": {
-                "feedback_type": {
-                    "type": "string"
-                },
-                "categories": {
-                    "type": "string"
-                },
-                "comment": {
-                    "type": "string"
-                }
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var url = "api/validate"
+
+        // Send the data to the PHP script for validation
+        $.ajax({
+            url: url, //api route
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function(response) {
+                console.log(response);
             },
-            "required": ["feedback_type", "categories", "comment"]
-        };
-
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
     });
-
 
 
 
