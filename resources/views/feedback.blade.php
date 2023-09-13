@@ -26,73 +26,83 @@
         </div>
 
         <div id="suggestion">
-            <label id="type1" hidden>suggestion</label>
+            <form id="suggestion_form" action="{{ url('api/leavefeedback', ['username' => auth()->user()->id]) }}"
+                method="post">
+                @csrf
+                <label id="type1" hidden>suggestion</label>
 
-            <label for="category">Category</label>
+                <label for="category">Category</label>
 
-            <select name="pets" id="category">
-                <option value="">Choose option below</option>
-                <option value="user interface">User Interface</option>
-                <option value="auction experience">Auction Experience</option>
-                <option value="payment process">Payment Process</option>
-                <option value="communication">Communication</option>
-                <option value="other">Other</option>
-            </select>
+                <select name="pets" id="category">
+                    <option value="">Choose option below</option>
+                    <option value="user interface">User Interface</option>
+                    <option value="auction experience">Auction Experience</option>
+                    <option value="payment process">Payment Process</option>
+                    <option value="communication">Communication</option>
+                    <option value="other">Other</option>
+                </select>
 
-            <br>
+                <br>
 
-            <label for="comment">Provide us with more details:</label>
-            <textarea name="comment" id="suggestion_comment" cols="30" rows="5"></textarea>
+                <label for="comment">Provide us with more details:</label>
+                <textarea name="comment" id="suggestion_comment" cols="30" rows="5"></textarea>
 
-            <button id="submit_suggestion">Submit</button>
-
+                <button id="submit_suggestion">Submit</button>
+            </form>
         </div>
 
         <div id="rating">
-            <label id="type2" hidden>rating</label>
+            <form id="rating_form" action="{{ url('api/leavefeedback', ['username' => auth()->user()->id]) }}"
+                method="post">
+                @csrf
+                <label id="type2" hidden>rating</label>
 
-            <label for="stars">Stars:</label>
-            <select name="stars-dropdown" id="stars">
-                <option value="">Choose option below</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
+                <label for="stars">Stars:</label>
+                <select name="stars-dropdown" id="stars">
+                    <option value="">Choose option below</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
 
-            <br>
+                <br>
 
-            <label for="comment">Provide us with more details:</label>
-            <textarea name="comment" id="rating_comment" cols="30" rows="5"></textarea>
+                <label for="comment">Provide us with more details:</label>
+                <textarea name="comment" id="rating_comment" cols="30" rows="5"></textarea>
 
-            <button id="submit_rating">Submit</button>
+                <button id="submit_rating">Submit</button>
 
+            </form>
         </div>
 
         <div id="problem">
-            <label id="type3" hidden>problem</label>
+            <form id="problem_form" action="{{ url('api/leavefeedback', ['username' => auth()->user()->id]) }}"
+                method="post">
+                @csrf
+                <label id="type3" hidden>problem</label>
 
-            <label for="frequency">How often it happened?</label>
-            <select name="frequency-dropdown" id="frequency">
-                <option value="">Choose option below</option>
-                <option value="once">Once</option>
-                <option value="often">Quite often</option>
-                <option value="always">Always</option>
-            </select>
+                <label for="frequency">How often it happened?</label>
+                <select name="frequency-dropdown" id="frequency">
+                    <option value="">Choose option below</option>
+                    <option value="once">Once</option>
+                    <option value="often">Quite often</option>
+                    <option value="always">Always</option>
+                </select>
 
-            <br>
+                <br>
 
-            <label for="comment">Provide us with more details:</label>
-            <textarea name="comment" id="problem_comment" cols="30" rows="5"></textarea>
+                <label for="comment">Provide us with more details:</label>
+                <textarea name="comment" id="problem_comment" cols="30" rows="5"></textarea>
 
-            <button id="submit_problem">Submit</button>
+                <button id="submit_problem">Submit</button>
 
+            </form>
         </div>
 
     </div>
 
     @vite(['resources/js/feedback.js'])
-
 @endsection

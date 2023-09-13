@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Opinion;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Access\Response;
 use Opis\JsonSchema\{Validator, ValidationResult, Helper};
+use Illuminate\Support\Facades\Auth;
 
 class OpinionController extends Controller
 {
@@ -28,16 +30,29 @@ class OpinionController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
+        $requestData = $request->json()->all();
+
+        // return response()->json([
+        //     'request' => $requestData
+        // ]);
+
+        // Ensure you have the necessary fields in your $requestData array
+        $userId = intval($id);
+        $feedbackType = $requestData['feedback_type'];
+        $categories = $requestData['categories'];
+        $stars = $requestData['stars'];
+        $frequency = $requestData['frequency'];
+        $comment = $requestData['comment'];
+
         $feedback = Opinion::create([
-            'user_id' => $request->user_id,
-            //should be auth()->user()->id
-            'feedback_type' => $request->feedback_type,
-            'categories' => $request->categories,
-            'stars' => $request->stars,
-            'frequency' => $request->frequency,
-            'comment' => $request->comment,
+            'user_id' => $userId,
+            'feedback_type' => $feedbackType,
+            'categories' => $categories,
+            'stars' => $stars,
+            'frequency' => $frequency,
+            'comment' => $comment,
         ]);
 
         if ($feedback) {
@@ -54,7 +69,7 @@ class OpinionController extends Controller
 
     }
 
-    public function validatesuggestion()
+    public function validateJSON()
     {
         // Create a new validator
         $validator = new Validator();
@@ -66,84 +81,47 @@ class OpinionController extends Controller
                 "properties": {
                     "feedback_type": {
                         "type": "string",
-                        "enum": [
-                            "suggestion",
-                            "rating",
-                            "problem"
+                        "enum": ["suggestion", "rating", "problem"]
+                    },
+                    "categories": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "enum": ["user interface", "auction experience", "payment process", "communication", "other"]
+                            },
+                            {
+                                "type": "null"
+                            }
                             ]
                         },
-                        "categories": {
+                        "stars": {
                             "anyOf": [
                                 {
-                                    "type": "string",
-                                    "enum": [
-                                        "user interface",
-                                        "auction experience",
-                                        "payment process",
-                                        "communication",
-                                        "other"
-                                        ]
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "maximum": 5
+                                },
+                                {
+                                    "type": "null"
+                                }
+                                ]
+                            },
+                            "frequency": {
+                                "anyOf": [
+                                    {
+                                        "type": "string",
+                                        "enum": ["once", "often", "always"]
                                     },
                                     {
                                         "type": "null"
                                     }
                                     ]
                                 },
-                                "stars": {
-                                    "anyOf": [
-                                        {
-                                            "type": "integer",
-                                            "minimum": 0,
-                                            "maximum": 5
-                                        },
-                                        {
-                                            "type": "null"
-                                        }
-                                        ]
-                                    },
-                                    "frequency": {
-                                        "anyOf": [
-                                            {
-                                                "type": "string",
-                                                "enum": [
-                                                    "once",
-                                                    "often",
-                                                    "always"
-                                                    ]
-                                                },
-                                                {
-                                                    "type": "null"
-                                                }
-                                                ]
-                                            },
-                                            "comment": {
-                                                "type": "string"
-                                            }
-                                        },
-                                        "oneOf": [
-                                            {
-                                                "required": [
-                                                    "feedback_type",
-                                                    "categories",
-                                                    "comment"
-                                                    ]
-                                                },
-                                                {
-                                                    "required": [
-                                                        "feedback_type",
-                                                        "stars",
-                                                        "comment"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "required": [
-                                                            "feedback_type",
-                                                            "frequency",
-                                                            "comment"
-                                                            ]
-                                                        }
-                                                        ]
-                                                    }
+                                "comment": {
+                                    "type": "string"
+                                }
+                            }
+                        }
         JSON;
 
         // Get the raw JSON data from the request body

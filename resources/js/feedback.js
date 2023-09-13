@@ -20,15 +20,12 @@ $(document).ready(function () {
             'comment': $('#suggestion_comment').val()
         }
         console.log(data);
-
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-        var url = "api/validatesuggestion" //api route
-
+        var url = "api/validateJSON" //api route to validate JSON schema
         // Send the data to the PHP script for validation
         $.ajax({
             url: url, //api route
@@ -37,23 +34,28 @@ $(document).ready(function () {
             contentType: 'application/json',
             success: function (response) {
                 console.log(response);
-
-                // var addfeedbackURL = "api/leavefeedback";
-
-                // var responseDATA = response.data;
-
-                // $.ajax({
-                //     url: addfeedbackURL, //api route
-                //     type: 'POST',
-                //     data: responseDATA,
-                //     contentType: 'application/json',
-                //     success: function (response) {
-                //         console.log(response);
-                //     },
-                //     error: function (error) {
-                //         console.error('Error:', error);
-                //     }
-                // });
+                var apiUrl = $('#suggestion_form').attr('action');
+                console.log(apiUrl);
+                var responseDATA = response.data;
+                console.log(responseDATA);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: apiUrl, 
+                    type: 'POST',
+                    data: JSON.stringify(responseDATA),
+                    contentType: 'application/json',
+                    dataType: 'JSON',
+                    success: function (response) {
+                        console.log(response);
+                    },
+                    error: function (error) {
+                        console.error('Error:', error);
+                    }
+                });
             },
             error: function (error) {
                 console.error('Error:', error);
@@ -61,35 +63,58 @@ $(document).ready(function () {
         });
     });
 
+
+
+
     $(document).on('click', '#rate_btn', function (event) {
         $("#button_containers").hide();
         $("#rating").show();
     });
     $(document).on('click', '#submit_rating', function (event) {
         event.preventDefault();
-
         var data = {
             'feedback_type': $('#type2').text(),
+            'categories': null,
             'stars': parseInt($('#stars').val()),
+            'frequency': null,
             'comment': $('#rating_comment').val()
         }
         console.log(data);
-
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-        var url = "api/validaterating"
-
+        var url = "api/validateJSON"
         $.ajax({
-            url: url, 
+            url: url,
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
             success: function (response) {
                 console.log(response);
+                var apiUrl = $('#rating_form').attr('action');
+                console.log(apiUrl);
+                var responseDATA = response.data;
+                console.log(responseDATA);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: apiUrl, 
+                    type: 'POST',
+                    data: JSON.stringify(responseDATA),
+                    contentType: 'application/json',
+                    dataType: 'JSON',
+                    success: function (response) {
+                        console.log(response);
+                    },
+                    error: function (error) {
+                        console.error('Error:', error);
+                    }
+                });
             },
             error: function (error) {
                 console.error('Error:', error);
@@ -104,22 +129,20 @@ $(document).ready(function () {
     });
     $(document).on('click', '#submit_problem', function (event) {
         event.preventDefault();
-
         var data = {
             'feedback_type': $('#type3').text(),
+            'categories': null,
+            'stars': null,
             'frequency': $('#frequency').val(),
             'comment': $('#problem_comment').val()
         }
         console.log(data);
-
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-        var url = "api/validateproblem"
-
+        var url = "api/validateJSON"
         $.ajax({
             url: url,
             type: 'POST',
@@ -127,6 +150,28 @@ $(document).ready(function () {
             contentType: 'application/json',
             success: function (response) {
                 console.log(response);
+                var apiUrl = $('#problem_form').attr('action');
+                console.log(apiUrl);
+                var responseDATA = response.data;
+                console.log(responseDATA);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: apiUrl, 
+                    type: 'POST',
+                    data: JSON.stringify(responseDATA),
+                    contentType: 'application/json',
+                    dataType: 'JSON',
+                    success: function (response) {
+                        console.log(response);
+                    },
+                    error: function (error) {
+                        console.error('Error:', error);
+                    }
+                });
             },
             error: function (error) {
                 console.error('Error:', error);
