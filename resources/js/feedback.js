@@ -189,4 +189,58 @@ $(document).ready(function () {
         $("#problem").hide();
     });
 
+
+
+
+
+  
+
+
+    $(document).on('click', '#generate_list', function (event) {
+        event.preventDefault();
+        
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var url = "api/leavefeedback"
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: '',
+            contentType: 'application/json',
+            success: function (response) {
+                console.log(response);
+
+                var apiUrl = "http://127.0.0.1:8000/api/validateIncoming";
+                console.log(apiUrl);
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: apiUrl, 
+                    type: 'POST',
+                    data: JSON.stringify(response),
+                    contentType: 'application/json',
+                    dataType: 'JSON',
+                    success: function (response) {
+                        console.log(response);
+                    },
+                    error: function (error) {
+                        console.error('Error:', error);
+                    }
+                });
+            },
+            error: function (error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+
 });

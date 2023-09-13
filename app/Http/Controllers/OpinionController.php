@@ -216,10 +216,19 @@ class OpinionController extends Controller
         $result = $validator->validate($data, json_decode($schema));
 
         if ($result->isValid()) {
-            echo 'Valid', PHP_EOL;
+            // echo 'Valid', PHP_EOL;
+            return response()->json([
+                'status' => 200,
+                'message' => 'Valid JSON',
+                'data' => $data
+            ]);
         } else {
             // Print errors
-            echo 'Invalid', PHP_EOL;
+            // echo 'Invalid', PHP_EOL;
+            return response()->json([
+                'message' => 'Invalid JSON',
+                'status' => 400
+            ]);
         }
     }
 
