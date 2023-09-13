@@ -6,8 +6,9 @@ $(document).ready(function () {
     $("#rating").hide();
     $("#problem").hide();
 
+    //Handling Suggestion Feedback
     $(document).on('click', '#suggestion_btn', function () {
-        $("#button_containers").hide();
+        $("#MainView").hide();
         $("#suggestion").show();
     });
     $(document).on('click', '#submit_suggestion', function (event) {
@@ -65,9 +66,9 @@ $(document).ready(function () {
 
 
 
-
-    $(document).on('click', '#rate_btn', function (event) {
-        $("#button_containers").hide();
+    //Handling Rating Feedback
+    $(document).on('click', '#rate_btn', function () {
+        $("#MainView").hide();
         $("#rating").show();
     });
     $(document).on('click', '#submit_rating', function (event) {
@@ -123,8 +124,9 @@ $(document).ready(function () {
 
     });
 
-    $(document).on('click', '#problem_btn', function (event) {
-        $("#button_containers").hide();
+    //Handling Problem Feedback
+    $(document).on('click', '#problem_btn', function () {
+        $("#MainView").hide();
         $("#problem").show();
     });
     $(document).on('click', '#submit_problem', function (event) {
@@ -177,7 +179,14 @@ $(document).ready(function () {
                 console.error('Error:', error);
             }
         });
+    });
 
+
+    $(document).on('click', '.cancel', function () {
+        $("#MainView").show();
+        $("#suggestion").hide();
+        $("#rating").hide();
+        $("#problem").hide();
     });
 
 });

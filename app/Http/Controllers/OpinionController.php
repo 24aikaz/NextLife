@@ -148,31 +148,64 @@ class OpinionController extends Controller
         }
     }
 
-    public function validaterating()
+    public function validateIncoming()
     {
         // Create a new validator
         $validator = new Validator();
 
         // Register our schema
         $schema = <<<'JSON'
-        {
-            "type": "object",
-            "properties": {
-                "feedback_type": {
-                    "type": "string",
-                    "enum": ["suggestion", "rating", "problem"]
-                },
-                "stars": {
-                    "type": "integer",
-                    "minimum": 0,
-                    "maximum": 5
-                },
-                "comment": {
-                    "type": "string"
+                {
+                    "type": "object",
+                    "properties": {
+                        "status": {
+                            "type": "integer"
+                        },
+                        "message": {
+                            "type": "string"
+                        },
+                        "feedback": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "feedback_type": {
+                                        "type": "string",
+                                        "enum": ["suggestion", "rating", "problem"]
+                                    },
+                                    "categories": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "stars": {
+                                        "type": ["integer", "null"]
+                                    },
+                                    "frequency": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "comment": {
+                                        "type": "string"
+                                    },
+                                    "created_at": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "updated_at": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "required": ["id", "user_id", "feedback_type", "comment", "created_at", "updated_at"]
+                            }
+                        }
+                    },
+                    "required": ["status", "message"]
                 }
-            },
-            "required": ["feedback_type", "stars", "comment"]     
-        }
         JSON;
 
         // Get the raw JSON data from the request body
@@ -190,44 +223,4 @@ class OpinionController extends Controller
         }
     }
 
-    public function validateproblem()
-    {
-        // Create a new validator
-        $validator = new Validator();
-
-        // Register our schema
-        $schema = <<<'JSON'
-        {
-            "type": "object",
-            "properties": {
-                "feedback_type": {
-                    "type": "string",
-                    "enum": ["suggestion", "rating", "problem"]
-                },
-                "frequency": {
-                    "type": "string",
-                    "enum": ["once", "often", "always"]
-                },
-                "comment": {
-                    "type": "string"
-                }
-            },
-            "required": ["feedback_type", "frequency", "comment"]     
-        }
-        JSON;
-
-        // Get the raw JSON data from the request body
-        $inputJSON = file_get_contents('php://input');
-        $data = json_decode($inputJSON);
-
-        // Validate the data against the schema
-        $result = $validator->validate($data, json_decode($schema));
-
-        if ($result->isValid()) {
-            echo 'Valid', PHP_EOL;
-        } else {
-            // Print errors
-            echo 'Invalid', PHP_EOL;
-        }
-    }
 }
