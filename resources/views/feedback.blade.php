@@ -78,7 +78,7 @@
             <select name="frequency-dropdown" id="frequency">
                 <option value="">Choose option below</option>
                 <option value="once">Once</option>
-                <option value="quite often">Quite often</option>
+                <option value="often">Quite often</option>
                 <option value="always">Always</option>
             </select>
 
@@ -95,87 +95,4 @@
 
     @vite(['resources/js/feedback.js'])
 
-    {{-- <script>
-        $(document).on('click', '#submit_suggestion', function(event) {
-            event.preventDefault();
-            var data = {
-                'feedback_type': $('#type1').text(),
-                'categories': $('#category').val(),
-                'comment': $('#suggestion_comment').val()
-            }
-            console.log(data);
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            // Send the data to the PHP script for validation
-            $.ajax({
-                url: '{{ route('validate') }}', //api route
-                type: 'POST',
-                data: JSON.stringify(data),
-                contentType: 'application/json',
-                success: function(response) {
-                    console.log(response);
-                },
-                error: function(error) {
-                    console.error('Error:', error);
-                }
-            });
-        });
-    </script> --}}
-
-    {{-- @php
-        // Create a new validator
-        $validator = new Validator();
-        
-        // Register our schema
-        $schema = <<<'JSON'
-        {
-            "type": "object",
-            "properties": {
-                "feedback_type": {
-                    "type": "string"
-                },
-                "categories": {
-                    "type": "string"
-                },
-                "comment": {
-                    "type": "string"
-                }
-            },
-            "required": ["feedback_type", "categories", "comment"]
-        }
-        JSON;
-        
-        // $data = <<<'JSON'
-        // {
-        //     "feedback_type": "testing",
-        //     "categories":  "test",
-        //     "comment": "test"
-        // }
-        // JSON;
-        
-        // // Decode $data
-        // $data = json_decode($data);
-        
-        // /** @var ValidationResult $result */
-        // $result = $validator->validate($data, $schema);
-        
-        // Get the raw JSON data from the request body
-        $inputJSON = file_get_contents('php://input');
-        $data = json_decode($inputJSON);
-        
-        // Validate the data against the schema
-        $result = $validator->validate($data, json_decode($schema));
-        
-        if ($result->isValid()) {
-            echo 'Valid', PHP_EOL;
-        } else {
-            // Print errors
-            echo 'Invalid', PHP_EOL;
-        }
-    @endphp --}}
 @endsection

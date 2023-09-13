@@ -10,11 +10,13 @@ $(document).ready(function () {
         $("#button_containers").hide();
         $("#suggestion").show();
     });
-    $(document).on('click', '#submit_suggestion', function(event) {
+    $(document).on('click', '#submit_suggestion', function (event) {
         event.preventDefault();
         var data = {
             'feedback_type': $('#type1').text(),
             'categories': $('#category').val(),
+            'stars': null,
+            'frequency': null,
             'comment': $('#suggestion_comment').val()
         }
         console.log(data);
@@ -25,7 +27,7 @@ $(document).ready(function () {
             }
         });
 
-        var url = "api/validate"
+        var url = "api/validatesuggestion" //api route
 
         // Send the data to the PHP script for validation
         $.ajax({
@@ -33,17 +35,31 @@ $(document).ready(function () {
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            success: function(response) {
+            success: function (response) {
                 console.log(response);
+
+                // var addfeedbackURL = "api/leavefeedback";
+
+                // var responseDATA = response.data;
+
+                // $.ajax({
+                //     url: addfeedbackURL, //api route
+                //     type: 'POST',
+                //     data: responseDATA,
+                //     contentType: 'application/json',
+                //     success: function (response) {
+                //         console.log(response);
+                //     },
+                //     error: function (error) {
+                //         console.error('Error:', error);
+                //     }
+                // });
             },
-            error: function(error) {
+            error: function (error) {
                 console.error('Error:', error);
             }
         });
     });
-
-
-
 
     $(document).on('click', '#rate_btn', function (event) {
         $("#button_containers").hide();
@@ -54,31 +70,33 @@ $(document).ready(function () {
 
         var data = {
             'feedback_type': $('#type2').text(),
-            'stars': $('#stars').val(),
+            'stars': parseInt($('#stars').val()),
             'comment': $('#rating_comment').val()
         }
         console.log(data);
 
-        const schema = {
-            "type": "object",
-            "properties": {
-                "feedback_type": {
-                    "type": "string"
-                },
-                "stars": {
-                    "type": "integer"
-                },
-                "comment": {
-                    "type": "string"
-                }
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var url = "api/validaterating"
+
+        $.ajax({
+            url: url, 
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function (response) {
+                console.log(response);
             },
-            "required": ["feedback_type", "stars", "comment"]
-        };
+            error: function (error) {
+                console.error('Error:', error);
+            }
+        });
 
     });
-
-
-
 
     $(document).on('click', '#problem_btn', function (event) {
         $("#button_containers").hide();
@@ -94,21 +112,26 @@ $(document).ready(function () {
         }
         console.log(data);
 
-        const schema = {
-            "type": "object",
-            "properties": {
-                "feedback_type": {
-                    "type": "string"
-                },
-                "frequency": {
-                    "type": "string"
-                },
-                "comment": {
-                    "type": "string"
-                }
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var url = "api/validateproblem"
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function (response) {
+                console.log(response);
             },
-            "required": ["feedback_type", "frequency", "comment"]
-        };
+            error: function (error) {
+                console.error('Error:', error);
+            }
+        });
 
     });
 
