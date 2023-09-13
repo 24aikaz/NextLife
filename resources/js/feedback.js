@@ -45,7 +45,7 @@ $(document).ready(function () {
                     }
                 });
                 $.ajax({
-                    url: apiUrl, 
+                    url: apiUrl,
                     type: 'POST',
                     data: JSON.stringify(responseDATA),
                     contentType: 'application/json',
@@ -104,7 +104,7 @@ $(document).ready(function () {
                     }
                 });
                 $.ajax({
-                    url: apiUrl, 
+                    url: apiUrl,
                     type: 'POST',
                     data: JSON.stringify(responseDATA),
                     contentType: 'application/json',
@@ -162,7 +162,7 @@ $(document).ready(function () {
                     }
                 });
                 $.ajax({
-                    url: apiUrl, 
+                    url: apiUrl,
                     type: 'POST',
                     data: JSON.stringify(responseDATA),
                     contentType: 'application/json',
@@ -193,20 +193,17 @@ $(document).ready(function () {
 
 
 
-  
+
 
 
     $(document).on('click', '#generate_list', function (event) {
         event.preventDefault();
-        
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
         var url = "api/leavefeedback"
-
         $.ajax({
             url: url,
             type: 'GET',
@@ -224,13 +221,43 @@ $(document).ready(function () {
                     }
                 });
                 $.ajax({
-                    url: apiUrl, 
+                    url: apiUrl,
                     type: 'POST',
                     data: JSON.stringify(response),
                     contentType: 'application/json',
                     dataType: 'JSON',
                     success: function (response) {
                         console.log(response);
+
+                        // Check if the response status is 200 and if there is feedback data
+                        if (response.status === 200 && response.data && response.data.feedback) {
+                            // Get a reference to the feedback container
+                            var feedbackContainer = $('#feedbackContainer');
+
+                            // Loop through the feedback items and create HTML elements for each
+                            response.data.feedback.forEach(function (feedbackItem) {
+                                // Create a div element to represent the feedback item
+                                var feedbackDiv = $('<div class="feedback-item"></div>');
+
+                                // Create HTML content for the feedback item
+                                var feedbackContent = '<p>ID: ' + feedbackItem.id + '</p>' +
+                                    '<p>User ID: ' + feedbackItem.user_id + '</p>' +
+                                    '<p>Feedback Type: ' + feedbackItem.feedback_type + '</p>' +
+                                    '<p>Categories: ' + (feedbackItem.categories || 'N/A') + '</p>' +
+                                    '<p>Stars: ' + (feedbackItem.stars || 'N/A') + '</p>' +
+                                    '<hr>';
+
+                                // Append the HTML content to the feedback div
+                                feedbackDiv.html(feedbackContent);
+
+                                // Append the feedback div to the container
+                                feedbackContainer.append(feedbackDiv);
+                            });
+                        } else {
+                            console.error('Invalid response:', response);
+                        }
+
+
                     },
                     error: function (error) {
                         console.error('Error:', error);

@@ -156,7 +156,7 @@
                 </div>
 
                 <div class="modal-body">
-                    ...
+                    <div id="feedbackContainer"></div>
                 </div>
 
                 <div class="modal-footer">
