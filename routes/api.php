@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 // Defining an API to work with user data: Fetch, update and delete.
-Route::get('user', [UserController::class, 'show']);
+Route::get('user/{username}', [UserController::class, 'show']);
 Route::put('user/{username}', [UserController::class, 'update']);
 //Route::delete('user/{username}', [UserController::class, 'destroy']);
 Route::delete('/user/{username}', [UserController::class,'destroy']);

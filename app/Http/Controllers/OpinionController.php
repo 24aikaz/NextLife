@@ -150,57 +150,57 @@ class OpinionController extends Controller
 
         // Register our schema
         $schema = <<<'JSON'
-                {
-                    "type": "object",
-                    "properties": {
-                        "status": {
-                            "type": "integer"
-                        },
-                        "message": {
-                            "type": "string"
-                        },
-                        "feedback": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "integer"
+                    {
+                        "type": "object",
+                        "properties": {
+                            "status": {
+                                "type": "integer"
+                            },
+                            "message": {
+                                "type": "string"
+                            },
+                            "feedback": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "user_id": {
+                                            "type": "integer"
+                                        },
+                                        "feedback_type": {
+                                            "type": "string",
+                                            "enum": ["suggestion", "rating", "problem"]
+                                        },
+                                        "categories": {
+                                            "type": ["string", "null"]
+                                        },
+                                        "stars": {
+                                            "type": ["integer", "null"]
+                                        },
+                                        "frequency": {
+                                            "type": ["string", "null"]
+                                        },
+                                        "comment": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
                                     },
-                                    "user_id": {
-                                        "type": "integer"
-                                    },
-                                    "feedback_type": {
-                                        "type": "string",
-                                        "enum": ["suggestion", "rating", "problem"]
-                                    },
-                                    "categories": {
-                                        "type": ["string", "null"]
-                                    },
-                                    "stars": {
-                                        "type": ["integer", "null"]
-                                    },
-                                    "frequency": {
-                                        "type": ["string", "null"]
-                                    },
-                                    "comment": {
-                                        "type": "string"
-                                    },
-                                    "created_at": {
-                                        "type": "string",
-                                        "format": "date-time"
-                                    },
-                                    "updated_at": {
-                                        "type": "string",
-                                        "format": "date-time"
-                                    }
-                                },
-                                "required": ["id", "user_id", "feedback_type", "comment", "created_at", "updated_at"]
+                                    "required": ["id", "user_id", "feedback_type", "comment", "created_at", "updated_at"]
+                                }
                             }
-                        }
-                    },
-                    "required": ["status", "message"]
-                }
+                        },
+                        "required": ["status", "message"]
+                    }
         JSON;
 
         // Get the raw JSON data from the request body

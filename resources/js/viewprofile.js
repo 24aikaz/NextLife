@@ -46,7 +46,7 @@ $(document).ready(function () {
                 var errors = error.responseJSON.errors;
                 console.log(errors);
             } else {
-                alert('An error occurred. Please try again later.');
+                alert('Cannot view profile at the moment. Please try again later.');
             }
         }
     });

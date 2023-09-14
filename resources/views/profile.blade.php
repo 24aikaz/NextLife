@@ -76,28 +76,28 @@
                     <div class="modal-body">
 
                         <label for="edit_email">Email:</label>
-                        <input name="edit_email" type="email" id="edit_email" autocomplete="off" class="form-control"
+                        <input name="edit_email" type="email" id="edit_email" autocomplete="off" class="form-control somethinginput underline"
                             value="{{ auth()->user()->email }}">
 
                         <label for="edit_num">Contact Number</label>
-                        <input name="edit_num" type="number" id="edit_num" autocomplete="off" class="form-control"
+                        <input name="edit_num" type="text" id="edit_num" autocomplete="off" class="form-control somethinginput underline"
                             value="{{ auth()->user()->contact_number }}">
 
                         <label for="edit_street">Street:</label>
-                        <input name="edit_street" type="text" id="edit_street" autocomplete="off" class="form-control"
+                        <input name="edit_street" type="text" id="edit_street" autocomplete="off" class="form-control somethinginput underline"
                             value="{{ auth()->user()->street }}">
 
                         <label for="edit_city">City:</label>
-                        <input name="edit_city" type="text" id="edit_city" autocomplete="off" class="form-control"
+                        <input name="edit_city" type="text" id="edit_city" autocomplete="off" class="form-control somethinginput underline"
                             value="{{ auth()->user()->city }}">
 
                         <label for="edit_country">Country:</label>
-                        <input name="edit_country" type="text" id="edit_country" autocomplete="off" class="form-control"
+                        <input name="edit_country" type="text" id="edit_country" autocomplete="off" class="form-control somethinginput underline"
                             value="{{ auth()->user()->country }}">
 
                         <label for="edit_postcode">Postal/Zip Code</label>
                         <input name="edit_postcode" type="number" id="edit_postcode" autocomplete="off"
-                            class="form-control" value="{{ auth()->user()->postal_code }}">
+                            class="form-control somethinginput underline" value="{{ auth()->user()->postal_code }}">
 
                     </div>
 
