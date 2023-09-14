@@ -87,20 +87,20 @@ class UserController extends Controller
     }
 
     public function destroy($username)
-{
-    // Find the user by username
-    $user = User::where('username', $username)->first();
+    {
+        // Find the user by username
+        $user = User::where('username', $username)->first();
 
-    if (!$user) {
-        // Handle the case where the user does not exist
-        return response()->json(['message' => 'User not found.'], 404);
+        if (!$user) {
+            // Handle the case where the user does not exist
+            return response()->json(['message' => 'User not found.'], 404);
+        } else {
+            // Perform the soft delete
+            $user->delete();
+
+            // Optionally, you can return a success response
+            return response()->json(['message' => 'Account has been deleted successfully.'], 200);
+        }
     }
-
-    // Perform the soft delete
-    $user->delete();
-
-    // Optionally, you can return a success response
-    return response()->json(['message' => 'User deleted successfully.']);
-}
 
 }

@@ -56,6 +56,7 @@ $(document).ready(function () {
             data: '',
             success: function (response) {
                 alert(response.message);
+                window.location.href = '/';
             },
             error: function (error) {
                 if (error.status === 422) {

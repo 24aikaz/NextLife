@@ -34,11 +34,6 @@ class OpinionController extends Controller
     {
         $requestData = $request->json()->all();
 
-        // return response()->json([
-        //     'request' => $requestData
-        // ]);
-
-        // Ensure you have the necessary fields in your $requestData array
         $userId = intval($id);
         $feedbackType = $requestData['feedback_type'];
         $categories = $requestData['categories'];

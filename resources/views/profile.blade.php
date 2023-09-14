@@ -57,29 +57,6 @@
                 </button>
             </form>
         </div>
-        
-    <script>    
-        const deleteForm = document.getElementById('DeleteForm');
-        const username = deleteForm.getAttribute('data-username');
-        
-        fetch(`/api/user/${username}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                // Add any additional headers as needed
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle success, e.g., show a confirmation message
-            console.log(data.message);
-        })
-        .catch(error => {
-            // Handle errors, e.g., display an error message
-            console.error(error.message);
-        });
- </script>               
-
 
     <!-- Update User Info Modal -->
     <div class="modal fade" id="updateUserInfo" tabindex="-1" role="dialog">

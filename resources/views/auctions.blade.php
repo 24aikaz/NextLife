@@ -44,7 +44,7 @@
             <!-- Assuming you have a Blade template for displaying the product details -->
             <form id="checkWinnerForm" method="post" action="{{ route('check-winners') }}">
                 @csrf
-                <button type="submit" id="checkWinnerBtn">Check Winner</button>
+                <button type="submit" id="checkWinnerBtn" class="btn">Check Winner</button>
             </form>
 
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

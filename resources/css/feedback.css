@@ -29,18 +29,21 @@ body {
 }
 
 #suggestion {
+    padding-top: 4rem;
     animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
 
 #rating {
+    padding-top: 4rem;
     animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
 
 #problem {
+    padding-top: 4rem;
     animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -135,4 +138,9 @@ body {
     color: var(--primary-color) !important;
     margin-top: 7rem;
     font-size: 2.5rem !important;
+}
+
+.modal-content {
+    padding: 2rem 3rem;
+    background-color: var(--tertiary-color) !important;
 }

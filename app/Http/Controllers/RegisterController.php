@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
 
 class RegisterController extends Controller
 {
@@ -24,13 +25,17 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'username' => 'required|max:255',
+            'username' => 'unique:users,username',
             'email' => 'required|email|max:255',
-            'password' => 'required|confirmed',
+            'password' => ['required', Password::min(8)
+                ->letters()
+                ->numbers()
+                ->symbols()
+                ->uncompromised()],
             'first_name' => 'required',
             'last_name' => 'required',
             'birth_date' => 'required|date',
-            'contact_number' => 'required',
+            'contact_number' => 'required|numeric|digits:10',
             'street' => 'required',
             'city' => 'required',
             'postal_code' => 'required',

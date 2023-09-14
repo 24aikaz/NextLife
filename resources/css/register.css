@@ -75,12 +75,13 @@ body {
 
 /* Registering types */
 .radio_item {
-    display: none !important;
+    display: none !important;  
 }
 
+ 
 .label_item {
     opacity: 0.5;
-    font-size: 5rem;
+    font-size: 6rem;
     color: #00888c;
 }
 

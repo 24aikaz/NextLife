@@ -13,12 +13,18 @@ $(document).ready(function () {
     });
     $(document).on('click', '#submit_suggestion', function (event) {
         event.preventDefault();
+        var comment = null;
+        if ($('#suggestion_comment').val() == ''){
+            comment = null;
+        } else {
+            comment = $('#suggestion_comment').val()
+        }
         var data = {
             'feedback_type': $('#type1').text(),
             'categories': $('#category').val(),
             'stars': null,
             'frequency': null,
-            'comment': $('#suggestion_comment').val()
+            'comment': comment
         }
         console.log(data);
         $.ajaxSetup({
@@ -52,14 +58,18 @@ $(document).ready(function () {
                     dataType: 'JSON',
                     success: function (response) {
                         console.log(response);
+                        $("#suggestion_form")[0].reset();
+                        alert('Thank you for your feedback!');
                     },
                     error: function (error) {
                         console.error('Error:', error);
+                        alert("You're required to fill all fields.");
                     }
                 });
             },
             error: function (error) {
                 console.error('Error:', error);
+                alert('There was an error processing your feedback.');
             }
         });
     });
@@ -73,12 +83,18 @@ $(document).ready(function () {
     });
     $(document).on('click', '#submit_rating', function (event) {
         event.preventDefault();
+        var comment = null;
+        if ($('#rating_comment').val() == ''){
+            comment = null;
+        } else {
+            comment = $('#rating_comment').val()
+        }
         var data = {
             'feedback_type': $('#type2').text(),
             'categories': null,
             'stars': parseInt($('#stars').val()),
             'frequency': null,
-            'comment': $('#rating_comment').val()
+            'comment': comment
         }
         console.log(data);
         $.ajaxSetup({
@@ -111,14 +127,18 @@ $(document).ready(function () {
                     dataType: 'JSON',
                     success: function (response) {
                         console.log(response);
+                        $("#rating_form")[0].reset();
+                        alert('Thank you for your feedback!');
                     },
                     error: function (error) {
                         console.error('Error:', error);
+                        alert("You're required to fill all fields.");
                     }
                 });
             },
             error: function (error) {
                 console.error('Error:', error);
+                alert('There was an error processing your feedback.');
             }
         });
 
@@ -131,12 +151,18 @@ $(document).ready(function () {
     });
     $(document).on('click', '#submit_problem', function (event) {
         event.preventDefault();
+        var comment = null;
+        if ($('#problem_comment').val() == ''){
+            comment = null;
+        } else {
+            comment = $('#problem_comment').val()
+        }
         var data = {
             'feedback_type': $('#type3').text(),
             'categories': null,
             'stars': null,
             'frequency': $('#frequency').val(),
-            'comment': $('#problem_comment').val()
+            'comment': comment
         }
         console.log(data);
         $.ajaxSetup({
@@ -169,14 +195,18 @@ $(document).ready(function () {
                     dataType: 'JSON',
                     success: function (response) {
                         console.log(response);
+                        $("#problem_form")[0].reset();
+                        alert('Thank you for your feedback!');
                     },
                     error: function (error) {
                         console.error('Error:', error);
+                        alert("You're required to fill all fields.");
                     }
                 });
             },
             error: function (error) {
                 console.error('Error:', error);
+                alert('There was an error processing your feedback.');
             }
         });
     });
@@ -245,6 +275,7 @@ $(document).ready(function () {
                                     '<p>Feedback Type: ' + feedbackItem.feedback_type + '</p>' +
                                     '<p>Categories: ' + (feedbackItem.categories || 'N/A') + '</p>' +
                                     '<p>Stars: ' + (feedbackItem.stars || 'N/A') + '</p>' +
+                                    '<p>Comment: ' + (feedbackItem.comment || 'N/A') + '</p>' +
                                     '<hr>';
 
                                 // Append the HTML content to the feedback div
