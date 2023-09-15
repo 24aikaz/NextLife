@@ -6,7 +6,7 @@ $(document).ready(function () {
 
         var url = "/search";
 
-        // Get the search query
+        // Get the search query or keyword
         var query = {
             'query': $('#search_input').val()
         };
@@ -26,16 +26,14 @@ $(document).ready(function () {
             data: query,
             dataType: 'json',
             success: function (response) {
-            
                 console.log(response);
-                // Update the auctions page with the search results
                 var products = response.products;
                 var eachProductContent = $('#each_product');
 
                 var i = 0;
                 var time = '';
 
-                eachProductContent.empty(); // Clear existing content
+                eachProductContent.empty();
 
                 if (products.length > 0) {
 
@@ -57,7 +55,7 @@ $(document).ready(function () {
                         <div class="col" >
                         <a class="card-link" href="/viewproduct/`+ products[i].Product_ID + `">
                             <div class="card">
-                                <img src="storage/`+ products[i].image + `" alt="`+ products[i].pname + `" class="product-image">
+                                <img src="storage/`+ products[i].image + `" alt="` + products[i].pname + `" class="product-image">
                                 <h3 class="product_title">`+ products[i].pname + `</h3>
                                 <h5>Current Price: $ `+ products[i].currentprice + `</h5>
                                 <p>Countdown: `+ time + `</p>
@@ -66,9 +64,12 @@ $(document).ready(function () {
                         </div>`;
                         eachProductContent.append(productHtml);
                         i++;
+
                     });
                 } else {
+
                     eachProductContent.append('<p class="text-center">No results found.</p>');
+
                 }
             },
             error: function (response) {

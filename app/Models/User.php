@@ -19,7 +19,18 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'username', 'email', 'password', 'first_name', 'last_name', 'birth_date', 'contact_number', 'street', 'city', 'postal_code', 'country', 'usertype'
+        'username',
+        'email',
+        'password',
+        'first_name',
+        'last_name',
+        'birth_date',
+        'contact_number',
+        'street',
+        'city',
+        'postal_code',
+        'country',
+        'usertype'
     ];
 
     /**
@@ -28,7 +39,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -41,12 +53,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    // A user can have many products
     public function products()
     {
         return $this->hasMany(Product::class, 'seller_id', 'id');
     }
 
-    // Define a relationship to retrieve the user's bids
+    // A user can bid on many items, thus bid on many products
     public function bids()
     {
         return $this->hasMany(Bid::class, 'bidder_id', 'id');

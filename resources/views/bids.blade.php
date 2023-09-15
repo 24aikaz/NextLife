@@ -35,7 +35,7 @@
                                                 <div class="col-10">
 
                                                     <h3>{{ $product->pname }}</h3>
-                                                    <label class="text-muted">ID: 
+                                                    <label class="text-muted">ID:
                                                         <span class="product_id">{{ $bid->product_id }}</span>
                                                     </label>
                                                     <label class="d-flex justify-content-end">Bid placed:
@@ -61,9 +61,7 @@
                     <p>You have not placed any bids yet.</p>
                 @endif
             </div>
-
         @else
-
             <div class="mx-auto errormsg">
                 <h1 class="text-center">ACCESS DENIED!</h1>
             </div>

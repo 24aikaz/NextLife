@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         $this->middleware(['auth']);
     }
-    
+
     public function index()
     {
         return view('merchant.product');
@@ -66,12 +66,14 @@ class ProductController extends Controller
             'image' => $imageData,
             'startprice' => $validatedData['startprice'],
             'currentprice' => $validatedData['startprice'],
-             'status' => 'Active', // Set it to "active" by default
+            'status' => 'Active',
+            // Set it to "active" by default
             'bidcount' => 0,
             'category' => $request->input('category'),
             'startdate' => $request->input('startdate'),
             'enddate' => $request->input('enddate'),
-            'seller_id' => auth()->id(), // Associate the product with the logged-in user
+            'seller_id' => auth()->id(),
+            // Associate the product with the logged-in user
         ]);
 
         return redirect()->back();
@@ -84,135 +86,135 @@ class ProductController extends Controller
         return response()->json($products);
     }
     public function destroy(Request $request, $Product_ID)
-{
-    try {
+    {
+        try {
+            // Find the product by ID
+            $product = Product::find($Product_ID);
+
+            if (!$product) {
+                // Product not found, return an error message or redirect as needed
+                return response()->json(['message' => 'Product not found.'], 404);
+            }
+
+            // Check if the logged-in user is the owner of the product
+            if ($product->seller_id != auth()->user()->id) {
+                // Unauthorized access, return an error message or redirect as needed
+                return response()->json(['message' => 'Unauthorized access.'], 403);
+            }
+
+            // Find and delete the associated auctions by Product_ID
+            Auction::where('Product_ID', $Product_ID)->delete();
+
+            // Find and delete the associated bids by product_id
+            Bid::where('product_id', $Product_ID)->delete();
+
+            // Delete the product
+            $product->delete();
+
+            // Return a success message
+            return response()->json(['message' => 'Product and associated auctions/bids deleted successfully.']);
+        } catch (\Exception $e) {
+            // Use dd() to dump information about the exception for debugging
+            dd($e);
+            // Handle the exception and return an error response
+            return response()->json(['message' => 'An error occurred while deleting the product.'], 500);
+        }
+    }
+
+    public function getWonProducts()
+    {
+        // Get the logged-in user's ID
+        $userId = Auth::id();
+
+        // Retrieve won products using the auctions table
+        $wonProducts = Auction::where('winner_id', $userId)
+            ->join('products', 'auctions.Product_ID', '=', 'products.Product_ID')
+            ->select('products.*')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('won-products', ['wonProducts' => $wonProducts]);
+    }
+    public function checkout(Request $request)
+    {
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        // Get the product ID from the request
+        $productId = $request->input('Product_ID');
+
         // Find the product by ID
-        $product = Product::find($Product_ID);
+        $product = Product::find($productId);
 
         if (!$product) {
-            // Product not found, return an error message or redirect as needed
+            // Handle the case where the product is not found (e.g., return an error message)
             return response()->json(['message' => 'Product not found.'], 404);
         }
 
-        // Check if the logged-in user is the owner of the product
-        if ($product->seller_id != auth()->user()->id) {
-            // Unauthorized access, return an error message or redirect as needed
-            return response()->json(['message' => 'Unauthorized access.'], 403);
-        }
-
-        // Find and delete the associated auctions by Product_ID
-        Auction::where('Product_ID', $Product_ID)->delete();
-        
-        // Find and delete the associated bids by product_id
-        Bid::where('product_id', $Product_ID)->delete();
-
-        // Delete the product
-        $product->delete();
-
-        // Return a success message
-        return response()->json(['message' => 'Product and associated auctions/bids deleted successfully.']);
-    } catch (\Exception $e) {
-        // Use dd() to dump information about the exception for debugging
-        dd($e);
-        // Handle the exception and return an error response
-        return response()->json(['message' => 'An error occurred while deleting the product.'], 500);
-    }
-}
-
-public function getWonProducts()
-{
-    // Get the logged-in user's ID
-    $userId = Auth::id();
-
-    // Retrieve won products using the auctions table
-    $wonProducts = Auction::where('winner_id', $userId)
-        ->join('products', 'auctions.Product_ID', '=', 'products.Product_ID')
-        ->select('products.*')
-        ->orderBy('created_at', 'desc')
-        ->get();
-
-    return view('won-products', ['wonProducts' => $wonProducts]);
-}
-public function checkout(Request $request)
-{
-    \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-
-    // Get the product ID from the request
-    $productId = $request->input('Product_ID');
-
-    // Find the product by ID
-    $product = Product::find($productId);
-
-    if (!$product) {
-        // Handle the case where the product is not found (e.g., return an error message)
-        return response()->json(['message' => 'Product not found.'], 404);
-    }
-
-    // Create a line item for the selected product
-    $lineItem = [
-        'price_data' => [
-            'currency' => 'usd',
-            'product_data' => [
-                'name' => $product->pname,
+        // Create a line item for the selected product
+        $lineItem = [
+            'price_data' => [
+                'currency' => 'usd',
+                'product_data' => [
+                    'name' => $product->pname,
+                ],
+                'unit_amount' => $product->winning_bid * 100,
             ],
-            'unit_amount' => $product->winning_bid * 100,
-        ],
-        'quantity' => 1,
-    ];
+            'quantity' => 1,
+        ];
 
-    // Create a checkout session for the single product
-    $session = \Stripe\Checkout\Session::create([
-        'line_items' => [$lineItem],
-        'mode' => 'payment',
-        'success_url' => route('checkout.success', [], true) . "?session_id={CHECKOUT_SESSION_ID}",
-        'cancel_url' => route('checkout.cancel', [], true),
-    ]);
+        // Create a checkout session for the single product
+        $session = \Stripe\Checkout\Session::create([
+            'line_items' => [$lineItem],
+            'mode' => 'payment',
+            'success_url' => route('checkout.success', [], true) . "?session_id={CHECKOUT_SESSION_ID}",
+            'cancel_url' => route('checkout.cancel', [], true),
+        ]);
 
-    $order = new Order();
-    $order->status = 'unpaid';
-    $order->total_price = $product->winning_bid;
-    $order->session_id = $session->id;
-    $order->save();
+        $order = new Order();
+        $order->status = 'unpaid';
+        $order->total_price = $product->winning_bid;
+        $order->session_id = $session->id;
+        $order->save();
 
-    return redirect($session->url);
-}
-
-
-public function success(Request $request)
-{
-    \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-    $sessionId = $request->get('session_id');
-    $error = null; // Initialize the $error variable
-    $username = null; // Initialize the $username variable
-
-    try {
-        $session = \Stripe\Checkout\Session::retrieve($sessionId);
-        if (!$session) {
-            throw new NotFoundHttpException;
-        }
-        
-        // Get the currently logged-in user
-        $user = Auth::user();
-        
-        if ($user) {
-            $username = $user->username;
-        }
-
-        $order = Order::where('session_id', $session->id)->first();
-        if (!$order) {
-            throw new NotFoundHttpException();
-        }
-        if ($order->status === 'unpaid') {
-            $order->status = 'paid';
-            $order->save();
-        }
-        return view('checkout-success', compact('username'));
-        
-    } catch (\Exception $e) {
-        $error = 'An error occurred: ' . $e->getMessage();
-      
+        return redirect($session->url);
     }
-    
+
+
+    public function success(Request $request)
+    {
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $sessionId = $request->get('session_id');
+        $error = null; // Initialize the $error variable
+        $username = null; // Initialize the $username variable
+
+        try {
+            $session = \Stripe\Checkout\Session::retrieve($sessionId);
+            if (!$session) {
+                throw new NotFoundHttpException;
+            }
+
+            // Get the currently logged-in user
+            $user = Auth::user();
+
+            if ($user) {
+                $username = $user->username;
+            }
+
+            $order = Order::where('session_id', $session->id)->first();
+            if (!$order) {
+                throw new NotFoundHttpException();
+            }
+            if ($order->status === 'unpaid') {
+                $order->status = 'paid';
+                $order->save();
+            }
+            return view('checkout-success', compact('username'));
+
+        } catch (\Exception $e) {
+            $error = 'An error occurred: ' . $e->getMessage();
+
+        }
+
     }
 
     public function webhook()
@@ -226,7 +228,9 @@ public function success(Request $request)
 
         try {
             $event = \Stripe\Webhook::constructEvent(
-                $payload, $sig_header, $endpoint_secret
+                $payload,
+                $sig_header,
+                $endpoint_secret
             );
         } catch (\UnexpectedValueException $e) {
             // Invalid payload
@@ -236,7 +240,7 @@ public function success(Request $request)
             return response('', 400);
         }
 
-// Handle the event
+        // Handle the event
         switch ($event->type) {
             case 'checkout.session.completed':
                 $session = $event->data->object;
@@ -248,7 +252,6 @@ public function success(Request $request)
                     // Send email to customer
                 }
 
-            // ... handle other event types
             default:
                 echo 'Received unknown event type ' . $event->type;
         }
@@ -256,7 +259,3 @@ public function success(Request $request)
         return response('');
     }
 }
-
-
-
-

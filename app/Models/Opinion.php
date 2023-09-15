@@ -22,9 +22,5 @@ class Opinion extends Model
         'categories' => 'string',
         'feedback_type' => 'string',
         'frequency' => 'string',
-        
-        // 'categories' => 'enum:user interface,auction experience,payment process,communication,other',
-        // 'feedback_type' => 'enum:suggestion,rating,problem',
-        // 'frequency' => 'enum:once,often,always',
     ];
 }

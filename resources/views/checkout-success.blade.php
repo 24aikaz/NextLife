@@ -1,7 +1,6 @@
 @extends('app')
 
 @section('content')
-
     <div id="success-content" class="center text-center">
         <h2 id="title" class="">Success</h2>
 
@@ -15,9 +14,8 @@
                 Back to Home
             </a>
         </div>
-        
+
     </div>
 
     @vite(['resources/js/success-checkout.js'])
-
 @endsection

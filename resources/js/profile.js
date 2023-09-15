@@ -1,9 +1,10 @@
 import '../css/profile.css';
 
 $(document).ready(function () {
-    // Target the form submit event
+
     $('#UpdateForm').submit(function (event) {
-        event.preventDefault(); // Prevent the default form submission
+
+        event.preventDefault();
 
         // Get the form data
         var formData = {
@@ -15,7 +16,6 @@ $(document).ready(function () {
             'country': $('#edit_postcode').val(),
         }
 
-        // Get the API endpoint URL based on the form's action attribute
         var apiUrl = $(this).attr('action');
 
         console.log(apiUrl);
@@ -26,18 +26,13 @@ $(document).ready(function () {
             method: 'PUT',
             data: formData,
             success: function (response) {
-                // Handle the successful response here, e.g., show a success message
                 alert(response.message);
             },
             error: function (error) {
-                // Handle errors here, e.g., show validation errors
                 if (error.status === 422) {
                     var errors = error.responseJSON.errors;
                     console.log(errors);
-                    // Display the validation errors to the user
-                    // You can implement your logic to show errors as needed
                 } else {
-                    // Handle other types of errors (e.g., 404)
                     alert('An error occurred. Please try again later.');
                 }
             }
@@ -46,9 +41,10 @@ $(document).ready(function () {
 
 
     $('#DeleteForm').submit(function (event) {
+
         event.preventDefault();
 
-        var apiUrl = $(this).attr('action'); // Getting the API endpoint URL based on the form's action attribute
+        var apiUrl = $(this).attr('action');
 
         $.ajax({
             url: apiUrl,
@@ -68,4 +64,5 @@ $(document).ready(function () {
             }
         });
     });
+
 });

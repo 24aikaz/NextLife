@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     use HasFactory;
-    protected $table = 'transactions'; // Specify the table name if it's different from the model name
+    protected $table = 'transactions'; 
 
-    protected $primaryKey = 'Transaction_ID'; // Specify the primary key if it's different from 'id'
+    protected $primaryKey = 'Transaction_ID'; 
 
     protected $fillable = [
         'Product_ID',
@@ -22,7 +22,7 @@ class Transaction extends Model
         'Bidder_Address',
     ];
 
-    // Define the relationship with the Product model
+    // A transaction made is related to a specific product
     public function product()
     {
         return $this->belongsTo(Product::class, 'Product_ID', 'Product_ID');

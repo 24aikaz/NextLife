@@ -17,22 +17,13 @@ use Illuminate\Support\Facades\Route;
 class AuctionsController extends Controller
 {
     public function index()
-{
-    //$currentDateTime = Carbon::now();
-
-    // Check if the current route is the auctions page
-   /* if (Route::currentRouteName() === 'auctions') {
-        // Filter out products with enddate in the future
-        $products = Product::where('status', 'Inactive')
-            ->where('enddate', '>', $currentDateTime)
-            ->get();
-    } else {*/
+    {
         // For pagination
         $products = Product::latest()->paginate(12);
-    
 
-    return view('auctions', compact('products'));
-}
+
+        return view('auctions', compact('products'));
+    }
 
 
     public function checkWinners(Request $request)
@@ -76,8 +67,6 @@ class AuctionsController extends Controller
         return response()->json(['message' => 'Winners selected successfully']);
     }
 
-
-    
     public function search(Request $request)
     {
         $query = $request->input('query');
@@ -87,10 +76,8 @@ class AuctionsController extends Controller
             ->get();
 
         return response()->json([
-            // 'status' => 200,
             'products' => $products
         ]);
     }
-
 
 }

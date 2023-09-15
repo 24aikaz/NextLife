@@ -1,5 +1,5 @@
 /* ------- Color variables used throughout ------- */
-:root { 
+:root {
     --primary-color: #3F2305;
     --secondary-color: #DFD7BF;
     --tertiary-color: #F2EAD3;
@@ -7,7 +7,8 @@
     --teal-color: #00888C;
     --most-font-color: #0a0601;
 }
-.errormsg{
+
+.errormsg {
     color: red;
 }
 

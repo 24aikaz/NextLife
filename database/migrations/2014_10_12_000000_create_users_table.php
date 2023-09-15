@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -27,7 +26,7 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('postal_code')->nullable();
             $table->string('country')->nullable();
-            $table->string('usertype'); // Add the 'usertype' column
+            $table->string('usertype');
         });
     }
 

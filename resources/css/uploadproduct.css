@@ -1,5 +1,5 @@
 /* ------- Color variables used throughout ------- */
-:root { 
+:root {
     --primary-color: #3F2305;
     --secondary-color: #DFD7BF;
     --tertiary-color: #F2EAD3;
@@ -49,7 +49,7 @@ body {
     outline: none !important;
 }
 
-.form-group{
+.form-group {
     padding: 1rem 0rem;
 }
 

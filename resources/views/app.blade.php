@@ -69,7 +69,7 @@
                                 <ul class="dropdown-menu">
                                     <li>
                                         <a class="NavItem dropdown-item nav-link underline_middle clickable_stuff"
-                                        href="{{ route('profile') }}">Profile</a>
+                                            href="{{ route('profile') }}">Profile</a>
                                     </li>
                                     @if (auth()->user()->usertype == 'bidder')
                                         <li>

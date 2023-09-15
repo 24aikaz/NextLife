@@ -11,10 +11,6 @@
 body {
     padding: 2rem 3rem;
     background-color: var(--tertiary-color) !important;
-    /* background-size: cover !important;
-    background-image: linear-gradient(#dfd7bf42, #dfd7bf42),
-        url(/images/viewproductbackground.jpg) !important;
-    background-attachment: fixed; */
 }
 
 .errormsg {
@@ -103,7 +99,7 @@ body {
     padding-bottom: 1.5rem;
 }
 
-.bid_input{
+.bid_input {
     background-color: #DFD7BF !important;
     box-shadow: none !important;
     border-radius: 0 !important;
@@ -111,7 +107,7 @@ body {
     width: 10rem !important;
 }
 
-.bid_input:focus{
+.bid_input:focus {
     border-color: none;
     box-shadow: none;
     border-width: 0;

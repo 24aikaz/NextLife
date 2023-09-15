@@ -6,7 +6,7 @@
     --quarternary-color: #F5F5F5;
     --teal-color: #00888C;
     --most-font-color: #0a0601;
-} 
+}
 
 body {
     padding: 2rem 3rem;
@@ -64,7 +64,7 @@ body {
 }
 
 .somethinginput {
-    background-color: #DFD7BF !important; 
+    background-color: #DFD7BF !important;
     box-shadow: none !important;
     border-radius: 0 !important;
     border-width: 0 !important;

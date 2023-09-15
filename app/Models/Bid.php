@@ -12,7 +12,7 @@ class Bid extends Model
         'product_id', 'bidder_id', 'bid_price', 'bid_time',
     ];
 
-    // Relationships
+    // A bid belongs to a product
     public function product()
     {
         return $this->belongsTo(Product::class);

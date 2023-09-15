@@ -14,7 +14,7 @@
                         <div class="col">
                             <a class="card-link" href="{{ route('viewproduct', ['Product_ID' => $product->Product_ID]) }}">
                                 <div class="card">
-                                    
+
                                     <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->pname }}"
                                         class="product-image">
                                     <h3 class="product_title">{{ $product->pname }}</h3>

@@ -1,5 +1,5 @@
 /* ------- Color variables used throughout ------- */
-:root { 
+:root {
     --primary-color: #3F2305;
     --secondary-color: #DFD7BF;
     --tertiary-color: #F2EAD3;
@@ -14,15 +14,19 @@ body {
     color: var(--most-font-color);
     font-family: 'Merriweather', serif;
 }
+
 .clickable_stuff:hover {
     color: var(--teal-color);
 }
-.text_margin{
+
+.text_margin {
     margin: 0rem 3rem;
 }
+
 .Brand {
-    font-family: 'Gilda Display', serif; 
+    font-family: 'Gilda Display', serif;
 }
+
 a {
     /* color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1)); */
     color: inherit;
@@ -36,22 +40,26 @@ a {
     padding: 0.5rem 2rem;
     background-color: #dfd7bf33;
 }
+
 .NextLife {
     color: var(--primary-color);
     font-family: 'Gilda Display', serif;
 }
+
 .SearchBar {
     background-color: transparent;
     box-shadow: none;
     border-radius: 0px;
     border-width: 0px !important;
 }
+
 .SearchBar:focus {
     border-color: none;
     box-shadow: none;
     border-width: 0;
     background-color: transparent;
 }
+
 input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
 }
@@ -70,11 +78,13 @@ input[type="search"]::-webkit-search-cancel-button {
     background-repeat: no-repeat;
     transition: background-size 0.5s ease-in-out;
 }
+
 .underline:hover,
 .underline:focus,
 .underline:active {
     background-size: 100% 0.2em;
 }
+
 .underline_middle {
     text-decoration: none;
     background-image: linear-gradient(var(--teal-color), var(--teal-color));
@@ -84,6 +94,7 @@ input[type="search"]::-webkit-search-cancel-button {
     background-repeat: no-repeat;
     transition: background-size 0.5s ease-in-out;
 }
+
 .underline_middle:hover,
 .underline_middle:focus,
 .underline_middle:active {

@@ -2,19 +2,23 @@
 body::-webkit-scrollbar {
     display: none;
 }
+
 h1 {
     padding-top: 12rem;
     color: var(--most-font-color);
     font-family: 'Gilda Display', serif;
     font-size: 3rem;
 }
+
 h2 {
     font-family: 'Cantata One', serif;
 }
+
 a {
     text-decoration: none;
     color: inherit;
 }
+
 p {
     font-size: 1rem;
 }
@@ -28,36 +32,43 @@ p {
 }
 
 /* ------- Products ------- */
-#Text_Section1 h2{
+#Text_Section1 h2 {
     margin-top: 7rem;
 }
+
 #Text_Section1 {
     margin-bottom: 4rem;
 }
+
 #Product_Showcase {
     padding-top: 3rem;
     height: 45rem;
     margin: auto;
 }
+
 .image {
     height: 20rem;
 }
+
 .product-container {
     display: flex;
     justify-content: space-between;
     align-content: center;
 }
+
 .card1 {
     position: relative;
     width: 200px;
     height: 300px;
     perspective: 1000px;
 }
+
 .content {
     position: absolute;
     width: 100%;
     height: 100%;
 }
+
 .front,
 .back {
     position: absolute;
@@ -67,22 +78,27 @@ p {
     height: 100%;
     backface-visibility: hidden;
 }
+
 .back {
     opacity: 0;
     transition: opacity 1.5s;
     text-align: center;
 }
+
 .image {
     width: 100%;
     height: 100%;
     transition: opacity 1.5s;
 }
+
 .card1:hover .image {
     opacity: 0;
 }
+
 .card1:hover .back {
     opacity: 100;
 }
+
 .back p {
     padding: 4rem 1rem;
     color: #333;
@@ -92,25 +108,30 @@ p {
     border-radius: 4px;
     height: 100%;
 }
-.back a{
+
+.back a {
     position: fixed;
     top: 75%;
     left: 49%;
     font-size: 2.5rem;
 }
+
 .col {
     width: 20rem;
     height: 30rem;
     margin: 0rem 1.5rem;
 }
+
 #Product_1 {
     margin-top: 0rem;
     transition-delay: 0.5ms;
 }
+
 #Product_2 {
     margin-top: 5rem;
     transition-delay: 1ms;
 }
+
 #Product_3 {
     margin-top: -3rem;
     transition-delay: 0ms;
@@ -122,21 +143,25 @@ p {
     height: 30rem;
     background-color: var(--tertiary-color);
 }
+
 #Profile_Display {
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin-top: 3%;
 }
+
 .auctioneer_img {
     width: 7rem;
     height: 6.5rem;
     margin: 0% 0.5%;
     transition: transform 0.3s ease;
 }
+
 .auctioneer_img:hover {
     transform: scale(1.1);
 }
+
 #Auctioneer_Team h2 {
     font-family: 'Cantata One', serif;
 }
@@ -148,9 +173,11 @@ p {
     text-align: center;
     transition-delay: 1ms;
 }
+
 #Text_Section2 p {
     margin-bottom: 5rem;
 }
+
 #Text_Section2 a {
     font-family: 'Dancing Script', cursive;
     font-size: 2.5rem;
@@ -161,23 +188,28 @@ footer {
     text-align: center;
     background-color: var(--tertiary-color);
 }
+
 #footer_content {
     height: 100%;
     padding-top: 7rem;
     padding-bottom: 1rem;
 }
+
 footer h3 {
     font-size: 4rem;
 }
+
 footer h4 {
     margin-bottom: 6rem;
     font-size: 1.2rem;
 }
+
 footer a {
     margin: 3rem 3rem;
     font-size: 1.5rem;
     text-decoration: none;
 }
+
 footer p {
     margin-top: 1rem;
     font-size: 0.7rem;
@@ -189,14 +221,15 @@ footer p {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
- 
+
 @keyframes fadeInAnimation {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
-     }
+    }
 }
 
 .reveal {
@@ -205,10 +238,12 @@ footer p {
     opacity: 0;
     transition: 2s all ease;
 }
+
 .reveal.active {
     transform: translateY(0);
     opacity: 1;
 }
+
 .parallax-container {
     display: flex;
     min-height: 100vh;

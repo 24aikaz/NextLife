@@ -28,10 +28,10 @@
             <div class="d-flex justify-content-center">
                 {{-- <form action="" method="get">
                     @csrf --}}
-                    <button id="generate_list" class="btn list_btn" title="Generate list of feedbacks"
-                    data-toggle="modal" data-target="#feebacklist_modal">
-                        <i class="fa-regular fa-file-lines"></i>
-                    </button>
+                <button id="generate_list" class="btn list_btn" title="Generate list of feedbacks" data-toggle="modal"
+                    data-target="#feebacklist_modal">
+                    <i class="fa-regular fa-file-lines"></i>
+                </button>
                 {{-- </form> --}}
             </div>
 

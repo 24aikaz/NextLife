@@ -23,3 +23,4 @@ class Feedback extends Model
         'frequency' => 'enum:once,often,always',
     ];
 }
+// NOT IN USE

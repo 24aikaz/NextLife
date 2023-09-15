@@ -17,8 +17,9 @@ class Auction extends Model
         'End_Date',
     ];
 
+    // A product in auction has many bids
     public function bids()
     {
-        return $this->hasMany(Bid::class); // Assuming you have a "Bid" model
+        return $this->hasMany(Bid::class);
     }
 }
