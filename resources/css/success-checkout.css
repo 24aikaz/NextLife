@@ -1,0 +1,47 @@
+/* ------- Color variables used throughout ------- */
+:root {
+    --primary-color: #3F2305;
+    --secondary-color: #DFD7BF;
+    --tertiary-color: #F2EAD3;
+    --quarternary-color: #F5F5F5;
+    --teal-color: #00888C;
+    --most-font-color: #0a0601;
+}
+
+.errormsg {
+    color: red;
+}
+
+body {
+    padding: 2rem 3rem;
+    background-color: var(--tertiary-color) !important;
+}
+
+#success-content {
+    padding-top: 1rem;
+}
+
+#title {
+    margin-bottom: 3rem;
+    color: green;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.button:hover {
+    color: var(--teal-color) !important;
+}
+
+.button {
+    margin-top: 3rem;
+    border: none !important;
+    border-radius: 0 !important;
+    color: var(--primary-color) !important;
+    font-size: xx-large !important;
+    font-family: 'Dancing Script', cursive !important;
+}

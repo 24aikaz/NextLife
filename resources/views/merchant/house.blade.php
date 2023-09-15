@@ -187,9 +187,6 @@
             });
         }
 
-        // // Call the function on page load
-        // window.addEventListener('load', updateProductStatus);
-
         updateProductStatus();
 
         setInterval(updateProductStatus, 1000);
@@ -201,8 +198,8 @@
 
             deleteButtons.forEach(function(button) {
                 button.addEventListener('click', function(event) {
-                    event.preventDefault(); // Prevent default behavior
-                    event.stopPropagation(); // Stop event propagation to the anchor tag
+                    event.preventDefault();
+                    event.stopPropagation();
                     const productId = button.parentElement.dataset.productId;
 
                     // Send an AJAX request to delete the product

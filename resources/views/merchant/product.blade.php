@@ -16,7 +16,7 @@
                     <div class="form-group">
                         <label for="product_name">Product Name</label>
                         <input class="form-control additem_input underline" type="text" name="pname" id="product_name"
-                            autocomplete="off">
+                            autocomplete="off" placeholder="Add product name">
                         @error('pname')
                             <div class="errormsg">
                                 {{ $message }}
@@ -25,8 +25,8 @@
                     </div>
 
                     <div class="form-group"><label for="product_description">Product Description</label>
-                        <textarea class="form-control additem_input underline" name="pdesc" id="product_description" rows="3"></textarea>
-                        {{-- <input class="form-control additem_input underline" type="textarea" name="pdesc" id="product_description"> --}}
+                        <textarea class="form-control additem_input underline" name="pdesc" id="product_description" rows="3"
+                        placeholder="Add decription for product"></textarea>
                         @error('pdesc')
                             <div class="errormsg">
                                 {{ $message }}
@@ -104,10 +104,6 @@
                 </form>
 
             </div>
-
-            {{-- For pagination --}}
-            {{-- {{ $products->links() }} --}}
-
         @else
             <div class="mx-auto errormsg">
                 <h1 class="text-center">ACCESS DENIED!</h1>
