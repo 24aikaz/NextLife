@@ -27,11 +27,11 @@ class RegisterController extends Controller
         $this->validate($request, [
             'username' => 'unique:users,username',
             'email' => 'required|email|max:255',
-            'password' => ['required', Password::min(8)
-                ->letters()
-                ->numbers()
-                ->symbols()
-                ->uncompromised()],
+            'password' => [
+                'required',
+                'min:8',
+                'confirmed',
+            ],
             'first_name' => 'required',
             'last_name' => 'required',
             'birth_date' => 'required|date',
