@@ -4,10 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\User; // Adjust the namespace based on your actual User model location
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
- */
 class UserFactory extends Factory
 {
     /**
@@ -18,11 +16,22 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
+            'username' => $this->faker->userName,
+            'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'password' => bcrypt('Iamtired123'), // Set the default password
+            'remember_token' => Str::random(15),
+            'created_at' => now(),
+            'updated_at' => now(),
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'birth_date' => $this->faker->date,
+            'contact_number' => $this->faker->phoneNumber,
+            'street' => $this->faker->streetAddress,
+            'city' => $this->faker->city,
+            'postal_code' => $this->faker->postcode,
+            'country' => $this->faker->country,
+            'usertype' => $this->faker->randomElement(['merchant', 'bidder', 'auctioneer']),
         ];
     }
 
